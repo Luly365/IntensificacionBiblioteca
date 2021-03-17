@@ -32,12 +32,12 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.GeneroMetroGrid = new MetroFramework.Controls.MetroGrid();
+            this.cmnGenero = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SalirMetroButton = new MetroFramework.Controls.MetroButton();
             this.ActualizarMetroButton = new MetroFramework.Controls.MetroButton();
             this.BorrarMetroButton = new MetroFramework.Controls.MetroButton();
             this.EditarMetroButton = new MetroFramework.Controls.MetroButton();
             this.NuevoMetroButton = new MetroFramework.Controls.MetroButton();
-            this.cmnGenero = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.GeneroMetroGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -85,10 +85,18 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.GeneroMetroGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.GeneroMetroGrid.RowHeadersVisible = false;
             this.GeneroMetroGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.GeneroMetroGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.GeneroMetroGrid.Size = new System.Drawing.Size(442, 370);
             this.GeneroMetroGrid.TabIndex = 0;
+            // 
+            // cmnGenero
+            // 
+            this.cmnGenero.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cmnGenero.HeaderText = "Genero";
+            this.cmnGenero.Name = "cmnGenero";
+            this.cmnGenero.ReadOnly = true;
             // 
             // SalirMetroButton
             // 
@@ -136,13 +144,6 @@
             this.NuevoMetroButton.TabIndex = 2;
             this.NuevoMetroButton.UseSelectable = true;
             // 
-            // cmnGenero
-            // 
-            this.cmnGenero.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.cmnGenero.HeaderText = "Genero";
-            this.cmnGenero.Name = "cmnGenero";
-            this.cmnGenero.ReadOnly = true;
-            // 
             // GenerosForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -157,7 +158,7 @@
             this.Controls.Add(this.GeneroMetroGrid);
             this.Name = "GenerosForm";
             this.Text = "Generos";
-            this.Load += new System.EventHandler(this.PaisForm_Load);
+            this.Load += new System.EventHandler(this.GenerosForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.GeneroMetroGrid)).EndInit();
             this.ResumeLayout(false);
 

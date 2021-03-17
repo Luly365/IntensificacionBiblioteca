@@ -60,7 +60,7 @@
             this.SociosMetroTile.Size = new System.Drawing.Size(113, 109);
             this.SociosMetroTile.TabIndex = 2;
             this.SociosMetroTile.Text = "Socios";
-            this.SociosMetroTile.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.SociosMetroTile.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.SociosMetroTile.TileImage = global::IntensificacionBiblioteca.Windows.Properties.Resources.socios_48px;
             this.SociosMetroTile.TileImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.SociosMetroTile.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
@@ -117,7 +117,7 @@
             this.Controls.Add(this.LibroMetroTile);
             this.Controls.Add(this.SalirMetroTile);
             this.Name = "frmMenuPrincipal";
-            this.Text = "Menú Principal";
+            this.Text = "Biblioteca";
             this.ResumeLayout(false);
 
         }

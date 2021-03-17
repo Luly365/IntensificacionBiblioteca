@@ -107,6 +107,7 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.SociosMetroGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.SociosMetroGrid.RowHeadersVisible = false;
             this.SociosMetroGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.SociosMetroGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.SociosMetroGrid.Size = new System.Drawing.Size(918, 346);

@@ -61,6 +61,12 @@
     <Compile Include="frmMenuPrincipal.Designer.cs">
       <DependentUpon>frmMenuPrincipal.cs</DependentUpon>
     </Compile>
+    <Compile Include="EstadosForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EstadosForm.Designer.cs">
+      <DependentUpon>EstadosForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="GenerosForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -113,6 +119,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmMenuPrincipal.resx">
       <DependentUpon>frmMenuPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EstadosForm.resx">
+      <DependentUpon>EstadosForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GenerosForm.resx">
       <DependentUpon>GenerosForm.cs</DependentUpon>

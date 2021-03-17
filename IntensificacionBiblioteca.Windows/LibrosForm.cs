@@ -33,5 +33,17 @@ namespace IntensificacionBiblioteca.Windows
             AutoresForm frm = new AutoresForm();
             frm.ShowDialog(this);
         }
+
+        private void GenerosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GenerosForm frm = new GenerosForm();
+            frm.ShowDialog(this);
+        }
+
+        private void EstadosToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            EstadosForm frm = new EstadosForm();
+            frm.ShowDialog(this);
+        }
     }
 }

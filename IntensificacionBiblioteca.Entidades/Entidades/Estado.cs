@@ -9,6 +9,6 @@ namespace IntensificacionBiblioteca.Entidades.Entidades
     public class Estado
     {
         public int EstadoId { get; set; }
-        public int Descripcion { get; set; }
+        public string Descripcion { get; set; }
     }
 }

@@ -32,12 +32,12 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.LocalidadesMetroGrid = new MetroFramework.Controls.MetroGrid();
+            this.cmnLocalidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SalirMetroButton = new MetroFramework.Controls.MetroButton();
             this.ActualizarMetroButton = new MetroFramework.Controls.MetroButton();
             this.BorrarMetroButton = new MetroFramework.Controls.MetroButton();
             this.EditarMetroButton = new MetroFramework.Controls.MetroButton();
             this.NuevoMetroButton = new MetroFramework.Controls.MetroButton();
-            this.cmnLocalidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.LocalidadesMetroGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -85,10 +85,18 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.LocalidadesMetroGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.LocalidadesMetroGrid.RowHeadersVisible = false;
             this.LocalidadesMetroGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.LocalidadesMetroGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.LocalidadesMetroGrid.Size = new System.Drawing.Size(501, 370);
             this.LocalidadesMetroGrid.TabIndex = 0;
+            // 
+            // cmnLocalidad
+            // 
+            this.cmnLocalidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cmnLocalidad.HeaderText = "Localidad";
+            this.cmnLocalidad.Name = "cmnLocalidad";
+            this.cmnLocalidad.ReadOnly = true;
             // 
             // SalirMetroButton
             // 
@@ -135,13 +143,6 @@
             this.NuevoMetroButton.Size = new System.Drawing.Size(52, 47);
             this.NuevoMetroButton.TabIndex = 2;
             this.NuevoMetroButton.UseSelectable = true;
-            // 
-            // cmnLocalidad
-            // 
-            this.cmnLocalidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.cmnLocalidad.HeaderText = "Localidad";
-            this.cmnLocalidad.Name = "cmnLocalidad";
-            this.cmnLocalidad.ReadOnly = true;
             // 
             // LocalidadesForm
             // 

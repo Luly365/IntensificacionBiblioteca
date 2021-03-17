@@ -108,6 +108,7 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.metroGrid1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.metroGrid1.RowHeadersVisible = false;
             this.metroGrid1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.metroGrid1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.metroGrid1.Size = new System.Drawing.Size(918, 346);
@@ -192,26 +193,28 @@
             // PaisesToolStripMenuItem
             // 
             this.PaisesToolStripMenuItem.Name = "PaisesToolStripMenuItem";
-            this.PaisesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.PaisesToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.PaisesToolStripMenuItem.Text = "Paises";
             this.PaisesToolStripMenuItem.Click += new System.EventHandler(this.PaisesToolStripMenuItem_Click);
             // 
             // GenerosToolStripMenuItem
             // 
             this.GenerosToolStripMenuItem.Name = "GenerosToolStripMenuItem";
-            this.GenerosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.GenerosToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.GenerosToolStripMenuItem.Text = "Generos";
+            this.GenerosToolStripMenuItem.Click += new System.EventHandler(this.GenerosToolStripMenuItem_Click);
             // 
             // EstadosToolStripMenuItem1
             // 
             this.EstadosToolStripMenuItem1.Name = "EstadosToolStripMenuItem1";
-            this.EstadosToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.EstadosToolStripMenuItem1.Size = new System.Drawing.Size(117, 22);
             this.EstadosToolStripMenuItem1.Text = "Estados";
+            this.EstadosToolStripMenuItem1.Click += new System.EventHandler(this.EstadosToolStripMenuItem1_Click);
             // 
             // AutoresToolStripMenuItem
             // 
             this.AutoresToolStripMenuItem.Name = "AutoresToolStripMenuItem";
-            this.AutoresToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.AutoresToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.AutoresToolStripMenuItem.Text = "Autores";
             this.AutoresToolStripMenuItem.Click += new System.EventHandler(this.AutoresToolStripMenuItem_Click);
             // 

@@ -13,9 +13,9 @@ using System.Windows.Forms;
 
 namespace IntensificacionBiblioteca.Windows
 {
-    public partial class GenerosForm : MetroFramework.Forms.MetroForm
+    public partial class EstadosForm : MetroFramework.Forms.MetroForm
     {
-        public GenerosForm()
+        public EstadosForm()
         {
             InitializeComponent();
         }
@@ -29,15 +29,46 @@ namespace IntensificacionBiblioteca.Windows
         {
             Close();
         }
-        private IServiciosGenero _servicio;
-        private List<Genero> _lista;
+        private IServiciosEstado _servicio;
+        private List<Estado> _lista;
 
-        private void GenerosForm_Load(object sender, EventArgs e)
+        
+
+        private void MostrarDatosEnGrilla()
         {
-            _servicio = new ServiciosGenero();
+            EstadoMetroGrid.Rows.Clear();
+            foreach (var estado in _lista)
+            {
+                DataGridViewRow r = ConstruirFila();
+                SetearFila(r, estado);
+                AgregarFila(r);
+            }
+        }
+
+        private void AgregarFila(DataGridViewRow r)
+        {
+            EstadoMetroGrid.Rows.Add(r);
+        }
+
+        private void SetearFila(DataGridViewRow r, Estado estado)
+        {
+            r.Cells[cmnEstado.Index].Value = estado.Descripcion;
+            r.Tag = estado;
+        }
+
+        private DataGridViewRow ConstruirFila()
+        {
+            DataGridViewRow r = new DataGridViewRow();
+            r.CreateCells(EstadoMetroGrid);
+            return r;
+        }
+
+        private void EstadosForm_Load_1(object sender, EventArgs e)
+        {
+            _servicio = new ServiciosEstado();
             try
             {
-                _lista = _servicio.GetGeneros();
+                _lista = _servicio.GetEstados();
                 MostrarDatosEnGrilla();
             }
             catch (Exception exception)
@@ -45,38 +76,6 @@ namespace IntensificacionBiblioteca.Windows
                 Console.WriteLine(exception);
                 throw;
             }
-
         }
-
-        private void MostrarDatosEnGrilla()
-        {
-            GeneroMetroGrid.Rows.Clear();
-            foreach (var genero in _lista)
-            {
-                DataGridViewRow r = ConstruirFila();
-                SetearFila(r, genero);
-                AgregarFila(r);
-            }
-        }
-
-        private void AgregarFila(DataGridViewRow r)
-        {
-            GeneroMetroGrid.Rows.Add(r);
-        }
-
-        private void SetearFila(DataGridViewRow r, Genero genero)
-        {
-            r.Cells[cmnGenero.Index].Value = genero.Descripcion;
-            r.Tag = genero;
-        }
-
-        private DataGridViewRow ConstruirFila()
-        {
-            DataGridViewRow r = new DataGridViewRow();
-            r.CreateCells(GeneroMetroGrid);
-            return r;
-        }
-
-       
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace IntensificacionBiblioteca.Windows
 {
-    partial class TipoDeDocForm
+    partial class EstadosForm
     {
         /// <summary>
         /// Required designer variable.
@@ -31,25 +31,25 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.TiposDeDocMetroGrid = new MetroFramework.Controls.MetroGrid();
-            this.cmnTipoDeDoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EstadoMetroGrid = new MetroFramework.Controls.MetroGrid();
+            this.cmnEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SalirMetroButton = new MetroFramework.Controls.MetroButton();
             this.ActualizarMetroButton = new MetroFramework.Controls.MetroButton();
             this.BorrarMetroButton = new MetroFramework.Controls.MetroButton();
             this.EditarMetroButton = new MetroFramework.Controls.MetroButton();
             this.NuevoMetroButton = new MetroFramework.Controls.MetroButton();
-            ((System.ComponentModel.ISupportInitialize)(this.TiposDeDocMetroGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EstadoMetroGrid)).BeginInit();
             this.SuspendLayout();
             // 
-            // TiposDeDocMetroGrid
+            // EstadoMetroGrid
             // 
-            this.TiposDeDocMetroGrid.AllowUserToAddRows = false;
-            this.TiposDeDocMetroGrid.AllowUserToDeleteRows = false;
-            this.TiposDeDocMetroGrid.AllowUserToResizeRows = false;
-            this.TiposDeDocMetroGrid.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.TiposDeDocMetroGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.TiposDeDocMetroGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.TiposDeDocMetroGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.EstadoMetroGrid.AllowUserToAddRows = false;
+            this.EstadoMetroGrid.AllowUserToDeleteRows = false;
+            this.EstadoMetroGrid.AllowUserToResizeRows = false;
+            this.EstadoMetroGrid.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.EstadoMetroGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.EstadoMetroGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.EstadoMetroGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
@@ -57,10 +57,10 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.TiposDeDocMetroGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.TiposDeDocMetroGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.TiposDeDocMetroGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.cmnTipoDeDoc});
+            this.EstadoMetroGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.EstadoMetroGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.EstadoMetroGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.cmnEstado});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
@@ -68,15 +68,15 @@
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.TiposDeDocMetroGrid.DefaultCellStyle = dataGridViewCellStyle2;
-            this.TiposDeDocMetroGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TiposDeDocMetroGrid.EnableHeadersVisualStyles = false;
-            this.TiposDeDocMetroGrid.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.TiposDeDocMetroGrid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.TiposDeDocMetroGrid.Location = new System.Drawing.Point(20, 60);
-            this.TiposDeDocMetroGrid.Name = "TiposDeDocMetroGrid";
-            this.TiposDeDocMetroGrid.ReadOnly = true;
-            this.TiposDeDocMetroGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.EstadoMetroGrid.DefaultCellStyle = dataGridViewCellStyle2;
+            this.EstadoMetroGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.EstadoMetroGrid.EnableHeadersVisualStyles = false;
+            this.EstadoMetroGrid.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.EstadoMetroGrid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.EstadoMetroGrid.Location = new System.Drawing.Point(20, 60);
+            this.EstadoMetroGrid.Name = "EstadoMetroGrid";
+            this.EstadoMetroGrid.ReadOnly = true;
+            this.EstadoMetroGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
@@ -84,24 +84,24 @@
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.TiposDeDocMetroGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.TiposDeDocMetroGrid.RowHeadersVisible = false;
-            this.TiposDeDocMetroGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.TiposDeDocMetroGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.TiposDeDocMetroGrid.Size = new System.Drawing.Size(512, 370);
-            this.TiposDeDocMetroGrid.TabIndex = 0;
+            this.EstadoMetroGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.EstadoMetroGrid.RowHeadersVisible = false;
+            this.EstadoMetroGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.EstadoMetroGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.EstadoMetroGrid.Size = new System.Drawing.Size(442, 370);
+            this.EstadoMetroGrid.TabIndex = 0;
             // 
-            // cmnTipoDeDoc
+            // cmnEstado
             // 
-            this.cmnTipoDeDoc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.cmnTipoDeDoc.HeaderText = "Tipos De Documentos";
-            this.cmnTipoDeDoc.Name = "cmnTipoDeDoc";
-            this.cmnTipoDeDoc.ReadOnly = true;
+            this.cmnEstado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cmnEstado.HeaderText = "Estado";
+            this.cmnEstado.Name = "cmnEstado";
+            this.cmnEstado.ReadOnly = true;
             // 
             // SalirMetroButton
             // 
             this.SalirMetroButton.BackgroundImage = global::IntensificacionBiblioteca.Windows.Properties.Resources.exit_48px1;
-            this.SalirMetroButton.Location = new System.Drawing.Point(486, 10);
+            this.SalirMetroButton.Location = new System.Drawing.Point(357, 10);
             this.SalirMetroButton.Name = "SalirMetroButton";
             this.SalirMetroButton.Size = new System.Drawing.Size(52, 47);
             this.SalirMetroButton.TabIndex = 6;
@@ -111,7 +111,7 @@
             // ActualizarMetroButton
             // 
             this.ActualizarMetroButton.BackgroundImage = global::IntensificacionBiblioteca.Windows.Properties.Resources.actualizar_48px;
-            this.ActualizarMetroButton.Location = new System.Drawing.Point(428, 10);
+            this.ActualizarMetroButton.Location = new System.Drawing.Point(299, 10);
             this.ActualizarMetroButton.Name = "ActualizarMetroButton";
             this.ActualizarMetroButton.Size = new System.Drawing.Size(52, 47);
             this.ActualizarMetroButton.TabIndex = 5;
@@ -120,7 +120,7 @@
             // BorrarMetroButton
             // 
             this.BorrarMetroButton.BackgroundImage = global::IntensificacionBiblioteca.Windows.Properties.Resources.cancel_48px;
-            this.BorrarMetroButton.Location = new System.Drawing.Point(370, 10);
+            this.BorrarMetroButton.Location = new System.Drawing.Point(241, 10);
             this.BorrarMetroButton.Name = "BorrarMetroButton";
             this.BorrarMetroButton.Size = new System.Drawing.Size(52, 47);
             this.BorrarMetroButton.TabIndex = 4;
@@ -129,7 +129,7 @@
             // EditarMetroButton
             // 
             this.EditarMetroButton.BackgroundImage = global::IntensificacionBiblioteca.Windows.Properties.Resources.editar_48px;
-            this.EditarMetroButton.Location = new System.Drawing.Point(312, 10);
+            this.EditarMetroButton.Location = new System.Drawing.Point(183, 10);
             this.EditarMetroButton.Name = "EditarMetroButton";
             this.EditarMetroButton.Size = new System.Drawing.Size(52, 47);
             this.EditarMetroButton.TabIndex = 3;
@@ -138,40 +138,40 @@
             // NuevoMetroButton
             // 
             this.NuevoMetroButton.BackgroundImage = global::IntensificacionBiblioteca.Windows.Properties.Resources.nuevo_48px;
-            this.NuevoMetroButton.Location = new System.Drawing.Point(254, 10);
+            this.NuevoMetroButton.Location = new System.Drawing.Point(125, 10);
             this.NuevoMetroButton.Name = "NuevoMetroButton";
             this.NuevoMetroButton.Size = new System.Drawing.Size(52, 47);
             this.NuevoMetroButton.TabIndex = 2;
             this.NuevoMetroButton.UseSelectable = true;
             // 
-            // TipoDeDocForm
+            // EstadosForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(552, 450);
+            this.ClientSize = new System.Drawing.Size(482, 450);
             this.ControlBox = false;
             this.Controls.Add(this.SalirMetroButton);
             this.Controls.Add(this.ActualizarMetroButton);
             this.Controls.Add(this.BorrarMetroButton);
             this.Controls.Add(this.EditarMetroButton);
             this.Controls.Add(this.NuevoMetroButton);
-            this.Controls.Add(this.TiposDeDocMetroGrid);
-            this.Name = "TipoDeDocForm";
-            this.Text = "Tipos de Documentos ";
-            this.Load += new System.EventHandler(this.TipoDeDocForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.TiposDeDocMetroGrid)).EndInit();
+            this.Controls.Add(this.EstadoMetroGrid);
+            this.Name = "EstadosForm";
+            this.Text = "Estados";
+            this.Load += new System.EventHandler(this.EstadosForm_Load_1);
+            ((System.ComponentModel.ISupportInitialize)(this.EstadoMetroGrid)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private MetroFramework.Controls.MetroGrid TiposDeDocMetroGrid;
+        private MetroFramework.Controls.MetroGrid EstadoMetroGrid;
         private MetroFramework.Controls.MetroButton NuevoMetroButton;
         private MetroFramework.Controls.MetroButton EditarMetroButton;
         private MetroFramework.Controls.MetroButton BorrarMetroButton;
         private MetroFramework.Controls.MetroButton ActualizarMetroButton;
         private MetroFramework.Controls.MetroButton SalirMetroButton;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cmnTipoDeDoc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cmnEstado;
     }
 }
