@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8DFD548B-0954-47FC-90EF-F27B92D20606}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>IntensificacionBiblioteca.Windows</RootNamespace>
+    <AssemblyName>IntensificacionBiblioteca.Windows</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework.Design, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework.Fonts, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Fonts.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="frmMenuPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMenuPrincipal.Designer.cs">
+      <DependentUpon>frmMenuPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GenerosForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GenerosForm.Designer.cs">
+      <DependentUpon>GenerosForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AutoresForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AutoresForm.Designer.cs">
+      <DependentUpon>AutoresForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LocalidadesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LocalidadesForm.Designer.cs">
+      <DependentUpon>LocalidadesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TipoDeDocForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TipoDeDocForm.Designer.cs">
+      <DependentUpon>TipoDeDocForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProvinciasForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProvinciasForm.Designer.cs">
+      <DependentUpon>ProvinciasForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SociosForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SociosForm.Designer.cs">
+      <DependentUpon>SociosForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PaisForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PaisForm.Designer.cs">
+      <DependentUpon>PaisForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LibrosForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LibrosForm.Designer.cs">
+      <DependentUpon>LibrosForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmMenuPrincipal.resx">
+      <DependentUpon>frmMenuPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GenerosForm.resx">
+      <DependentUpon>GenerosForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AutoresForm.resx">
+      <DependentUpon>AutoresForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LocalidadesForm.resx">
+      <DependentUpon>LocalidadesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TipoDeDocForm.resx">
+      <DependentUpon>TipoDeDocForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProvinciasForm.resx">
+      <DependentUpon>ProvinciasForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SociosForm.resx">
+      <DependentUpon>SociosForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PaisForm.resx">
+      <DependentUpon>PaisForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LibrosForm.resx">
+      <DependentUpon>LibrosForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IntensificacionBiblioteca.Entidades\IntensificacionBiblioteca.Entidades.csproj">
+      <Project>{2e97c7d3-e238-40f3-83f0-1d44e2361d68}</Project>
+      <Name>IntensificacionBiblioteca.Entidades</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IntensificacionBiblioteca.Servicios\IntensificacionBiblioteca.Servicios.csproj">
+      <Project>{0eef046b-07ba-4d82-9152-6f7de460d2f4}</Project>
+      <Name>IntensificacionBiblioteca.Servicios</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exit_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Libros_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\socios_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\prestamos_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nuevo_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\editar_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancel_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\actualizar_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exit_48px1.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
