@@ -24,12 +24,36 @@ namespace IntensificacionBiblioteca.Servicios.Servicios
 
         public void Borrar(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                _conexionBd = new ConexionBd();
+                _repositorio = new RepositorioGeneros(_conexionBd.AbrirConexion());
+                _repositorio.Borrar(id);
+                _conexionBd.CerrarConexion();
+
+            }
+            catch (Exception e)
+            {
+
+                throw new Exception(e.Message);
+            }
         }
 
         public bool Existe(Genero genero)
         {
-            throw new NotImplementedException();
+            try
+            {
+                _conexionBd = new ConexionBd();
+                _repositorio = new RepositorioGeneros(_conexionBd.AbrirConexion());
+                var existe = _repositorio.Existe(genero);
+                _conexionBd.CerrarConexion();
+                return existe;
+            }
+            catch (Exception e)
+            {
+
+                throw new Exception(e.Message);
+            }
         }
 
         public Genero GetGeneroPorId(int id)
@@ -55,7 +79,18 @@ namespace IntensificacionBiblioteca.Servicios.Servicios
 
         public void Guardar(Genero genero)
         {
-            throw new NotImplementedException();
+            try
+            {
+                _conexionBd = new ConexionBd();
+                _repositorio = new RepositorioGeneros(_conexionBd.AbrirConexion());
+                _repositorio.Guardar(genero);
+                _conexionBd.CerrarConexion();
+
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
     }
 }

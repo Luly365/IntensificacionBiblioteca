@@ -31,8 +31,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.LocalidadesMetroGrid = new MetroFramework.Controls.MetroGrid();
             this.cmnLocalidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmnProvincia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SalirMetroButton = new MetroFramework.Controls.MetroButton();
             this.ActualizarMetroButton = new MetroFramework.Controls.MetroButton();
             this.BorrarMetroButton = new MetroFramework.Controls.MetroButton();
@@ -60,7 +62,8 @@
             this.LocalidadesMetroGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.LocalidadesMetroGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.LocalidadesMetroGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.cmnLocalidad});
+            this.cmnLocalidad,
+            this.cmnProvincia});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
@@ -79,7 +82,7 @@
             this.LocalidadesMetroGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
@@ -87,6 +90,8 @@
             this.LocalidadesMetroGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.LocalidadesMetroGrid.RowHeadersVisible = false;
             this.LocalidadesMetroGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LocalidadesMetroGrid.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.LocalidadesMetroGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.LocalidadesMetroGrid.Size = new System.Drawing.Size(501, 370);
             this.LocalidadesMetroGrid.TabIndex = 0;
@@ -97,6 +102,13 @@
             this.cmnLocalidad.HeaderText = "Localidad";
             this.cmnLocalidad.Name = "cmnLocalidad";
             this.cmnLocalidad.ReadOnly = true;
+            // 
+            // cmnProvincia
+            // 
+            this.cmnProvincia.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cmnProvincia.HeaderText = "Provincia";
+            this.cmnProvincia.Name = "cmnProvincia";
+            this.cmnProvincia.ReadOnly = true;
             // 
             // SalirMetroButton
             // 
@@ -125,6 +137,7 @@
             this.BorrarMetroButton.Size = new System.Drawing.Size(52, 47);
             this.BorrarMetroButton.TabIndex = 4;
             this.BorrarMetroButton.UseSelectable = true;
+            this.BorrarMetroButton.Click += new System.EventHandler(this.BorrarMetroButton_Click);
             // 
             // EditarMetroButton
             // 
@@ -134,6 +147,7 @@
             this.EditarMetroButton.Size = new System.Drawing.Size(52, 47);
             this.EditarMetroButton.TabIndex = 3;
             this.EditarMetroButton.UseSelectable = true;
+            this.EditarMetroButton.Click += new System.EventHandler(this.EditarMetroButton_Click);
             // 
             // NuevoMetroButton
             // 
@@ -143,6 +157,7 @@
             this.NuevoMetroButton.Size = new System.Drawing.Size(52, 47);
             this.NuevoMetroButton.TabIndex = 2;
             this.NuevoMetroButton.UseSelectable = true;
+            this.NuevoMetroButton.Click += new System.EventHandler(this.NuevoMetroButton_Click);
             // 
             // LocalidadesForm
             // 
@@ -173,5 +188,6 @@
         private MetroFramework.Controls.MetroButton ActualizarMetroButton;
         private MetroFramework.Controls.MetroButton SalirMetroButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn cmnLocalidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cmnProvincia;
     }
 }

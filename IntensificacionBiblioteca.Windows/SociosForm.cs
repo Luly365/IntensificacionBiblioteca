@@ -39,5 +39,11 @@ namespace IntensificacionBiblioteca.Windows
             TipoDeDocForm frm = new TipoDeDocForm();
             frm.ShowDialog(this);
         }
+
+        private void localidadesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LocalidadesForm frm = new LocalidadesForm();
+            frm.ShowDialog(this);
+        }
     }
 }

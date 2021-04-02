@@ -42,18 +42,24 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Servicios\Facades\IServicioEditoriales.cs" />
+    <Compile Include="Servicios\Facades\IServicioLocalidades.cs" />
     <Compile Include="Servicios\Facades\IServiciosAutor.cs" />
     <Compile Include="Servicios\Facades\IServiciosEstado.cs" />
     <Compile Include="Servicios\Facades\IServiciosGenero.cs" />
     <Compile Include="Servicios\Facades\IServiciosProvincia.cs" />
+    <Compile Include="Servicios\Facades\IServiciosSubGeneros.cs" />
     <Compile Include="Servicios\Facades\IServiciosTipoDeDocumento.cs" />
     <Compile Include="Servicios\Facades\ServiciosPais.cs" />
+    <Compile Include="Servicios\ServicioEditoriales.cs" />
+    <Compile Include="Servicios\ServicioLocalidades.cs" />
     <Compile Include="Servicios\ServiciosAutor.cs" />
     <Compile Include="Servicios\ServiciosEstado.cs" />
     <Compile Include="Servicios\ServiciosGenero.cs" />
     <Compile Include="Servicios\ServiciosPaises.cs" />
     <Compile Include="Servicios\ServiciosProvincias.cs" />
     <Compile Include="Servicios\ServiciosTipoDeDocumento.cs" />
+    <Compile Include="Servicios\ServicioSubGeneros.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\IntensificacionBiblioteca.Datos\IntensificacionBiblioteca.Datos.csproj">

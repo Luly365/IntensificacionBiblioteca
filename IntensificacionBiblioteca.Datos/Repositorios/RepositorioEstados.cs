@@ -19,12 +19,52 @@ namespace IntensificacionBiblioteca.Datos.Repositorios
         }
         public void Borrar(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                string cadenaComando = "DELETE FROM Estados WHERE EstadoId=@id";
+                SqlCommand comando = new SqlCommand(cadenaComando, _conexion);
+                comando.Parameters.AddWithValue("@id", id);
+                comando.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                if (e.Message.Contains("REFERENCE"))
+                {
+                    throw new Exception("Registros con datos asociados... Baja denegada");
+                }
+                throw new Exception(e.Message);
+            }
         }
 
         public bool Existe(Estado estado)
         {
-            throw new NotImplementedException();
+            try
+            {
+                //SqlCommand comando;
+                if (estado.EstadoId == 0)
+                {// nuevo estado
+                    string cadenaComando = "SELECT EstadoId,Descripcion FROM Estados WHERE Descripcion=@nombre";
+                    SqlCommand comando = new SqlCommand(cadenaComando, _conexion);
+                    comando.Parameters.AddWithValue("@nombre", estado.Descripcion);
+                    SqlDataReader reader = comando.ExecuteReader();
+                    return reader.HasRows;
+                }
+                else
+                {
+                    string cadenaComando = "SELECT EstadoId,Descripcion FROM Estados WHERE Descripcion=@nombre AND EstadoId<>@id";
+                    SqlCommand comando = new SqlCommand(cadenaComando, _conexion);
+                    comando.Parameters.AddWithValue("@nombre", estado.Descripcion);
+                    comando.Parameters.AddWithValue("@id", estado.EstadoId);
+                    SqlDataReader reader = comando.ExecuteReader();
+                    return reader.HasRows;
+                }
+                
+            }
+            catch (Exception e)
+            {
+
+                throw new Exception(e.Message);
+            }
         }
 
         public Estado GetEstadoPorId(int id)
@@ -65,7 +105,40 @@ namespace IntensificacionBiblioteca.Datos.Repositorios
 
         public void Guardar(Estado estado)
         {
-            throw new NotImplementedException();
+            if (estado.EstadoId == 0) 
+            {//Nuevo estado
+                try
+                {
+                    string cadenaComando = "INSERT INTO Estados VALUES(@nombre)";
+                    SqlCommand comando = new SqlCommand(cadenaComando, _conexion);
+                    comando.Parameters.AddWithValue("@nombre", estado.Descripcion);
+                    comando.ExecuteNonQuery();
+                    cadenaComando = "SELECT @@IDENTITY";
+                    comando = new SqlCommand(cadenaComando, _conexion);
+                    estado.EstadoId = (int)(decimal)comando.ExecuteScalar();
+                }
+                catch (Exception)
+                {
+                    throw new Exception("Error al intentar guardar un registro");
+                }
+            }
+            else
+            {
+                try
+                {
+                    //Editar Estado
+                    string cadenaComando = "UPDATE Estados SET Descripcion=@nombre WHERE EstadoId=@id ";
+                    SqlCommand comando = new SqlCommand(cadenaComando, _conexion);
+                    comando.Parameters.AddWithValue("@nombre", estado.Descripcion);
+                    comando.Parameters.AddWithValue("@id", estado.EstadoId);
+                    comando.ExecuteNonQuery();
+                }
+                catch (Exception)
+                {
+
+                    throw new Exception("Error al intentar guardar un registro");
+                }
+            };
         }
     }
 }

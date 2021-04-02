@@ -22,12 +22,36 @@ namespace IntensificacionBiblioteca.Servicios.Servicios
 
         public void Borrar(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                _conexionBd = new ConexionBd();
+                _repositorio = new RepositorioAutores(_conexionBd.AbrirConexion());
+                _repositorio.Borrar(id);
+                _conexionBd.CerrarConexion();
+
+            }
+            catch (Exception e)
+            {
+
+                throw new Exception(e.Message);
+            }
         }
 
         public bool Existe(Autor autor)
         {
-            throw new NotImplementedException();
+            try
+            {
+                _conexionBd = new ConexionBd();
+                _repositorio = new RepositorioAutores(_conexionBd.AbrirConexion());
+                var existe = _repositorio.Existe(autor);
+                _conexionBd.CerrarConexion();
+                return existe;
+            }
+            catch (Exception e)
+            {
+
+                throw new Exception(e.Message);
+            }
         }
 
         public List<Autor> GetAutores()
@@ -54,7 +78,18 @@ namespace IntensificacionBiblioteca.Servicios.Servicios
 
         public void Guardar(Autor autor)
         {
-            throw new NotImplementedException();
+            try
+            {
+                _conexionBd = new ConexionBd();
+                _repositorio = new RepositorioAutores(_conexionBd.AbrirConexion());
+                _repositorio.Guardar(autor);
+                _conexionBd.CerrarConexion();
+
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
     }
 }

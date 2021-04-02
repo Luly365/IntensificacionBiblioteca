@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -38,7 +39,9 @@
             this.BorrarMetroButton = new MetroFramework.Controls.MetroButton();
             this.EditarMetroButton = new MetroFramework.Controls.MetroButton();
             this.NuevoMetroButton = new MetroFramework.Controls.MetroButton();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.PaisMetroGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // PaisMetroGrid
@@ -125,6 +128,7 @@
             this.BorrarMetroButton.Size = new System.Drawing.Size(52, 47);
             this.BorrarMetroButton.TabIndex = 4;
             this.BorrarMetroButton.UseSelectable = true;
+            this.BorrarMetroButton.Click += new System.EventHandler(this.BorrarMetroButton_Click);
             // 
             // EditarMetroButton
             // 
@@ -134,6 +138,7 @@
             this.EditarMetroButton.Size = new System.Drawing.Size(52, 47);
             this.EditarMetroButton.TabIndex = 3;
             this.EditarMetroButton.UseSelectable = true;
+            this.EditarMetroButton.Click += new System.EventHandler(this.EditarMetroButton_Click);
             // 
             // NuevoMetroButton
             // 
@@ -143,6 +148,11 @@
             this.NuevoMetroButton.Size = new System.Drawing.Size(52, 47);
             this.NuevoMetroButton.TabIndex = 2;
             this.NuevoMetroButton.UseSelectable = true;
+            this.NuevoMetroButton.Click += new System.EventHandler(this.NuevoMetroButton_Click);
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
             // 
             // PaisForm
             // 
@@ -160,6 +170,7 @@
             this.Text = "Pais";
             this.Load += new System.EventHandler(this.PaisForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.PaisMetroGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -173,5 +184,6 @@
         private MetroFramework.Controls.MetroButton ActualizarMetroButton;
         private MetroFramework.Controls.MetroButton SalirMetroButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn cmnPais;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

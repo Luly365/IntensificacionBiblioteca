@@ -32,6 +32,18 @@
             this.SociosMetroTile = new MetroFramework.Controls.MetroTile();
             this.LibroMetroTile = new MetroFramework.Controls.MetroTile();
             this.SalirMetroTile = new MetroFramework.Controls.MetroTile();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.archivosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MPPaisesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MPProvinciasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MPLocalidadesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MPTiposDeDocumentosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MPGenerosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MPSubGenerosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MPAutoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MPEstadoDeLosLibrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editorialesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // PrestamosMetroTile
@@ -106,6 +118,95 @@
             this.SalirMetroTile.UseTileImage = true;
             this.SalirMetroTile.Click += new System.EventHandler(this.SalirMetroTile_Click);
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.archivosToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(20, 60);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(440, 24);
+            this.menuStrip1.TabIndex = 4;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // archivosToolStripMenuItem
+            // 
+            this.archivosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MPPaisesToolStripMenuItem,
+            this.MPProvinciasToolStripMenuItem,
+            this.MPLocalidadesToolStripMenuItem,
+            this.MPTiposDeDocumentosToolStripMenuItem,
+            this.MPGenerosToolStripMenuItem,
+            this.MPSubGenerosToolStripMenuItem,
+            this.MPAutoresToolStripMenuItem,
+            this.MPEstadoDeLosLibrosToolStripMenuItem,
+            this.editorialesToolStripMenuItem});
+            this.archivosToolStripMenuItem.Name = "archivosToolStripMenuItem";
+            this.archivosToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
+            this.archivosToolStripMenuItem.Text = "Archivos";
+            // 
+            // MPPaisesToolStripMenuItem
+            // 
+            this.MPPaisesToolStripMenuItem.Name = "MPPaisesToolStripMenuItem";
+            this.MPPaisesToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.MPPaisesToolStripMenuItem.Text = "Paises";
+            this.MPPaisesToolStripMenuItem.Click += new System.EventHandler(this.MPPaisesToolStripMenuItem_Click);
+            // 
+            // MPProvinciasToolStripMenuItem
+            // 
+            this.MPProvinciasToolStripMenuItem.Name = "MPProvinciasToolStripMenuItem";
+            this.MPProvinciasToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.MPProvinciasToolStripMenuItem.Text = "Provincias";
+            this.MPProvinciasToolStripMenuItem.Click += new System.EventHandler(this.MPProvinciasToolStripMenuItem_Click);
+            // 
+            // MPLocalidadesToolStripMenuItem
+            // 
+            this.MPLocalidadesToolStripMenuItem.Name = "MPLocalidadesToolStripMenuItem";
+            this.MPLocalidadesToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.MPLocalidadesToolStripMenuItem.Text = "Localidades";
+            this.MPLocalidadesToolStripMenuItem.Click += new System.EventHandler(this.MPLocalidadesToolStripMenuItem_Click);
+            // 
+            // MPTiposDeDocumentosToolStripMenuItem
+            // 
+            this.MPTiposDeDocumentosToolStripMenuItem.Name = "MPTiposDeDocumentosToolStripMenuItem";
+            this.MPTiposDeDocumentosToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.MPTiposDeDocumentosToolStripMenuItem.Text = "Tipos De Documentos";
+            this.MPTiposDeDocumentosToolStripMenuItem.Click += new System.EventHandler(this.MPTiposDeDocumentosToolStripMenuItem_Click);
+            // 
+            // MPGenerosToolStripMenuItem
+            // 
+            this.MPGenerosToolStripMenuItem.Name = "MPGenerosToolStripMenuItem";
+            this.MPGenerosToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.MPGenerosToolStripMenuItem.Text = "Generos";
+            this.MPGenerosToolStripMenuItem.Click += new System.EventHandler(this.MPGenerosToolStripMenuItem_Click);
+            // 
+            // MPSubGenerosToolStripMenuItem
+            // 
+            this.MPSubGenerosToolStripMenuItem.Name = "MPSubGenerosToolStripMenuItem";
+            this.MPSubGenerosToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.MPSubGenerosToolStripMenuItem.Text = "SubGeneros";
+            this.MPSubGenerosToolStripMenuItem.Click += new System.EventHandler(this.MPSubGenerosToolStripMenuItem_Click);
+            // 
+            // MPAutoresToolStripMenuItem
+            // 
+            this.MPAutoresToolStripMenuItem.Name = "MPAutoresToolStripMenuItem";
+            this.MPAutoresToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.MPAutoresToolStripMenuItem.Text = "Autores";
+            this.MPAutoresToolStripMenuItem.Click += new System.EventHandler(this.MPAutoresToolStripMenuItem_Click);
+            // 
+            // MPEstadoDeLosLibrosToolStripMenuItem
+            // 
+            this.MPEstadoDeLosLibrosToolStripMenuItem.Name = "MPEstadoDeLosLibrosToolStripMenuItem";
+            this.MPEstadoDeLosLibrosToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.MPEstadoDeLosLibrosToolStripMenuItem.Text = "Estado de los Libros";
+            this.MPEstadoDeLosLibrosToolStripMenuItem.Click += new System.EventHandler(this.MPEstadoDeLosLibrosToolStripMenuItem_Click);
+            // 
+            // editorialesToolStripMenuItem
+            // 
+            this.editorialesToolStripMenuItem.Name = "editorialesToolStripMenuItem";
+            this.editorialesToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.editorialesToolStripMenuItem.Text = "Editoriales";
+            this.editorialesToolStripMenuItem.Click += new System.EventHandler(this.editorialesToolStripMenuItem_Click);
+            // 
             // frmMenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -116,9 +217,14 @@
             this.Controls.Add(this.SociosMetroTile);
             this.Controls.Add(this.LibroMetroTile);
             this.Controls.Add(this.SalirMetroTile);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmMenuPrincipal";
             this.Text = "Biblioteca";
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -128,6 +234,17 @@
         private MetroFramework.Controls.MetroTile LibroMetroTile;
         private MetroFramework.Controls.MetroTile SociosMetroTile;
         private MetroFramework.Controls.MetroTile PrestamosMetroTile;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem archivosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem MPPaisesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem MPProvinciasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem MPLocalidadesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem MPTiposDeDocumentosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem MPGenerosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem MPSubGenerosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem MPAutoresToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem MPEstadoDeLosLibrosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem editorialesToolStripMenuItem;
     }
 }
 

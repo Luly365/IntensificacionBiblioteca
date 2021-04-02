@@ -55,6 +55,60 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Formularios AE\AutorAEForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios AE\AutorAEForm.Designer.cs">
+      <DependentUpon>AutorAEForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios AE\SubGeneroAEForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios AE\SubGeneroAEForm.Designer.cs">
+      <DependentUpon>SubGeneroAEForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios AE\EditorialAEForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios AE\EditorialAEForm.Designer.cs">
+      <DependentUpon>EditorialAEForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios AE\LocalidadAEForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios AE\LocalidadAEForm.Designer.cs">
+      <DependentUpon>LocalidadAEForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios AE\TipoDeDocAEForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios AE\TipoDeDocAEForm.Designer.cs">
+      <DependentUpon>TipoDeDocAEForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios AE\EstadoAEForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios AE\EstadoAEForm.Designer.cs">
+      <DependentUpon>EstadoAEForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios AE\GeneroAEForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios AE\GeneroAEForm.Designer.cs">
+      <DependentUpon>GeneroAEForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios AE\ProvinciaAEForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios AE\ProvinciaAEForm.Designer.cs">
+      <DependentUpon>ProvinciaAEForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios AE\PaisAEForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios AE\PaisAEForm.Designer.cs">
+      <DependentUpon>PaisAEForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMenuPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,6 +132,18 @@
     </Compile>
     <Compile Include="AutoresForm.Designer.cs">
       <DependentUpon>AutoresForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditorialesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditorialesForm.Designer.cs">
+      <DependentUpon>EditorialesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubGeneroForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubGeneroForm.Designer.cs">
+      <DependentUpon>SubGeneroForm.cs</DependentUpon>
     </Compile>
     <Compile Include="LocalidadesForm.cs">
       <SubType>Form</SubType>
@@ -117,6 +183,33 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Formularios AE\AutorAEForm.resx">
+      <DependentUpon>AutorAEForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios AE\SubGeneroAEForm.resx">
+      <DependentUpon>SubGeneroAEForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios AE\EditorialAEForm.resx">
+      <DependentUpon>EditorialAEForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios AE\LocalidadAEForm.resx">
+      <DependentUpon>LocalidadAEForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios AE\TipoDeDocAEForm.resx">
+      <DependentUpon>TipoDeDocAEForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios AE\EstadoAEForm.resx">
+      <DependentUpon>EstadoAEForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios AE\GeneroAEForm.resx">
+      <DependentUpon>GeneroAEForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios AE\ProvinciaAEForm.resx">
+      <DependentUpon>ProvinciaAEForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios AE\PaisAEForm.resx">
+      <DependentUpon>PaisAEForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMenuPrincipal.resx">
       <DependentUpon>frmMenuPrincipal.cs</DependentUpon>
     </EmbeddedResource>
@@ -128,6 +221,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AutoresForm.resx">
       <DependentUpon>AutoresForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditorialesForm.resx">
+      <DependentUpon>EditorialesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubGeneroForm.resx">
+      <DependentUpon>SubGeneroForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LocalidadesForm.resx">
       <DependentUpon>LocalidadesForm.cs</DependentUpon>
@@ -207,6 +306,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\exit_48px1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ok_48px.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

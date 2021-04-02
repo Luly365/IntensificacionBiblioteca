@@ -20,12 +20,48 @@ namespace IntensificacionBiblioteca.Datos.Repositorios
 
         public void Borrar(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                string cadenaComando = "DELETE FROM Autores WHERE AutorId=@id";
+                SqlCommand comando = new SqlCommand(cadenaComando, _conexion);
+                comando.Parameters.AddWithValue("@id", id);
+                comando.ExecuteNonQuery();
+
+            }
+            catch (Exception e)
+            {
+                if (e.Message.Contains("REFERENCE"))
+                {
+                    throw new Exception("Registro con datos asociados... Baja denegada");
+                }
+                throw new Exception(e.Message);
+
+            }
         }
 
         public bool Existe(Autor autor)
         {
-            throw new NotImplementedException();
+            if (autor.AutorId == 0)
+            {
+                //nuevo autor
+                string cadenaComando = "SELECT AutorId, NombreAutor FROM Autores WHERE NombreAutor=@nombreAutor";
+                SqlCommand comando = new SqlCommand(cadenaComando, _conexion);
+                comando.Parameters.AddWithValue("@nombreAutor", autor.NombreAutor);
+                SqlDataReader reader = comando.ExecuteReader();
+                return reader.HasRows;
+            }
+            else
+            {
+                string cadenaComando = "SELECT AutorId, NombreAutor FROM Autores WHERE NombreAutor=@nombreAutor AND AutorId<>@id";
+                SqlCommand comando = new SqlCommand(cadenaComando, _conexion);
+                comando.Parameters.AddWithValue("@nombreAutor", autor.NombreAutor);
+                comando.Parameters.AddWithValue("@id", autor.AutorId);
+                SqlDataReader reader = comando.ExecuteReader();
+                return reader.HasRows;
+            }
+
+
+
         }
 
         public List<Autor> GetAutores()
@@ -44,7 +80,7 @@ namespace IntensificacionBiblioteca.Datos.Repositorios
                 reader.Close();
                 return lista;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 throw new Exception("Error al intentar leer los Autores");
             }
@@ -66,7 +102,42 @@ namespace IntensificacionBiblioteca.Datos.Repositorios
 
         public void Guardar(Autor autor)
         {
-            throw new NotImplementedException();
+            if (autor.AutorId == 0)
+            {//guardar
+                try
+                {
+                    string cadenaComando = "INSERT INTO Autores VALUES(@nombreAutor)";
+                    SqlCommand comando = new SqlCommand(cadenaComando, _conexion);
+                    comando.Parameters.AddWithValue("@nombreAutor", autor.NombreAutor);
+                    comando.ExecuteNonQuery();
+                    cadenaComando = "SELECT @@IDENTITY";
+                    comando = new SqlCommand(cadenaComando, _conexion);
+
+                    autor.AutorId = (int)(decimal)comando.ExecuteScalar();
+                }
+                catch (Exception)
+                {
+
+                    throw new Exception("Error al intentar guardar el registro.");
+                }
+            }
+            else
+            {
+                //editar
+                try
+                {
+                    string cadenaComando = "UPDATE Autores SET NombreAutor=@nombreAutor WHERE AutorId=@id";
+                    SqlCommand comando = new SqlCommand(cadenaComando, _conexion);
+                    comando.Parameters.AddWithValue("@nombreAutor", autor.NombreAutor);
+                    comando.Parameters.AddWithValue("@id", autor.AutorId);
+                    comando.ExecuteNonQuery();
+                }
+                catch (Exception)
+                {
+
+                    throw new Exception("Error al intentar modificar un registro.");
+                }
+            }
         }
     }
 }

@@ -21,12 +21,36 @@ namespace IntensificacionBiblioteca.Servicios.Servicios
         }
         public void Borrar(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                _conexionBd = new ConexionBd();
+                _repositorio = new RepositorioTipoDeDocumentos(_conexionBd.AbrirConexion());
+                _repositorio.Borrar(id);
+                _conexionBd.CerrarConexion();
+
+            }
+            catch (Exception e)
+            {
+
+                throw new Exception(e.Message);
+            }
         }
 
         public bool Existe(TipoDeDocumento tipoDeDocumento)
         {
-            throw new NotImplementedException();
+            try
+            {
+                _conexionBd = new ConexionBd();
+                _repositorio = new RepositorioTipoDeDocumentos(_conexionBd.AbrirConexion());
+                var existe = _repositorio.Existe(tipoDeDocumento);
+                _conexionBd.CerrarConexion();
+                return existe;
+            }
+            catch (Exception e)
+            {
+
+                throw new Exception(e.Message);
+            }
         }
 
         public TipoDeDocumento GetTipoDeDocPorId(int id)
@@ -55,7 +79,17 @@ namespace IntensificacionBiblioteca.Servicios.Servicios
 
         public void Guardar(TipoDeDocumento tipoDeDocumento)
         {
-            throw new NotImplementedException();
+            try
+            {
+                _conexionBd = new ConexionBd();
+                _repositorio = new RepositorioTipoDeDocumentos(_conexionBd.AbrirConexion());
+                _repositorio.Guardar(tipoDeDocumento);
+                _conexionBd.CerrarConexion();
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
     }
 }

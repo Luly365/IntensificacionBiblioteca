@@ -6,9 +6,14 @@ using System.Threading.Tasks;
 
 namespace IntensificacionBiblioteca.Entidades.Entidades
 {
-    public class Genero
+    public class Genero:ICloneable
     {
-        public int generoId { get; set; }
+        public int GeneroId { get; set; }
         public string Descripcion { get; set; }
+
+        public object Clone()
+        {
+            return this.MemberwiseClone();//copia superficial del objeto
+        }
     }
 }

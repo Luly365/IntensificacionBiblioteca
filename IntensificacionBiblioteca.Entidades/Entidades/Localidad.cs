@@ -10,6 +10,6 @@ namespace IntensificacionBiblioteca.Entidades.Entidades
     {
         public int LocalidadId { get; set; }
         public string NombreLocalidad { get; set; }
-        public Provincia provincia { get; set; } // no por ahora
+        public Provincia provincia { get; set; } 
     }
 }

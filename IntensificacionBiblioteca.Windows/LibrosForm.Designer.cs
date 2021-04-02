@@ -52,6 +52,7 @@
             this.BorrarMetroButton = new MetroFramework.Controls.MetroButton();
             this.EditarMetroButton = new MetroFramework.Controls.MetroButton();
             this.NuevoMetroButton = new MetroFramework.Controls.MetroButton();
+            this.editorialesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -185,7 +186,8 @@
             this.PaisesToolStripMenuItem,
             this.GenerosToolStripMenuItem,
             this.EstadosToolStripMenuItem1,
-            this.AutoresToolStripMenuItem});
+            this.AutoresToolStripMenuItem,
+            this.editorialesToolStripMenuItem});
             this.archivosToolStripMenuItem.Name = "archivosToolStripMenuItem";
             this.archivosToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
             this.archivosToolStripMenuItem.Text = "Archivos";
@@ -193,28 +195,28 @@
             // PaisesToolStripMenuItem
             // 
             this.PaisesToolStripMenuItem.Name = "PaisesToolStripMenuItem";
-            this.PaisesToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.PaisesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.PaisesToolStripMenuItem.Text = "Paises";
             this.PaisesToolStripMenuItem.Click += new System.EventHandler(this.PaisesToolStripMenuItem_Click);
             // 
             // GenerosToolStripMenuItem
             // 
             this.GenerosToolStripMenuItem.Name = "GenerosToolStripMenuItem";
-            this.GenerosToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.GenerosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.GenerosToolStripMenuItem.Text = "Generos";
             this.GenerosToolStripMenuItem.Click += new System.EventHandler(this.GenerosToolStripMenuItem_Click);
             // 
             // EstadosToolStripMenuItem1
             // 
             this.EstadosToolStripMenuItem1.Name = "EstadosToolStripMenuItem1";
-            this.EstadosToolStripMenuItem1.Size = new System.Drawing.Size(117, 22);
+            this.EstadosToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.EstadosToolStripMenuItem1.Text = "Estados";
             this.EstadosToolStripMenuItem1.Click += new System.EventHandler(this.EstadosToolStripMenuItem1_Click);
             // 
             // AutoresToolStripMenuItem
             // 
             this.AutoresToolStripMenuItem.Name = "AutoresToolStripMenuItem";
-            this.AutoresToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.AutoresToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.AutoresToolStripMenuItem.Text = "Autores";
             this.AutoresToolStripMenuItem.Click += new System.EventHandler(this.AutoresToolStripMenuItem_Click);
             // 
@@ -264,6 +266,13 @@
             this.NuevoMetroButton.TabIndex = 2;
             this.NuevoMetroButton.UseSelectable = true;
             // 
+            // editorialesToolStripMenuItem
+            // 
+            this.editorialesToolStripMenuItem.Name = "editorialesToolStripMenuItem";
+            this.editorialesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.editorialesToolStripMenuItem.Text = "Editoriales";
+            this.editorialesToolStripMenuItem.Click += new System.EventHandler(this.editorialesToolStripMenuItem_Click);
+            // 
             // LibrosForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -310,5 +319,6 @@
         private MetroFramework.Controls.MetroButton BorrarMetroButton;
         private MetroFramework.Controls.MetroButton ActualizarMetroButton;
         private MetroFramework.Controls.MetroButton SalirMetroButton;
+        private System.Windows.Forms.ToolStripMenuItem editorialesToolStripMenuItem;
     }
 }

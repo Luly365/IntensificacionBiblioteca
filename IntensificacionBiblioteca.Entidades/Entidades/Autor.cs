@@ -6,9 +6,13 @@ using System.Threading.Tasks;
 
 namespace IntensificacionBiblioteca.Entidades.Entidades
 {
-    public class Autor
+    public class Autor: ICloneable
     {
         public int AutorId { get; set; }
         public string NombreAutor { get; set; }
+        public object Clone()
+        {
+            return this.MemberwiseClone();//copia superficial del objeto
+        }
     }
 }

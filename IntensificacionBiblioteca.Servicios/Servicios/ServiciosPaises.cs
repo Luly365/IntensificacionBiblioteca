@@ -23,12 +23,36 @@ namespace IntensificacionBiblioteca.Servicios.Servicios
 
         public void Borrar(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                _conexionBd = new ConexionBd();
+                _repositorio = new RepositorioPaises(_conexionBd.AbrirConexion());
+                _repositorio.Borrar(id);
+                _conexionBd.CerrarConexion();
+
+            }
+            catch (Exception e)
+            {
+
+                throw new Exception(e.Message);
+            }
         }
 
         public bool Existe(Pais pais)
         {
-            throw new NotImplementedException();
+            try
+            {
+                _conexionBd = new ConexionBd();
+                _repositorio = new RepositorioPaises(_conexionBd.AbrirConexion());
+                var existe = _repositorio.Existe(pais);
+                _conexionBd.CerrarConexion();
+                return existe;
+            }
+            catch (Exception e)
+            {
+
+                throw new Exception(e.Message);
+            }
         }
 
         public List<Pais> GetPaises()
@@ -55,7 +79,19 @@ namespace IntensificacionBiblioteca.Servicios.Servicios
 
         public void Guardar(Pais pais)
         {
-            throw new NotImplementedException();
+            try
+            {
+                _conexionBd = new ConexionBd();
+                _repositorio = new RepositorioPaises(_conexionBd.AbrirConexion());
+                _repositorio.Guardar(pais);
+                _conexionBd.CerrarConexion();
+
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+
         }
     }
 }

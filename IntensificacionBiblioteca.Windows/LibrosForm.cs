@@ -45,5 +45,11 @@ namespace IntensificacionBiblioteca.Windows
             EstadosForm frm = new EstadosForm();
             frm.ShowDialog(this);
         }
+
+        private void editorialesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EditorialesForm frm = new EditorialesForm();
+            frm.ShowDialog(this);
+        }
     }
 }

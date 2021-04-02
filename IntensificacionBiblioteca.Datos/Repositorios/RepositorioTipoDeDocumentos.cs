@@ -19,12 +19,46 @@ namespace IntensificacionBiblioteca.Datos.Repositorios
         }
         public void Borrar(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                string cadenaComando = "DELETE FROM TiposDeDocumentos WHERE TipoDeDocId=@id";
+                SqlCommand comando = new SqlCommand(cadenaComando, _conexion);
+                comando.Parameters.AddWithValue("@id", id);
+                comando.ExecuteNonQuery();
+
+            }
+            catch (Exception e)
+            {
+                if (e.Message.Contains("REFERENCE"))
+                {
+                    throw new Exception("Registro con datos relacionados... Baja denegada");
+                }
+                throw new Exception(e.Message);
+            }
         }
 
         public bool Existe(TipoDeDocumento tipoDeDocumento)
         {
-            throw new NotImplementedException();
+            if (tipoDeDocumento.TipoDeDocId == 0)
+            {
+                string cadenaComando = "SELECT TipoDeDocId, Descripcion FROM TiposDeDocumentos WHERE Descripcion=@descripcion";
+                SqlCommand comando = new SqlCommand(cadenaComando, _conexion);
+                comando.Parameters.AddWithValue("@descripcion", tipoDeDocumento.Descripcion);
+                SqlDataReader reader = comando.ExecuteReader();
+                return reader.HasRows;
+
+            }
+            else
+            {
+                var cadenaComando = "SELECT TipoDeDocId, Descripcion FROM TiposDeDocumentos WHERE Descripcion=@descripcion AND TipoDeDocId<>@id";
+                SqlCommand comando = new SqlCommand(cadenaComando, _conexion);
+                comando.Parameters.AddWithValue("@descripcion", tipoDeDocumento.Descripcion);
+                comando.Parameters.AddWithValue("@id", tipoDeDocumento.TipoDeDocId);
+                SqlDataReader reader = comando.ExecuteReader();
+                return reader.HasRows;
+            }
+
+            
         }
         
         public List<TipoDeDocumento> GetTipoDeDoc()
@@ -65,7 +99,42 @@ namespace IntensificacionBiblioteca.Datos.Repositorios
 
         public void Guardar(TipoDeDocumento tipoDeDocumento)
         {
-            throw new NotImplementedException();
+            if (tipoDeDocumento.TipoDeDocId==0)
+            {
+                //nuevo registro
+                try
+                {
+                    string cadenaComando = "INSERT INTO TiposDeDocumentos VALUES (@Descripcion)";
+                    SqlCommand comando = new SqlCommand(cadenaComando, _conexion);
+                    comando.Parameters.AddWithValue("@Descripcion", tipoDeDocumento.Descripcion);
+                    comando.ExecuteNonQuery();
+                    cadenaComando = "SELECT @@IDENTITY";
+                    comando = new SqlCommand(cadenaComando, _conexion);
+
+                    tipoDeDocumento.TipoDeDocId = (int)(decimal)comando.ExecuteScalar();
+                }
+                catch (Exception)
+                {
+
+                    throw new Exception("Error al intentar guardar el registro.");
+                }
+                
+            }
+            else
+            {//editar
+                try
+                {
+                    string cadenaComando = "UPDATE TiposDeDocumentos SET Descripcion=@descripcion WHERE TipoDeDocId=@id";
+                    SqlCommand comando = new SqlCommand(cadenaComando, _conexion);
+                    comando.Parameters.AddWithValue("@descripcion", tipoDeDocumento.Descripcion);
+                    comando.Parameters.AddWithValue("@id", tipoDeDocumento.TipoDeDocId);
+                    comando.ExecuteNonQuery();
+                }
+                catch (Exception)
+                {
+                    throw new Exception("Error al intentar guardar el registro.");
+                }
+            }
         }
     }
 }

@@ -34,5 +34,59 @@ namespace IntensificacionBiblioteca.Windows
             SociosForm frm = new SociosForm();
             frm.ShowDialog(this);
         }
+
+        private void MPPaisesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PaisForm frm = new PaisForm();
+            frm.ShowDialog(this);
+        }
+
+        private void MPGenerosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GenerosForm frm = new GenerosForm();
+            frm.ShowDialog(this);
+        }
+
+        private void MPProvinciasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ProvinciasForm frm = new ProvinciasForm();
+            frm.ShowDialog(this);
+        }
+
+        private void MPLocalidadesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LocalidadesForm frm = new LocalidadesForm();
+            frm.ShowDialog(this);
+        }
+
+        private void MPTiposDeDocumentosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TipoDeDocForm frm = new TipoDeDocForm();
+            frm.ShowDialog(this);
+        }
+
+        private void MPSubGenerosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SubGeneroForm frm = new SubGeneroForm();
+            frm.ShowDialog(this);
+        }
+
+        private void MPAutoresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AutoresForm frm = new AutoresForm();
+            frm.ShowDialog(this);
+        }
+
+        private void MPEstadoDeLosLibrosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EstadosForm frm = new EstadosForm();
+            frm.ShowDialog(this);
+        }
+
+        private void editorialesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EditorialesForm frm = new EditorialesForm();
+            frm.ShowDialog(this);
+        }
     }
 }

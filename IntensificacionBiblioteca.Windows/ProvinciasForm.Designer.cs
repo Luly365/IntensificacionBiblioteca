@@ -125,15 +125,17 @@
             this.BorrarMetroButton.Size = new System.Drawing.Size(52, 47);
             this.BorrarMetroButton.TabIndex = 4;
             this.BorrarMetroButton.UseSelectable = true;
+            this.BorrarMetroButton.Click += new System.EventHandler(this.BorrarMetroButton_Click);
             // 
             // EditarMetroButton
             // 
             this.EditarMetroButton.BackgroundImage = global::IntensificacionBiblioteca.Windows.Properties.Resources.editar_48px;
-            this.EditarMetroButton.Location = new System.Drawing.Point(224, 7);
+            this.EditarMetroButton.Location = new System.Drawing.Point(224, 10);
             this.EditarMetroButton.Name = "EditarMetroButton";
             this.EditarMetroButton.Size = new System.Drawing.Size(52, 47);
             this.EditarMetroButton.TabIndex = 3;
             this.EditarMetroButton.UseSelectable = true;
+            this.EditarMetroButton.Click += new System.EventHandler(this.EditarMetroButton_Click);
             // 
             // NuevoMetroButton
             // 
@@ -143,6 +145,7 @@
             this.NuevoMetroButton.Size = new System.Drawing.Size(52, 47);
             this.NuevoMetroButton.TabIndex = 2;
             this.NuevoMetroButton.UseSelectable = true;
+            this.NuevoMetroButton.Click += new System.EventHandler(this.NuevoMetroButton_Click);
             // 
             // ProvinciasForm
             // 

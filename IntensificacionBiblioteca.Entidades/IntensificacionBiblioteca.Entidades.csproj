@@ -41,14 +41,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DTOs\Editorial\EditorialListDto.cs" />
+    <Compile Include="DTOs\Localidad\LocalidadListDto.cs" />
+    <Compile Include="DTOs\SubGenero\SubGeneroListDto.cs" />
     <Compile Include="Entidades\Autor.cs" />
+    <Compile Include="Entidades\Editorial.cs" />
     <Compile Include="Entidades\Estado.cs" />
     <Compile Include="Entidades\Genero.cs" />
     <Compile Include="Entidades\Localidad.cs" />
     <Compile Include="Entidades\Pais.cs" />
     <Compile Include="Entidades\Provincia.cs" />
+    <Compile Include="Entidades\SubGenero.cs" />
     <Compile Include="Entidades\TipoDeDocumento.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

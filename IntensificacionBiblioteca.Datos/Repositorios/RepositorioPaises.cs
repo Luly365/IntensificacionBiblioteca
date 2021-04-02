@@ -55,22 +55,117 @@ namespace IntensificacionBiblioteca.Datos.Repositorios
 
         public void Borrar(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                string cadenaComando = "DELETE FROM Paises WHERE PaisId=@id";
+                SqlCommand comando = new SqlCommand(cadenaComando, _conexion);
+                comando.Parameters.AddWithValue("@id", id);
+                comando.ExecuteNonQuery();
+
+            }
+            catch (Exception e)
+            {
+                if (e.Message.Contains("REFERENCE"))
+                {
+                    throw new Exception("Registro con datos asociados... Baja denegada");
+                }
+                throw new Exception(e.Message);
+            }
         }
 
         public bool Existe(Pais pais)
         {
-            throw new NotImplementedException();
+            try
+            {
+                SqlCommand comando;
+                //SqlDataReader reader = null;
+
+                if (pais.PaisId == 0)
+                {//nuevo pais
+                    string cadenaComando = "SELECT PaisId, NombrePais FROM Paises WHERE NombrePais=@NombrePais";
+                    comando = new SqlCommand(cadenaComando, _conexion);
+                    comando.Parameters.AddWithValue("@NombrePais", pais.NombrePais);
+
+                }
+                else
+                {//edicion del pais
+                    string cadenaComando = "SELECT PaisId, NombrePais FROM Paises WHERE NombrePais=@NombrePais AND PaisId<>@id";//nombre = pero con un id diferente 
+                    comando = new SqlCommand(cadenaComando, _conexion);
+                    comando.Parameters.AddWithValue("@nombrePais", pais.NombrePais);
+                    comando.Parameters.AddWithValue("@id", pais.PaisId);
+                }
+
+                SqlDataReader reader = comando.ExecuteReader();
+                return reader.HasRows;
+            }
+            catch (Exception e)
+            {
+
+                throw new Exception(e.Message);
+            }
         }
 
         public Pais GetPaisPorId(int id)
         {
-            throw new NotImplementedException();
+            Pais pais = null;
+            try
+            {
+                string cadenaComando =
+                    "SELECT PaisId, NombrePais FROM Paises WHERE PaisId=@id";
+                SqlCommand comando = new SqlCommand(cadenaComando, _conexion);
+                comando.Parameters.AddWithValue("@id", id);
+                SqlDataReader reader = comando.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    reader.Read();
+                    pais = ConstruirPais(reader);
+                }
+                reader.Close();
+                return pais;
+            }
+            catch (Exception)
+            {
+                throw new Exception("Error al intentar leer los Paises");
+            }
         }
 
         public void Guardar(Pais pais)
         {
-            throw new NotImplementedException();
+            if (pais.PaisId==0)
+            {//nuevo registro
+                try
+                {
+                    string cadenaComando = "INSERT INTO Paises VALUES(@nombrePais)";
+                    SqlCommand comando = new SqlCommand(cadenaComando, _conexion);
+                    comando.Parameters.AddWithValue("@NombrePais", pais.NombrePais);
+                    comando.ExecuteNonQuery();
+                    cadenaComando = "SELECT @@IDENTITY";
+                    comando = new SqlCommand(cadenaComando, _conexion);
+
+                    pais.PaisId = (int)(decimal)comando.ExecuteScalar();
+                }
+                catch (Exception)
+                {
+                    throw new Exception("Error al intentar guardar el registro...");
+                }
+            }
+            else
+            {   //editar
+                try
+                {
+                    string cadenaComando = "UPDATE Paises SET NombrePais=@nombrePais WHERE PaisId=@id";
+                    SqlCommand comando = new SqlCommand(cadenaComando, _conexion);
+                    comando.Parameters.AddWithValue("@nombrePais", pais.NombrePais);
+                    comando.Parameters.AddWithValue("@id", pais.PaisId);
+                    comando.ExecuteNonQuery();
+                }
+                catch (Exception)
+                {
+                    throw new Exception("Error al intentar modificar un registro...");
+                }
+            }
+
+           
         }
     }
 }
