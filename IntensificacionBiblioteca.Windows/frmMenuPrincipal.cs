@@ -88,5 +88,17 @@ namespace IntensificacionBiblioteca.Windows
             EditorialesForm frm = new EditorialesForm();
             frm.ShowDialog(this);
         }
+
+        private void autoresLibrosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AutoresLibrosForm frm = new AutoresLibrosForm();
+            frm.ShowDialog(this);
+        }
+
+        private void PrestamosMetroTile_Click(object sender, EventArgs e)
+        {
+            PrestamoSociosForm frm = new PrestamoSociosForm();
+            frm.ShowDialog(this);
+        }
     }
 }

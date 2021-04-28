@@ -80,16 +80,35 @@ namespace IntensificacionBiblioteca.Datos.Repositorios
 
         }
 
-        public List<LocalidadListDto> GetLista()
+        public List<LocalidadListDto> GetLista(Provincia provincia)
         {
             List<LocalidadListDto> lista = new List<LocalidadListDto>();
             try
             {
-                string cadenaComando = "SELECT LocalidadId, NombreLocalidad, " +
+                string cadenaComando;
+                SqlCommand comando;
+                SqlDataReader reader;
+
+                if (provincia== null)
+                {
+                     cadenaComando = "SELECT LocalidadId, NombreLocalidad, " +
                     "NombreProvincia FROM localidades inner join Provincias on " +
                     "localidades.ProvinciaId=Provincias.ProvinciaId";
-                SqlCommand comando = new SqlCommand(cadenaComando, _sqlConnection);
-                SqlDataReader reader = comando.ExecuteReader();
+                     comando = new SqlCommand(cadenaComando, _sqlConnection);
+                     reader = comando.ExecuteReader();
+                }
+                else
+                {
+                    cadenaComando = "SELECT LocalidadId, NombreLocalidad, " +
+                        "NombreProvincia FROM localidades inner join Provincias on " +
+                        "localidades.ProvinciaId=Provincias.ProvinciaId " +
+                        "WHERE Localidades.ProvinciaId=@provinciaId";
+                    comando = new SqlCommand(cadenaComando, _sqlConnection);
+                    comando.Parameters.AddWithValue("@provinciaId", provincia.ProvinciaId);
+                    reader = comando.ExecuteReader();
+
+                }
+
                 while (reader.Read())
                 {
                     var localidadDto = ConstruirLocalidadDto(reader);
@@ -106,9 +125,9 @@ namespace IntensificacionBiblioteca.Datos.Repositorios
 
         }
 
-        public Localidad GetLocalidadPorId(int id)
+        public LocalidadEditDto GetLocalidadPorId(int id)
         {
-            Localidad localidad = null;
+            LocalidadEditDto localidad = null;
             try
             {
                 string cadenaComando =
@@ -130,12 +149,12 @@ namespace IntensificacionBiblioteca.Datos.Repositorios
             }
         }
 
-        private Localidad ConstruirLocalidad(SqlDataReader reader)
+        private LocalidadEditDto ConstruirLocalidad(SqlDataReader reader)
         {
-            Localidad localidad = new Localidad();
+            var localidad = new LocalidadEditDto();
             localidad.LocalidadId = reader.GetInt32(0);
             localidad.NombreLocalidad = reader.GetString(1);
-            localidad.provincia = _repositorioProvincias.GetProvinciaPorId(reader.GetInt32(2));
+            localidad.ProvinciaId = reader.GetInt32(2);
             return localidad;
         }
 
@@ -201,5 +220,7 @@ namespace IntensificacionBiblioteca.Datos.Repositorios
         {
             throw new NotImplementedException();
         }
+
+       
     }
 }

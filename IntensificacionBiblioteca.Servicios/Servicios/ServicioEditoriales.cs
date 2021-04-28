@@ -2,6 +2,7 @@
 using IntensificacionBiblioteca.Datos.Repositorios;
 using IntensificacionBiblioteca.Datos.Repositorios.Facades;
 using IntensificacionBiblioteca.Entidades.DTOs.Editorial;
+using IntensificacionBiblioteca.Entidades.DTOs.Pais;
 using IntensificacionBiblioteca.Entidades.Entidades;
 using IntensificacionBiblioteca.Servicios.Servicios.Facades;
 using System;
@@ -40,12 +41,23 @@ namespace IntensificacionBiblioteca.Servicios.Servicios
             }
         }
 
-        public bool Existe(Editorial editorial)
+        public bool Existe(EditorialEditDto editorialDto)
         {
             try
             {
                 _conexionBd = new ConexionBd();
                 _repositorio = new RepositorioEditoriales(_conexionBd.AbrirConexion());
+                Editorial editorial = new Editorial
+                {
+                    EditorialId= editorialDto.EditorialId,
+                    NombreEditorial=editorialDto.NombreEditorial,
+                    Pais = new Pais
+                    {
+                        PaisId = editorialDto.Pais.PaisId,
+                        NombrePais = editorialDto.Pais.NombrePais
+                    }
+                };
+
                 var existe = _repositorio.Existe(editorial);
                 _conexionBd.CerrarConexion();
                 return existe;
@@ -56,7 +68,7 @@ namespace IntensificacionBiblioteca.Servicios.Servicios
             }
         }
 
-        public Editorial GetEditorialPorId(int id)
+        public EditorialEditDto GetEditorialPorId(int id)
         {
             try
             {
@@ -73,13 +85,13 @@ namespace IntensificacionBiblioteca.Servicios.Servicios
             }
         }
 
-        public List<EditorialListDto> GetLista()
+        public List<EditorialListDto> GetLista(PaisListDto paisDto)
         {
             try
             {
                 _conexionBd = new ConexionBd();
                 _repositorio = new RepositorioEditoriales(_conexionBd.AbrirConexion());
-                var lista = _repositorio.GetLista();
+                var lista = _repositorio.GetLista(paisDto);
                 _conexionBd.CerrarConexion();
                 return lista;
             }
@@ -90,12 +102,23 @@ namespace IntensificacionBiblioteca.Servicios.Servicios
             }
         }
 
-        public void Guardar(Editorial editorial)
+        public void Guardar(EditorialEditDto editorialDto)
         {
             try
             {
                 _conexionBd = new ConexionBd();
                 _repositorio = new RepositorioEditoriales(_conexionBd.AbrirConexion());
+                Editorial editorial = new Editorial
+                {
+                    EditorialId=editorialDto.EditorialId,
+                    NombreEditorial=editorialDto.NombreEditorial,
+                    Pais = new Pais
+                    {
+                        PaisId = editorialDto.Pais.PaisId,
+                        NombrePais = editorialDto.Pais.NombrePais
+                    }
+
+                };
                 _repositorio.Guardar(editorial);
                 _conexionBd.CerrarConexion();
 

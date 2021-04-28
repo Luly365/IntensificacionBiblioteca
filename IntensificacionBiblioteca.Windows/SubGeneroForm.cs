@@ -34,13 +34,16 @@ namespace IntensificacionBiblioteca.Windows
 
 
         private IServiciosSubGeneros _servicio;
+        private IServiciosGenero _serviciosGenero;
         private List<SubGeneroListDto> lista;
         private void SubGeneroForm_Load(object sender, EventArgs e)
         {
             _servicio = new ServicioSubGeneros();
             try
             {
-                lista = _servicio.GetLista();
+                _servicio = new ServicioSubGeneros();
+                _serviciosGenero = new ServiciosGenero();
+                lista = _servicio.GetLista(null);
                 MostrardatosEnGrilla();
             }
             catch (Exception exception)
@@ -88,20 +91,24 @@ namespace IntensificacionBiblioteca.Windows
             {
                 try
                 {
-                    SubGenero subGenero = frm.GetSubGenero();
+                    SubGeneroEditDto subGeneroEditDto = frm.GetSubGenero();
                     //Controlar repitencia
 
-                    if (!_servicio.Existe(subGenero))
+                    if (!_servicio.Existe(subGeneroEditDto))
                     {
-                        _servicio.Guardar(subGenero);
-                        SubGeneroListDto SubGeneroDto = new SubGeneroListDto
-                        {//saco los datos de SubGenero
-                            SubGeneroId = subGenero.SubGeneroId,
-                            NombreSubGenero = subGenero.NombreSubGenero,
-                            NombreGenero = subGenero.genero.Descripcion//nombregenero?
+                        _servicio.Guardar(subGeneroEditDto);
+                        SubGeneroListDto subGeneroListDto = new SubGeneroListDto//saco los datos de SubGenero
+                        {
+                            SubGeneroId = subGeneroEditDto.SubGeneroId,
+                            NombreSubGenero = subGeneroEditDto.NombreSubGenero,
+                            NombreGenero = subGeneroEditDto.Genero.Descripcion
                         };
+                        
+
+                        
+                    
                         DataGridViewRow r = ConstruirFila();
-                        SetearFila(r, SubGeneroDto);
+                        SetearFila(r, subGeneroListDto);
                         AgregarFila(r);
                         MessageBox.Show("Registro Agregado", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -161,12 +168,12 @@ namespace IntensificacionBiblioteca.Windows
             }
 
             DataGridViewRow r = SubGeneroMetroGrid.SelectedRows[0];
-            SubGeneroListDto subGeneroDto = (SubGeneroListDto)r.Tag;
-            SubGeneroListDto subGeneroListDtoAuxiliar = subGeneroDto.Clone() as SubGeneroListDto;
+            SubGeneroListDto subGeneroListDto = (SubGeneroListDto)r.Tag;
+            SubGeneroListDto subGeneroListDtoAuxiliar = subGeneroListDto.Clone() as SubGeneroListDto;
             SubGeneroAEForm frm = new SubGeneroAEForm();
-            SubGenero subGenero = _servicio.GetSubGeneroPorId(subGeneroDto.SubGeneroId);
+            SubGeneroEditDto subGeneroEditDto = _servicio.GetSubGeneroPorId(subGeneroListDto.SubGeneroId);
             frm.Text = "Editar SubGenero";
-            frm.SetSubGenero(subGenero);
+            frm.SetSubGenero(subGeneroEditDto);
             DialogResult dr = frm.ShowDialog(this);
             if (dr == DialogResult.Cancel)
             {
@@ -175,19 +182,17 @@ namespace IntensificacionBiblioteca.Windows
 
             try
             {
-                subGenero = frm.GetSubGenero();
+                subGeneroEditDto = frm.GetSubGenero();
                 //Controlar repitencia
 
-                if (!_servicio.Existe(subGenero))
+                if (!_servicio.Existe(subGeneroEditDto))
                 {
-                    _servicio.Guardar(subGenero);
-                    subGeneroDto = new SubGeneroListDto
-                    {
-                        SubGeneroId = subGenero.SubGeneroId,
-                        NombreSubGenero = subGenero.NombreSubGenero,
-                        NombreGenero = subGenero.genero.Descripcion
-                    };
-                    SetearFila(r, subGeneroDto);
+                    _servicio.Guardar(subGeneroEditDto);
+                    subGeneroListDto.SubGeneroId = subGeneroEditDto.SubGeneroId;
+                    subGeneroListDto.NombreSubGenero = subGeneroEditDto.NombreSubGenero;
+                    subGeneroListDto.NombreGenero = subGeneroEditDto.Genero.Descripcion;
+                    
+                    SetearFila(r, subGeneroListDto);
                     MessageBox.Show("Registro Editado", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 }

@@ -1,4 +1,5 @@
-﻿using IntensificacionBiblioteca.Entidades.Entidades;
+﻿using IntensificacionBiblioteca.Entidades.DTOs.Genero;
+using IntensificacionBiblioteca.Entidades.Entidades;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +10,10 @@ namespace IntensificacionBiblioteca.Servicios.Servicios.Facades
 {
     public interface IServiciosGenero
     {
-        List<Genero> GetGeneros();
-        Genero GetGeneroPorId(int id);
-        void Guardar(Genero genero);
+        List<GeneroListDto> GetGeneros();
+        GeneroEditDto GetGeneroPorId(int id);
+        void Guardar(GeneroEditDto genero);
         void Borrar(int id);
-        bool Existe(Genero genero);
+        bool Existe(GeneroEditDto genero);
     }
 }

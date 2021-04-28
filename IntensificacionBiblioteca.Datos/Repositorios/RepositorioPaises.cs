@@ -1,4 +1,5 @@
 ﻿using IntensificacionBiblioteca.Datos.Repositorios.Facades;
+using IntensificacionBiblioteca.Entidades.DTOs.Pais;
 using IntensificacionBiblioteca.Entidades.Entidades;
 using System;
 using System.Collections.Generic;
@@ -19,10 +20,10 @@ namespace IntensificacionBiblioteca.Datos.Repositorios
             _conexion = conexion;
         }
 
-        public List<Pais> GetPaises()
+        public List<PaisListDto> GetPaises()
         {
 
-            List<Pais> lista = new List<Pais>();
+            List<PaisListDto> lista = new List<PaisListDto>();
 
             try
             {
@@ -31,7 +32,7 @@ namespace IntensificacionBiblioteca.Datos.Repositorios
                 SqlDataReader reader = comando.ExecuteReader();
                 while (reader.Read())
                 {
-                    Pais pais = ConstruirPais(reader);// cuando me construye el pais
+                    PaisListDto pais = ConstruirPaisListDto(reader);// cuando me construye el pais
                     lista.Add(pais);// se lo pongo a la lista
                 }
                 reader.Close();
@@ -44,9 +45,9 @@ namespace IntensificacionBiblioteca.Datos.Repositorios
             }
         }
 
-        private Pais ConstruirPais(SqlDataReader reader)
+        private PaisListDto ConstruirPaisListDto(SqlDataReader reader)
         {
-            return new Pais
+            return new PaisListDto
             {
                 PaisId = reader.GetInt32(0),
                 NombrePais = reader.GetString(1)
@@ -105,9 +106,9 @@ namespace IntensificacionBiblioteca.Datos.Repositorios
             }
         }
 
-        public Pais GetPaisPorId(int id)
+        public PaisEditDto GetPaisPorId(int id)
         {
-            Pais pais = null;
+            PaisEditDto pais = null;
             try
             {
                 string cadenaComando =
@@ -118,7 +119,7 @@ namespace IntensificacionBiblioteca.Datos.Repositorios
                 if (reader.HasRows)
                 {
                     reader.Read();
-                    pais = ConstruirPais(reader);
+                    pais = ConstruirPaisEditDto(reader);
                 }
                 reader.Close();
                 return pais;
@@ -127,6 +128,15 @@ namespace IntensificacionBiblioteca.Datos.Repositorios
             {
                 throw new Exception("Error al intentar leer los Paises");
             }
+        }
+
+        private PaisEditDto ConstruirPaisEditDto(SqlDataReader reader)
+        {
+            return new PaisEditDto
+            {
+                PaisId = reader.GetInt32(0),
+                NombrePais = reader.GetString(1)
+            };
         }
 
         public void Guardar(Pais pais)

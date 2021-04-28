@@ -116,6 +116,7 @@
             this.MinimumSize = new System.Drawing.Size(350, 245);
             this.Name = "EstadoAEForm";
             this.Text = "Agregar Estados de Libros:";
+            this.Load += new System.EventHandler(this.EstadoAEForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

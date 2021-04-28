@@ -1,4 +1,5 @@
-﻿using IntensificacionBiblioteca.Entidades.Entidades;
+﻿using IntensificacionBiblioteca.Entidades.DTOs.Estado;
+using IntensificacionBiblioteca.Entidades.Entidades;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,8 +10,8 @@ namespace IntensificacionBiblioteca.Datos.Repositorios.Facades
 {
     public interface IRepositorioEstados
     {
-        List<Estado> GetEstados();
-        Estado GetEstadoPorId(int id);
+        List<EstadoListDto> GetEstados();
+        EstadoEditDto GetEstadoPorId(int id);//
         void Guardar(Estado estado);
         void Borrar(int id);
         bool Existe(Estado estado);

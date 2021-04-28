@@ -31,7 +31,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.metroGrid1 = new MetroFramework.Controls.MetroGrid();
+            this.LibroMetroGrid = new MetroFramework.Controls.MetroGrid();
             this.cmnTitulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cmnISBN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cmnEditorial = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -40,42 +40,44 @@
             this.cmnFechaIncorporacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cmnEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cmnObservaciones = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cmnDisponible = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmnDisponible = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.archivosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.PaisesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.GenerosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.EstadosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.AutoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.autoresLibrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editorialesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SalirMetroButton = new MetroFramework.Controls.MetroButton();
             this.ActualizarMetroButton = new MetroFramework.Controls.MetroButton();
             this.BorrarMetroButton = new MetroFramework.Controls.MetroButton();
             this.EditarMetroButton = new MetroFramework.Controls.MetroButton();
             this.NuevoMetroButton = new MetroFramework.Controls.MetroButton();
-            this.editorialesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            ((System.ComponentModel.ISupportInitialize)(this.metroGrid1)).BeginInit();
+            this.BuscarMetroButton = new MetroFramework.Controls.MetroButton();
+            ((System.ComponentModel.ISupportInitialize)(this.LibroMetroGrid)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // metroGrid1
+            // LibroMetroGrid
             // 
-            this.metroGrid1.AllowUserToAddRows = false;
-            this.metroGrid1.AllowUserToDeleteRows = false;
-            this.metroGrid1.AllowUserToResizeRows = false;
-            this.metroGrid1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.metroGrid1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.metroGrid1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.metroGrid1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.LibroMetroGrid.AllowUserToAddRows = false;
+            this.LibroMetroGrid.AllowUserToDeleteRows = false;
+            this.LibroMetroGrid.AllowUserToResizeRows = false;
+            this.LibroMetroGrid.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.LibroMetroGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.LibroMetroGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.LibroMetroGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.metroGrid1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.metroGrid1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.metroGrid1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.LibroMetroGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.LibroMetroGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.LibroMetroGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.cmnTitulo,
             this.cmnISBN,
             this.cmnEditorial,
@@ -87,33 +89,33 @@
             this.cmnDisponible});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.metroGrid1.DefaultCellStyle = dataGridViewCellStyle2;
-            this.metroGrid1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.metroGrid1.EnableHeadersVisualStyles = false;
-            this.metroGrid1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.metroGrid1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.metroGrid1.Location = new System.Drawing.Point(20, 84);
-            this.metroGrid1.Name = "metroGrid1";
-            this.metroGrid1.ReadOnly = true;
-            this.metroGrid1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.LibroMetroGrid.DefaultCellStyle = dataGridViewCellStyle2;
+            this.LibroMetroGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.LibroMetroGrid.EnableHeadersVisualStyles = false;
+            this.LibroMetroGrid.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.LibroMetroGrid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.LibroMetroGrid.Location = new System.Drawing.Point(20, 84);
+            this.LibroMetroGrid.Name = "LibroMetroGrid";
+            this.LibroMetroGrid.ReadOnly = true;
+            this.LibroMetroGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.metroGrid1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.metroGrid1.RowHeadersVisible = false;
-            this.metroGrid1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.metroGrid1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.metroGrid1.Size = new System.Drawing.Size(918, 346);
-            this.metroGrid1.TabIndex = 0;
+            this.LibroMetroGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.LibroMetroGrid.RowHeadersVisible = false;
+            this.LibroMetroGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.LibroMetroGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.LibroMetroGrid.Size = new System.Drawing.Size(918, 346);
+            this.LibroMetroGrid.TabIndex = 0;
             // 
             // cmnTitulo
             // 
@@ -169,6 +171,8 @@
             this.cmnDisponible.HeaderText = "Disponible";
             this.cmnDisponible.Name = "cmnDisponible";
             this.cmnDisponible.ReadOnly = true;
+            this.cmnDisponible.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.cmnDisponible.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // menuStrip1
             // 
@@ -195,35 +199,51 @@
             // PaisesToolStripMenuItem
             // 
             this.PaisesToolStripMenuItem.Name = "PaisesToolStripMenuItem";
-            this.PaisesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.PaisesToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.PaisesToolStripMenuItem.Text = "Paises";
             this.PaisesToolStripMenuItem.Click += new System.EventHandler(this.PaisesToolStripMenuItem_Click);
             // 
             // GenerosToolStripMenuItem
             // 
             this.GenerosToolStripMenuItem.Name = "GenerosToolStripMenuItem";
-            this.GenerosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.GenerosToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.GenerosToolStripMenuItem.Text = "Generos";
             this.GenerosToolStripMenuItem.Click += new System.EventHandler(this.GenerosToolStripMenuItem_Click);
             // 
             // EstadosToolStripMenuItem1
             // 
             this.EstadosToolStripMenuItem1.Name = "EstadosToolStripMenuItem1";
-            this.EstadosToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.EstadosToolStripMenuItem1.Size = new System.Drawing.Size(128, 22);
             this.EstadosToolStripMenuItem1.Text = "Estados";
             this.EstadosToolStripMenuItem1.Click += new System.EventHandler(this.EstadosToolStripMenuItem1_Click);
             // 
             // AutoresToolStripMenuItem
             // 
+            this.AutoresToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.autoresLibrosToolStripMenuItem});
             this.AutoresToolStripMenuItem.Name = "AutoresToolStripMenuItem";
-            this.AutoresToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.AutoresToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.AutoresToolStripMenuItem.Text = "Autores";
             this.AutoresToolStripMenuItem.Click += new System.EventHandler(this.AutoresToolStripMenuItem_Click);
+            // 
+            // autoresLibrosToolStripMenuItem
+            // 
+            this.autoresLibrosToolStripMenuItem.Name = "autoresLibrosToolStripMenuItem";
+            this.autoresLibrosToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.autoresLibrosToolStripMenuItem.Text = "AutoresLibros";
+            this.autoresLibrosToolStripMenuItem.Click += new System.EventHandler(this.autoresLibrosToolStripMenuItem_Click);
+            // 
+            // editorialesToolStripMenuItem
+            // 
+            this.editorialesToolStripMenuItem.Name = "editorialesToolStripMenuItem";
+            this.editorialesToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.editorialesToolStripMenuItem.Text = "Editoriales";
+            this.editorialesToolStripMenuItem.Click += new System.EventHandler(this.editorialesToolStripMenuItem_Click);
             // 
             // SalirMetroButton
             // 
             this.SalirMetroButton.BackgroundImage = global::IntensificacionBiblioteca.Windows.Properties.Resources.exit_48px1;
-            this.SalirMetroButton.Location = new System.Drawing.Point(357, 10);
+            this.SalirMetroButton.Location = new System.Drawing.Point(415, 10);
             this.SalirMetroButton.Name = "SalirMetroButton";
             this.SalirMetroButton.Size = new System.Drawing.Size(52, 47);
             this.SalirMetroButton.TabIndex = 6;
@@ -247,6 +267,7 @@
             this.BorrarMetroButton.Size = new System.Drawing.Size(52, 47);
             this.BorrarMetroButton.TabIndex = 4;
             this.BorrarMetroButton.UseSelectable = true;
+            this.BorrarMetroButton.Click += new System.EventHandler(this.BorrarMetroButton_Click);
             // 
             // EditarMetroButton
             // 
@@ -256,6 +277,7 @@
             this.EditarMetroButton.Size = new System.Drawing.Size(52, 47);
             this.EditarMetroButton.TabIndex = 3;
             this.EditarMetroButton.UseSelectable = true;
+            this.EditarMetroButton.Click += new System.EventHandler(this.EditarMetroButton_Click);
             // 
             // NuevoMetroButton
             // 
@@ -265,13 +287,17 @@
             this.NuevoMetroButton.Size = new System.Drawing.Size(52, 47);
             this.NuevoMetroButton.TabIndex = 2;
             this.NuevoMetroButton.UseSelectable = true;
+            this.NuevoMetroButton.Click += new System.EventHandler(this.NuevoMetroButton_Click);
             // 
-            // editorialesToolStripMenuItem
+            // BuscarMetroButton
             // 
-            this.editorialesToolStripMenuItem.Name = "editorialesToolStripMenuItem";
-            this.editorialesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.editorialesToolStripMenuItem.Text = "Editoriales";
-            this.editorialesToolStripMenuItem.Click += new System.EventHandler(this.editorialesToolStripMenuItem_Click);
+            this.BuscarMetroButton.BackgroundImage = global::IntensificacionBiblioteca.Windows.Properties.Resources.Buscar_48px;
+            this.BuscarMetroButton.Location = new System.Drawing.Point(357, 10);
+            this.BuscarMetroButton.Name = "BuscarMetroButton";
+            this.BuscarMetroButton.Size = new System.Drawing.Size(52, 47);
+            this.BuscarMetroButton.TabIndex = 7;
+            this.BuscarMetroButton.UseSelectable = true;
+            this.BuscarMetroButton.Click += new System.EventHandler(this.BuscarMetroButton_Click);
             // 
             // LibrosForm
             // 
@@ -279,16 +305,18 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(958, 450);
             this.ControlBox = false;
+            this.Controls.Add(this.BuscarMetroButton);
             this.Controls.Add(this.SalirMetroButton);
             this.Controls.Add(this.ActualizarMetroButton);
             this.Controls.Add(this.BorrarMetroButton);
             this.Controls.Add(this.EditarMetroButton);
             this.Controls.Add(this.NuevoMetroButton);
-            this.Controls.Add(this.metroGrid1);
+            this.Controls.Add(this.LibroMetroGrid);
             this.Controls.Add(this.menuStrip1);
             this.Name = "LibrosForm";
             this.Text = "Libros";
-            ((System.ComponentModel.ISupportInitialize)(this.metroGrid1)).EndInit();
+            this.Load += new System.EventHandler(this.LibrosForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.LibroMetroGrid)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -298,16 +326,7 @@
 
         #endregion
 
-        private MetroFramework.Controls.MetroGrid metroGrid1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cmnTitulo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cmnISBN;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cmnEditorial;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cmnGenero;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cmnSubGenero;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cmnFechaIncorporacion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cmnEstado;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cmnObservaciones;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cmnDisponible;
+        private MetroFramework.Controls.MetroGrid LibroMetroGrid;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem archivosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem PaisesToolStripMenuItem;
@@ -320,5 +339,16 @@
         private MetroFramework.Controls.MetroButton ActualizarMetroButton;
         private MetroFramework.Controls.MetroButton SalirMetroButton;
         private System.Windows.Forms.ToolStripMenuItem editorialesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem autoresLibrosToolStripMenuItem;
+        private MetroFramework.Controls.MetroButton BuscarMetroButton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cmnTitulo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cmnISBN;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cmnEditorial;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cmnGenero;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cmnSubGenero;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cmnFechaIncorporacion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cmnEstado;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cmnObservaciones;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn cmnDisponible;
     }
 }

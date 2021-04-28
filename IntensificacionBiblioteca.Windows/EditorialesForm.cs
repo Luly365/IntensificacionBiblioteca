@@ -1,4 +1,5 @@
 ﻿using IntensificacionBiblioteca.Entidades.DTOs.Editorial;
+using IntensificacionBiblioteca.Entidades.DTOs.Pais;
 using IntensificacionBiblioteca.Entidades.Entidades;
 using IntensificacionBiblioteca.Servicios.Servicios;
 using IntensificacionBiblioteca.Servicios.Servicios.Facades;
@@ -36,17 +37,9 @@ namespace IntensificacionBiblioteca.Windows
 
         private void EditorialesForm_Load_1(object sender, EventArgs e)
         {
-            
-            try
-            {
-                _servicio = new ServicioEditoriales();
-                _lista = _servicio.GetLista();
-                MostrardatosEnGrilla();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+             _servicio = new ServicioEditoriales();
+            ActualizarGrilla();
+
         }
 
 
@@ -91,17 +84,17 @@ namespace IntensificacionBiblioteca.Windows
             {
                 try
                 {
-                    Editorial editorial = frm.GetEditorial();
+                    EditorialEditDto editorialEditDto = frm.GetEditorial();
                     //Controlar repitencia
 
-                    if (!_servicio.Existe(editorial))
+                    if (!_servicio.Existe(editorialEditDto))
                     {
-                        _servicio.Guardar(editorial);
+                        _servicio.Guardar(editorialEditDto);
                         EditorialListDto editorialDto = new EditorialListDto
                         {
-                            EditorialId = editorial.EditorialId,
-                            NombreEditorial = editorial.NombreEditorial,
-                            NombrePais = editorial.Pais.NombrePais
+                            EditorialId = editorialEditDto.EditorialId,
+                            NombreEditorial = editorialEditDto.NombreEditorial,
+                            NombrePais = editorialEditDto.Pais.NombrePais
                         };
                         DataGridViewRow r = ConstruirFila();
                         SetearFila(r, editorialDto);
@@ -169,9 +162,10 @@ namespace IntensificacionBiblioteca.Windows
             EditorialListDto EditorialDto = (EditorialListDto)r.Tag;
             EditorialListDto editorialListDtoAuxiliar = EditorialDto.Clone() as EditorialListDto;
             EditorialAEForm frm = new EditorialAEForm();
-            Editorial editorial = _servicio.GetEditorialPorId(EditorialDto.EditorialId);
+
+            EditorialEditDto editorialEditDto = _servicio.GetEditorialPorId(EditorialDto.EditorialId);
             frm.Text = "Editar Editorial";
-            frm.SetEditorial(editorial);
+            frm.SetEditorial(editorialEditDto);
             DialogResult dr = frm.ShowDialog(this);
             if (dr == DialogResult.Cancel)
             {
@@ -180,17 +174,17 @@ namespace IntensificacionBiblioteca.Windows
 
             try
             {
-                editorial = frm.GetEditorial();
+                editorialEditDto = frm.GetEditorial();
                 //Controlar repitencia
 
-                if (!_servicio.Existe(editorial))
+                if (!_servicio.Existe(editorialEditDto))
                 {
-                    _servicio.Guardar(editorial);
+                    _servicio.Guardar(editorialEditDto);
                     EditorialDto = new EditorialListDto
                     {
-                        EditorialId = editorial.EditorialId,
-                        NombreEditorial = editorial.NombreEditorial,
-                        NombrePais = editorial.Pais.NombrePais
+                        EditorialId = editorialEditDto.EditorialId,
+                        NombreEditorial = editorialEditDto.NombreEditorial,
+                        NombrePais = editorialEditDto.Pais.NombrePais
                     };
                     SetearFila(r, EditorialDto);
                     MessageBox.Show("Registro Editado", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -208,6 +202,57 @@ namespace IntensificacionBiblioteca.Windows
                 SetearFila(r, editorialListDtoAuxiliar);
 
                 MessageBox.Show(exception.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void BuscarMetroButton_Click(object sender, EventArgs e)
+        {
+            BuscarEditorialForm frm = new BuscarEditorialForm();
+            frm.Text = "Seleccionar País";
+            DialogResult dr = frm.ShowDialog(this);
+            if (dr == DialogResult.Cancel)
+            {
+                return;
+            }
+
+            try
+            {
+                PaisListDto paisDto = frm.GetPais();
+                _lista = _servicio.GetLista(paisDto);
+                MostrarDatosEnGrilla();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void MostrarDatosEnGrilla()
+        {
+            EditorialesMetroGrid.Rows.Clear();
+            foreach (var editorialListDto in _lista)
+            {
+                DataGridViewRow r = ConstruirFila();
+                SetearFila(r, editorialListDto);
+                AgregarFila(r);
+            }
+        }
+
+        private void ActualizarMetroButton_Click(object sender, EventArgs e)
+        {
+            ActualizarGrilla();
+        }
+
+        private void ActualizarGrilla()
+        {
+            try
+            {
+                _lista = _servicio.GetLista(null);
+                MostrarDatosEnGrilla();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

@@ -1,4 +1,5 @@
 ﻿using IntensificacionBiblioteca.Datos.Repositorios.Facades;
+using IntensificacionBiblioteca.Entidades.DTOs.Genero;
 using IntensificacionBiblioteca.Entidades.Entidades;
 using System;
 using System.Collections.Generic;
@@ -59,10 +60,10 @@ namespace IntensificacionBiblioteca.Datos.Repositorios
                 return reader.HasRows;
             }
         }
-
-        public Genero GetGeneroPorId(int id)
+        //            GetGeneroPorId
+        public GeneroEditDto GetGeneroPorId(int id)
         {
-            Genero genero = null;
+            GeneroEditDto genero = null;
             try
             {
                 string cadenaComando =
@@ -73,7 +74,7 @@ namespace IntensificacionBiblioteca.Datos.Repositorios
                 if (reader.HasRows)
                 {
                     reader.Read();
-                    genero = ConstruirGenero(reader);
+                    genero = ConstruirGeneroEditDto(reader);
                 }
                 reader.Close();
                 return genero;
@@ -84,9 +85,18 @@ namespace IntensificacionBiblioteca.Datos.Repositorios
             }
         }
 
-        public List<Genero> GetGeneros()
+        private GeneroEditDto ConstruirGeneroEditDto(SqlDataReader reader)
         {
-            List<Genero> lista = new List<Genero>();
+            return new GeneroEditDto
+            {
+                GeneroId = reader.GetInt32(0),
+                Descripcion = reader.GetString(1)
+            };
+        }
+
+        public List<GeneroListDto> GetGeneros()
+        {
+            List<GeneroListDto> lista = new List<GeneroListDto>();
             try
             {
                 string cadenaComando = "SELECT GeneroId, Descripcion FROM Generos";
@@ -94,7 +104,7 @@ namespace IntensificacionBiblioteca.Datos.Repositorios
                 SqlDataReader reader = comando.ExecuteReader();
                 while (reader.Read())
                 {
-                    Genero genero = ConstruirGenero(reader);
+                    GeneroListDto genero = ConstruirGeneroListDto(reader);
                     lista.Add(genero);
                 }
                 reader.Close();
@@ -106,9 +116,9 @@ namespace IntensificacionBiblioteca.Datos.Repositorios
             }
         }
 
-        private Genero ConstruirGenero(SqlDataReader reader)
+        private GeneroListDto ConstruirGeneroListDto(SqlDataReader reader)
         {
-            return new Genero
+            return new GeneroListDto
             {
                 GeneroId = reader.GetInt32(0),
                 Descripcion = reader.GetString(1)

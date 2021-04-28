@@ -10,10 +10,10 @@ namespace IntensificacionBiblioteca.Servicios.Servicios.Facades
 {
     public interface IServicioLocalidades
     {
-        List<LocalidadListDto> GetLista();
-        void Guardar(Localidad localidad);
-        bool Existe(Localidad localidad);
+        List<LocalidadListDto> GetLista(Provincia provincia);
+        void Guardar(LocalidadEditDto localidadEditDto);
+        bool Existe(LocalidadEditDto localidad);
         void Borrar(int localidadId);
-        Localidad GetLocalidadPorId(int id);
+        LocalidadEditDto GetLocalidadPorId(int id);
     }
 }

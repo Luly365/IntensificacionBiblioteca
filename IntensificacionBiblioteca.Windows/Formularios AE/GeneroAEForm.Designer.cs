@@ -114,6 +114,7 @@
             this.Controls.Add(this.GeneroMetroTextBox);
             this.Name = "GeneroAEForm";
             this.Text = "Agregar Genero:";
+            this.Load += new System.EventHandler(this.GeneroAEForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

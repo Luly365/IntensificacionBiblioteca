@@ -9,7 +9,7 @@ namespace IntensificacionBiblioteca.Entidades.DTOs.SubGenero
     public class SubGeneroListDto: ICloneable
     {
         public int SubGeneroId { get; set; }
-        public string NombreSubGenero { get; set; } // el nombre del subgenero es ""descripcion""
+        public string NombreSubGenero { get; set; } 
         public string NombreGenero { get; set; }//el nombre genero tambien es ""descripcion"" 
 
         public object Clone()

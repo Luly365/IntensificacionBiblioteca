@@ -40,6 +40,7 @@
             this.BorrarMetroButton = new MetroFramework.Controls.MetroButton();
             this.EditarMetroButton = new MetroFramework.Controls.MetroButton();
             this.NuevoMetroButton = new MetroFramework.Controls.MetroButton();
+            this.BuscarMetroButton = new MetroFramework.Controls.MetroButton();
             ((System.ComponentModel.ISupportInitialize)(this.LocalidadesMetroGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -113,7 +114,7 @@
             // SalirMetroButton
             // 
             this.SalirMetroButton.BackgroundImage = global::IntensificacionBiblioteca.Windows.Properties.Resources.exit_48px1;
-            this.SalirMetroButton.Location = new System.Drawing.Point(398, 10);
+            this.SalirMetroButton.Location = new System.Drawing.Point(466, 10);
             this.SalirMetroButton.Name = "SalirMetroButton";
             this.SalirMetroButton.Size = new System.Drawing.Size(52, 47);
             this.SalirMetroButton.TabIndex = 6;
@@ -123,16 +124,17 @@
             // ActualizarMetroButton
             // 
             this.ActualizarMetroButton.BackgroundImage = global::IntensificacionBiblioteca.Windows.Properties.Resources.actualizar_48px;
-            this.ActualizarMetroButton.Location = new System.Drawing.Point(340, 10);
+            this.ActualizarMetroButton.Location = new System.Drawing.Point(350, 10);
             this.ActualizarMetroButton.Name = "ActualizarMetroButton";
             this.ActualizarMetroButton.Size = new System.Drawing.Size(52, 47);
             this.ActualizarMetroButton.TabIndex = 5;
             this.ActualizarMetroButton.UseSelectable = true;
+            this.ActualizarMetroButton.Click += new System.EventHandler(this.ActualizarMetroButton_Click);
             // 
             // BorrarMetroButton
             // 
             this.BorrarMetroButton.BackgroundImage = global::IntensificacionBiblioteca.Windows.Properties.Resources.cancel_48px;
-            this.BorrarMetroButton.Location = new System.Drawing.Point(282, 10);
+            this.BorrarMetroButton.Location = new System.Drawing.Point(292, 10);
             this.BorrarMetroButton.Name = "BorrarMetroButton";
             this.BorrarMetroButton.Size = new System.Drawing.Size(52, 47);
             this.BorrarMetroButton.TabIndex = 4;
@@ -142,7 +144,7 @@
             // EditarMetroButton
             // 
             this.EditarMetroButton.BackgroundImage = global::IntensificacionBiblioteca.Windows.Properties.Resources.editar_48px;
-            this.EditarMetroButton.Location = new System.Drawing.Point(224, 10);
+            this.EditarMetroButton.Location = new System.Drawing.Point(234, 10);
             this.EditarMetroButton.Name = "EditarMetroButton";
             this.EditarMetroButton.Size = new System.Drawing.Size(52, 47);
             this.EditarMetroButton.TabIndex = 3;
@@ -152,12 +154,22 @@
             // NuevoMetroButton
             // 
             this.NuevoMetroButton.BackgroundImage = global::IntensificacionBiblioteca.Windows.Properties.Resources.nuevo_48px;
-            this.NuevoMetroButton.Location = new System.Drawing.Point(166, 10);
+            this.NuevoMetroButton.Location = new System.Drawing.Point(176, 10);
             this.NuevoMetroButton.Name = "NuevoMetroButton";
             this.NuevoMetroButton.Size = new System.Drawing.Size(52, 47);
             this.NuevoMetroButton.TabIndex = 2;
             this.NuevoMetroButton.UseSelectable = true;
             this.NuevoMetroButton.Click += new System.EventHandler(this.NuevoMetroButton_Click);
+            // 
+            // BuscarMetroButton
+            // 
+            this.BuscarMetroButton.BackgroundImage = global::IntensificacionBiblioteca.Windows.Properties.Resources.Buscar_48px;
+            this.BuscarMetroButton.Location = new System.Drawing.Point(408, 10);
+            this.BuscarMetroButton.Name = "BuscarMetroButton";
+            this.BuscarMetroButton.Size = new System.Drawing.Size(52, 47);
+            this.BuscarMetroButton.TabIndex = 9;
+            this.BuscarMetroButton.UseSelectable = true;
+            this.BuscarMetroButton.Click += new System.EventHandler(this.BuscarMetroButton_Click);
             // 
             // LocalidadesForm
             // 
@@ -165,6 +177,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(541, 450);
             this.ControlBox = false;
+            this.Controls.Add(this.BuscarMetroButton);
             this.Controls.Add(this.SalirMetroButton);
             this.Controls.Add(this.ActualizarMetroButton);
             this.Controls.Add(this.BorrarMetroButton);
@@ -189,5 +202,6 @@
         private MetroFramework.Controls.MetroButton SalirMetroButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn cmnLocalidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn cmnProvincia;
+        private MetroFramework.Controls.MetroButton BuscarMetroButton;
     }
 }

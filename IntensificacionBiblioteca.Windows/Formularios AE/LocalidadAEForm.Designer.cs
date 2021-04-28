@@ -33,9 +33,9 @@
             this.LocalidadMetroTextBox = new MetroFramework.Controls.MetroTextBox();
             this.ProvinciaMetroLabel = new MetroFramework.Controls.MetroLabel();
             this.ProvinciasMetroComboBox = new MetroFramework.Controls.MetroComboBox();
-            this.OKMetroButton = new MetroFramework.Controls.MetroButton();
-            this.CancelMetroButton = new MetroFramework.Controls.MetroButton();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.CancelMetroButton = new MetroFramework.Controls.MetroButton();
+            this.OKMetroButton = new MetroFramework.Controls.MetroButton();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -96,17 +96,11 @@
             this.ProvinciasMetroComboBox.Size = new System.Drawing.Size(150, 29);
             this.ProvinciasMetroComboBox.TabIndex = 3;
             this.ProvinciasMetroComboBox.UseSelectable = true;
+            this.ProvinciasMetroComboBox.SelectedIndexChanged += new System.EventHandler(this.ProvinciasMetroComboBox_SelectedIndexChanged);
             // 
-            // OKMetroButton
+            // errorProvider1
             // 
-            this.OKMetroButton.BackgroundImage = global::IntensificacionBiblioteca.Windows.Properties.Resources.ok_48px;
-            this.OKMetroButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.OKMetroButton.Location = new System.Drawing.Point(50, 210);
-            this.OKMetroButton.Name = "OKMetroButton";
-            this.OKMetroButton.Size = new System.Drawing.Size(75, 59);
-            this.OKMetroButton.TabIndex = 4;
-            this.OKMetroButton.UseSelectable = true;
-            this.OKMetroButton.Click += new System.EventHandler(this.OKMetroButton_Click);
+            this.errorProvider1.ContainerControl = this;
             // 
             // CancelMetroButton
             // 
@@ -119,9 +113,16 @@
             this.CancelMetroButton.UseSelectable = true;
             this.CancelMetroButton.Click += new System.EventHandler(this.CancelMetroButton_Click);
             // 
-            // errorProvider1
+            // OKMetroButton
             // 
-            this.errorProvider1.ContainerControl = this;
+            this.OKMetroButton.BackgroundImage = global::IntensificacionBiblioteca.Windows.Properties.Resources.ok_48px;
+            this.OKMetroButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.OKMetroButton.Location = new System.Drawing.Point(50, 210);
+            this.OKMetroButton.Name = "OKMetroButton";
+            this.OKMetroButton.Size = new System.Drawing.Size(75, 59);
+            this.OKMetroButton.TabIndex = 4;
+            this.OKMetroButton.UseSelectable = true;
+            this.OKMetroButton.Click += new System.EventHandler(this.OKMetroButton_Click);
             // 
             // LocalidadAEForm
             // 

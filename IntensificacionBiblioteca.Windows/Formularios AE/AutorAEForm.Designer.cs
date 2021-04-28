@@ -114,6 +114,7 @@
             this.Controls.Add(this.EstadoMetroLabel);
             this.Name = "AutorAEForm";
             this.Text = "Agregar Autor:";
+            this.Load += new System.EventHandler(this.AutorAEForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -34,13 +34,14 @@
             this.SociosMetroGrid = new MetroFramework.Controls.MetroGrid();
             this.cmnNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cmnApellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmnNroDoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cmnDireccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cmnLocalidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cmnTelefonoFijo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cmnTelefonoCel = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cmnEMail = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cmnSancionado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cmnActivo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmnSancionado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.cmnActivo = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.archivosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.localidadesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -51,6 +52,7 @@
             this.BorrarMetroButton = new MetroFramework.Controls.MetroButton();
             this.EditarMetroButton = new MetroFramework.Controls.MetroButton();
             this.NuevoMetroButton = new MetroFramework.Controls.MetroButton();
+            this.BuscarMetroButton = new MetroFramework.Controls.MetroButton();
             ((System.ComponentModel.ISupportInitialize)(this.SociosMetroGrid)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -59,6 +61,7 @@
             // 
             this.SociosMetroGrid.AllowUserToAddRows = false;
             this.SociosMetroGrid.AllowUserToDeleteRows = false;
+            this.SociosMetroGrid.AllowUserToResizeColumns = false;
             this.SociosMetroGrid.AllowUserToResizeRows = false;
             this.SociosMetroGrid.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.SociosMetroGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -66,7 +69,7 @@
             this.SociosMetroGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
@@ -76,6 +79,7 @@
             this.SociosMetroGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.cmnNombre,
             this.cmnApellido,
+            this.cmnNroDoc,
             this.cmnDireccion,
             this.cmnLocalidad,
             this.cmnTelefonoFijo,
@@ -85,7 +89,7 @@
             this.cmnActivo});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
@@ -101,7 +105,7 @@
             this.SociosMetroGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
@@ -110,7 +114,7 @@
             this.SociosMetroGrid.RowHeadersVisible = false;
             this.SociosMetroGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.SociosMetroGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.SociosMetroGrid.Size = new System.Drawing.Size(918, 346);
+            this.SociosMetroGrid.Size = new System.Drawing.Size(960, 346);
             this.SociosMetroGrid.TabIndex = 0;
             // 
             // cmnNombre
@@ -126,6 +130,12 @@
             this.cmnApellido.HeaderText = "Apellido";
             this.cmnApellido.Name = "cmnApellido";
             this.cmnApellido.ReadOnly = true;
+            // 
+            // cmnNroDoc
+            // 
+            this.cmnNroDoc.HeaderText = "Nro Documento";
+            this.cmnNroDoc.Name = "cmnNroDoc";
+            this.cmnNroDoc.ReadOnly = true;
             // 
             // cmnDireccion
             // 
@@ -162,12 +172,16 @@
             this.cmnSancionado.HeaderText = "Sancionado";
             this.cmnSancionado.Name = "cmnSancionado";
             this.cmnSancionado.ReadOnly = true;
+            this.cmnSancionado.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.cmnSancionado.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // cmnActivo
             // 
             this.cmnActivo.HeaderText = "Activo";
             this.cmnActivo.Name = "cmnActivo";
             this.cmnActivo.ReadOnly = true;
+            this.cmnActivo.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.cmnActivo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // menuStrip1
             // 
@@ -175,7 +189,7 @@
             this.archivosToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(20, 60);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(918, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(960, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -213,7 +227,7 @@
             // SalirMetroButton
             // 
             this.SalirMetroButton.BackgroundImage = global::IntensificacionBiblioteca.Windows.Properties.Resources.exit_48px1;
-            this.SalirMetroButton.Location = new System.Drawing.Point(357, 10);
+            this.SalirMetroButton.Location = new System.Drawing.Point(415, 10);
             this.SalirMetroButton.Name = "SalirMetroButton";
             this.SalirMetroButton.Size = new System.Drawing.Size(52, 47);
             this.SalirMetroButton.TabIndex = 6;
@@ -255,13 +269,24 @@
             this.NuevoMetroButton.Size = new System.Drawing.Size(52, 47);
             this.NuevoMetroButton.TabIndex = 2;
             this.NuevoMetroButton.UseSelectable = true;
+            this.NuevoMetroButton.Click += new System.EventHandler(this.NuevoMetroButton_Click);
+            // 
+            // BuscarMetroButton
+            // 
+            this.BuscarMetroButton.BackgroundImage = global::IntensificacionBiblioteca.Windows.Properties.Resources.Buscar_48px;
+            this.BuscarMetroButton.Location = new System.Drawing.Point(357, 10);
+            this.BuscarMetroButton.Name = "BuscarMetroButton";
+            this.BuscarMetroButton.Size = new System.Drawing.Size(52, 47);
+            this.BuscarMetroButton.TabIndex = 8;
+            this.BuscarMetroButton.UseSelectable = true;
             // 
             // SociosForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(958, 450);
+            this.ClientSize = new System.Drawing.Size(1000, 450);
             this.ControlBox = false;
+            this.Controls.Add(this.BuscarMetroButton);
             this.Controls.Add(this.SalirMetroButton);
             this.Controls.Add(this.ActualizarMetroButton);
             this.Controls.Add(this.BorrarMetroButton);
@@ -271,6 +296,7 @@
             this.Controls.Add(this.menuStrip1);
             this.Name = "SociosForm";
             this.Text = "Socios";
+            this.Load += new System.EventHandler(this.SociosForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.SociosMetroGrid)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -289,17 +315,19 @@
         private MetroFramework.Controls.MetroButton BorrarMetroButton;
         private MetroFramework.Controls.MetroButton ActualizarMetroButton;
         private MetroFramework.Controls.MetroButton SalirMetroButton;
+        private System.Windows.Forms.ToolStripMenuItem localidadesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem provinciasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tipoDeDocumentoToolStripMenuItem;
+        private MetroFramework.Controls.MetroButton BuscarMetroButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn cmnNombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn cmnApellido;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cmnNroDoc;
         private System.Windows.Forms.DataGridViewTextBoxColumn cmnDireccion;
         private System.Windows.Forms.DataGridViewTextBoxColumn cmnLocalidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn cmnTelefonoFijo;
         private System.Windows.Forms.DataGridViewTextBoxColumn cmnTelefonoCel;
         private System.Windows.Forms.DataGridViewTextBoxColumn cmnEMail;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cmnSancionado;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cmnActivo;
-        private System.Windows.Forms.ToolStripMenuItem localidadesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem provinciasToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem tipoDeDocumentoToolStripMenuItem;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn cmnSancionado;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn cmnActivo;
     }
 }

@@ -1,4 +1,5 @@
-﻿using IntensificacionBiblioteca.Entidades.DTOs.SubGenero;
+﻿using IntensificacionBiblioteca.Entidades.DTOs.Genero;
+using IntensificacionBiblioteca.Entidades.DTOs.SubGenero;
 using IntensificacionBiblioteca.Entidades.Entidades;
 using System;
 using System.Collections.Generic;
@@ -10,10 +11,10 @@ namespace IntensificacionBiblioteca.Datos.Repositorios.Facades
 {
     public interface IRepositorioSubGenero
     {
-        List<SubGeneroListDto> GetLista();
+        List<SubGeneroListDto> GetLista(GeneroListDto generoDt);
         void Guardar(SubGenero subGenero);
         bool Existe(SubGenero subGenero);
         void Borrar(int id);
-        SubGenero GetSubGeneroPorId(int id);
+        SubGeneroEditDto GetSubGeneroPorId(int id);
     }
 }

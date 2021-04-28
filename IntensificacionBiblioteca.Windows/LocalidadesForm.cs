@@ -32,13 +32,15 @@ namespace IntensificacionBiblioteca.Windows
             Close();
         }
         private IServicioLocalidades _servicio;
+        private IServiciosProvincia _serviciosProvincia;
         private List<LocalidadListDto> _lista;
         private void PaisForm_Load(object sender, EventArgs e)
         {
             try
             {
                 _servicio = new ServicioLocalidades();
-                _lista = _servicio.GetLista();
+                _serviciosProvincia = new ServiciosProvincias();
+                _lista = _servicio.GetLista(null);//que pais le paso para que me traiga todas las provincias, para solucionar esto le paso una ciudad nula
                 MostrardatosEnGrilla();
             }
             catch (Exception ex)
@@ -87,20 +89,20 @@ namespace IntensificacionBiblioteca.Windows
             {
                 try
                 {
-                    Localidad localidad = frm.GetLocalidad();
+                    LocalidadEditDto localidadEditDto = frm.GetLocalidad();
                     //Controlar repitencia
 
-                    if (!_servicio.Existe(localidad))
+                    if (!_servicio.Existe(localidadEditDto))
                     {
-                        _servicio.Guardar(localidad);
-                        LocalidadListDto localidadDto = new LocalidadListDto
-                        {
-                            LocalidadId = localidad.LocalidadId,
-                            NombreLocalidad = localidad.NombreLocalidad,
-                            NombreProvincia = localidad.provincia.NombreProvincia
-                        };
+                        _servicio.Guardar(localidadEditDto);
+          
+                        LocalidadListDto localidadListDto = new LocalidadListDto();
+
+                        localidadListDto.LocalidadId = localidadEditDto.LocalidadId;
+                        localidadListDto.NombreLocalidad = localidadEditDto.NombreLocalidad;
+                        localidadListDto.NombreProvincia = (_serviciosProvincia.GetProvinciaPorId(localidadEditDto.ProvinciaId)).NombreProvincia;
                         DataGridViewRow r = ConstruirFila();
-                        SetearFila(r, localidadDto);
+                        SetearFila(r, localidadListDto);
                         AgregarFila(r);
                         MessageBox.Show("Registro Agregado", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -159,12 +161,12 @@ namespace IntensificacionBiblioteca.Windows
             }
 
             DataGridViewRow r = LocalidadesMetroGrid.SelectedRows[0];
-            LocalidadListDto localidadDto = (LocalidadListDto)r.Tag;
-            LocalidadListDto localidadListDtoAuxiliar = localidadDto.Clone() as LocalidadListDto;
+            LocalidadListDto localidadListDto = (LocalidadListDto)r.Tag;
+            LocalidadListDto localidadListDtoAuxiliar = localidadListDto.Clone() as LocalidadListDto;
             LocalidadAEForm frm = new LocalidadAEForm();
-           Localidad localidad = _servicio.GetLocalidadPorId(localidadDto.LocalidadId);
+            LocalidadEditDto localidadEditDto = _servicio.GetLocalidadPorId(localidadListDto.LocalidadId);
             frm.Text = "Editar localidad";
-            frm.SetLocalidad(localidad);
+            frm.SetLocalidad(localidadEditDto);
             DialogResult dr = frm.ShowDialog(this);
             if (dr == DialogResult.Cancel)
             {
@@ -173,19 +175,17 @@ namespace IntensificacionBiblioteca.Windows
 
             try
             {
-                localidad = frm.GetLocalidad();
+                localidadEditDto = frm.GetLocalidad();
                 //Controlar repitencia
 
-                if (!_servicio.Existe(localidad))
+                if (!_servicio.Existe(localidadEditDto))
                 {
-                    _servicio.Guardar(localidad);
-                    localidadDto = new LocalidadListDto
-                    {
-                        LocalidadId = localidad.LocalidadId,
-                        NombreLocalidad = localidad.NombreLocalidad,
-                        NombreProvincia = localidad.provincia.NombreProvincia
-                    };
-                    SetearFila(r, localidadDto);
+                    _servicio.Guardar(localidadEditDto);
+                    localidadListDto.LocalidadId = localidadEditDto.LocalidadId;
+                    localidadListDto.NombreLocalidad = localidadEditDto.NombreLocalidad;
+                    localidadListDto.NombreProvincia = (_serviciosProvincia.GetProvinciaPorId(localidadEditDto.ProvinciaId)).NombreProvincia;
+                    
+                    SetearFila(r, localidadListDto);
                     MessageBox.Show("Registro Editado", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 }
@@ -201,6 +201,47 @@ namespace IntensificacionBiblioteca.Windows
                 SetearFila(r, localidadListDtoAuxiliar);
 
                 MessageBox.Show(exception.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void BuscarMetroButton_Click(object sender, EventArgs e)
+        {
+            BuscarLocalidadesForm frm = new BuscarLocalidadesForm();
+            frm.Text = "Selecione una Provincia";
+            DialogResult dr =frm.ShowDialog(this);
+            if (dr== DialogResult.Cancel)
+            {
+                return;
+            }
+            try
+            {
+                Provincia provincia = frm.GetProvincia();
+                _lista = _servicio.GetLista(provincia);
+                MostrardatosEnGrilla();
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message, @"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
+        }
+
+        private void ActualizarMetroButton_Click(object sender, EventArgs e)
+        {
+            ActualizarGrilla();
+        }
+
+        private void ActualizarGrilla()
+        {
+            try
+            {
+                _lista = _servicio.GetLista(null);
+                MostrardatosEnGrilla();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

@@ -1,6 +1,9 @@
-﻿using IntensificacionBiblioteca.Entidades.Entidades;
+﻿using IntensificacionBiblioteca.Entidades.DTOs.Editorial;
+using IntensificacionBiblioteca.Entidades.DTOs.Pais;
+using IntensificacionBiblioteca.Entidades.Entidades;
 using IntensificacionBiblioteca.Servicios.Servicios;
 using IntensificacionBiblioteca.Servicios.Servicios.Facades;
+using IntensificacionBiblioteca.Windows.Helpers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,7 +27,7 @@ namespace IntensificacionBiblioteca.Windows.Formularios_AE
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-            CargarDatosComboEditoriales();
+            Helper.CargarDatosComboPais(ref PaisMetroComboBox);
             if (editorial != null)
             {
                 EditorialMetroTextBox.Text = editorial.NombreEditorial;
@@ -32,30 +35,15 @@ namespace IntensificacionBiblioteca.Windows.Formularios_AE
             }
         }
 
-        private void CargarDatosComboEditoriales()
-        {
-            IServiciosPais _servicioPais = new ServiciosPaises();
-            var lista = _servicioPais.GetPaises();
-            var defaultPais = new Pais
-            {
-                PaisId = 0,
-                NombrePais = "Seleccione País"
-            };
-            lista.Insert(0, defaultPais);
-            PaisMetroComboBox.DataSource = lista;
-            PaisMetroComboBox.ValueMember = "PaisId";
-            PaisMetroComboBox.DisplayMember = "NombrePais";
-            PaisMetroComboBox.SelectedIndex = 0;
+ 
 
-        }
-
-        private Editorial editorial;
-        internal Editorial GetEditorial()
+        private EditorialEditDto editorial;
+        internal EditorialEditDto GetEditorial()
         {
             return editorial;
         }
 
-        public void SetEditorial(Editorial editorial)
+        public void SetEditorial(EditorialEditDto editorial)
         {
             this.editorial = editorial;
         }
@@ -71,11 +59,11 @@ namespace IntensificacionBiblioteca.Windows.Formularios_AE
             {
                 if (editorial == null)
                 {
-                    editorial = new Editorial();
+                    editorial = new EditorialEditDto();
                 }
 
                 editorial.NombreEditorial = EditorialMetroTextBox.Text;
-                editorial.Pais = (Pais)PaisMetroComboBox.SelectedItem;
+                editorial.Pais = (PaisListDto)PaisMetroComboBox.SelectedItem;
                 DialogResult = DialogResult.OK;
             }
         }

@@ -67,5 +67,10 @@ namespace IntensificacionBiblioteca.Windows.Formularios_AE
         {
             this.autor = autor;
         }
+
+        private void AutorAEForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

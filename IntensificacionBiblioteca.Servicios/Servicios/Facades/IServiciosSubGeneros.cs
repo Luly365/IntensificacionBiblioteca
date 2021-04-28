@@ -1,4 +1,5 @@
-﻿using IntensificacionBiblioteca.Entidades.DTOs.SubGenero;
+﻿using IntensificacionBiblioteca.Entidades.DTOs.Genero;
+using IntensificacionBiblioteca.Entidades.DTOs.SubGenero;
 using IntensificacionBiblioteca.Entidades.Entidades;
 using System;
 using System.Collections.Generic;
@@ -10,12 +11,12 @@ namespace IntensificacionBiblioteca.Servicios.Servicios.Facades
 {
     public interface IServiciosSubGeneros
     {
-        List<SubGeneroListDto> GetLista();
-        void Guardar(SubGenero subGenero);
-        bool Existe(SubGenero subGenero);
+        List<SubGeneroListDto> GetLista(GeneroListDto genero);
+        void Guardar(SubGeneroEditDto subGeneroEditDto);
+        bool Existe(SubGeneroEditDto subGenero);
 
         void Borrar(int id);
-        SubGenero GetSubGeneroPorId(int id);
+        SubGeneroEditDto GetSubGeneroPorId(int id);
 
     }
 }

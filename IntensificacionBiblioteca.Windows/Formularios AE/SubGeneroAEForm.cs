@@ -1,4 +1,6 @@
-﻿using IntensificacionBiblioteca.Entidades.Entidades;
+﻿using IntensificacionBiblioteca.Entidades.DTOs.Genero;
+using IntensificacionBiblioteca.Entidades.DTOs.SubGenero;
+using IntensificacionBiblioteca.Entidades.Entidades;
 using IntensificacionBiblioteca.Servicios.Servicios;
 using IntensificacionBiblioteca.Servicios.Servicios.Facades;
 using System;
@@ -20,7 +22,7 @@ namespace IntensificacionBiblioteca.Windows.Formularios_AE
             InitializeComponent();
         }
 
-        private SubGenero subGenero;
+        private SubGeneroEditDto subGenero;
 
         protected override void OnLoad(EventArgs e)
         {
@@ -29,7 +31,7 @@ namespace IntensificacionBiblioteca.Windows.Formularios_AE
             if (subGenero != null)
             {
                 SubGeneroMetroTextBox.Text = subGenero.NombreSubGenero;
-                GenerosMetroComboBox.SelectedValue = subGenero.genero.GeneroId;
+                GenerosMetroComboBox.SelectedValue = subGenero.Genero.GeneroId;
             }
 
         }
@@ -38,10 +40,10 @@ namespace IntensificacionBiblioteca.Windows.Formularios_AE
         {
             IServiciosGenero _serviciosGenero = new ServiciosGenero();
             var lista = _serviciosGenero.GetGeneros();
-            var defaultGenero = new Genero
+            var defaultGenero = new GeneroListDto
             {
                 GeneroId = 0,
-                Descripcion = "Seleccione Genero" //nombre genero?
+                Descripcion = "Seleccione Genero" 
             };
             lista.Insert(0, defaultGenero);
             GenerosMetroComboBox.DataSource = lista;
@@ -55,12 +57,12 @@ namespace IntensificacionBiblioteca.Windows.Formularios_AE
             
         }
 
-        internal SubGenero GetSubGenero()
+        internal SubGeneroEditDto GetSubGenero()
         {
             return subGenero;
         }
 
-        public void SetSubGenero(SubGenero subGenero)
+        public void SetSubGenero(SubGeneroEditDto subGenero)
         {
             this.subGenero = subGenero;
         }
@@ -76,11 +78,11 @@ namespace IntensificacionBiblioteca.Windows.Formularios_AE
             {
                 if (subGenero == null)
                 {
-                    subGenero = new SubGenero();
+                    subGenero = new SubGeneroEditDto();
                 }
 
                 subGenero.NombreSubGenero = SubGeneroMetroTextBox.Text;
-                subGenero.genero = (Genero)GenerosMetroComboBox.SelectedItem;
+                subGenero.Genero = (GeneroListDto)GenerosMetroComboBox.SelectedItem;
                 DialogResult = DialogResult.OK;
             }
         }

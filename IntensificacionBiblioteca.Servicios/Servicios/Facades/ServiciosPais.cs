@@ -1,4 +1,5 @@
-﻿using IntensificacionBiblioteca.Entidades.Entidades;
+﻿using IntensificacionBiblioteca.Entidades.DTOs.Pais;
+using IntensificacionBiblioteca.Entidades.Entidades;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +10,10 @@ namespace IntensificacionBiblioteca.Servicios.Servicios.Facades
 {
     public interface IServiciosPais
     {
-        List<Pais> GetPaises();
-        Pais GetPaisPorId(int id);
-        void Guardar(Pais pais);
+        List<PaisListDto> GetPaises();
+        PaisEditDto GetPaisPorId(int id);
+        void Guardar(PaisEditDto pais);
         void Borrar(int id);
-        bool Existe(Pais pais);
+        bool Existe(PaisEditDto pais);
     }
 }

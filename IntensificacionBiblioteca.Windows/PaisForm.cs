@@ -1,4 +1,5 @@
-﻿using IntensificacionBiblioteca.Entidades.Entidades;
+﻿using IntensificacionBiblioteca.Entidades.DTOs.Pais;
+using IntensificacionBiblioteca.Entidades.Entidades;
 using IntensificacionBiblioteca.Servicios.Servicios;
 using IntensificacionBiblioteca.Servicios.Servicios.Facades;
 using IntensificacionBiblioteca.Windows.Formularios_AE;
@@ -31,13 +32,13 @@ namespace IntensificacionBiblioteca.Windows
             Close();
         }
         private IServiciosPais _servicio;
-        private List<Pais> _lista;
+        private List<PaisListDto> _lista;
         private void PaisForm_Load(object sender, EventArgs e)
         {
-            
+            _servicio = new ServiciosPaises();
             try
             {
-                _servicio = new ServiciosPaises();
+                
                 _lista = _servicio.GetPaises();
                 MostrardatosEnGrilla();
             }
@@ -64,7 +65,7 @@ namespace IntensificacionBiblioteca.Windows
             PaisMetroGrid.Rows.Add(r);
         }
 
-        private void SetearFila(DataGridViewRow r, Pais pais)
+        private void SetearFila(DataGridViewRow r, PaisListDto pais)
         {
             r.Cells[cmnPais.Index].Value = pais.NombrePais;
             r.Tag = pais;
@@ -86,14 +87,20 @@ namespace IntensificacionBiblioteca.Windows
             {
                 try
                 {
-                    Pais pais = frm.GetPais();
+                    PaisEditDto paisEditDto = frm.GetPais();
 
-                    if (!_servicio.Existe(pais))
+                    if (!_servicio.Existe(paisEditDto))
                     {
-                        _servicio.Guardar(pais);//_servicio.Agregar(pais);
+                        _servicio.Guardar(paisEditDto);//_servicio.Agregar(pais);
                         //var r = ConstruirFila(); aca era DataGridViewRow
                         DataGridViewRow r = ConstruirFila();
-                        SetearFila(r, pais);
+                        PaisListDto paisListDto = new PaisListDto
+                        {
+                            PaisId = paisEditDto.PaisId,
+                            NombrePais = paisEditDto.NombrePais
+                        };
+
+                        SetearFila(r, paisListDto);
                         AgregarFila(r); //faltaba el agregarFila
 
 
@@ -123,20 +130,29 @@ namespace IntensificacionBiblioteca.Windows
             if (PaisMetroGrid.SelectedRows.Count > 0)
             {
                 DataGridViewRow r = PaisMetroGrid.SelectedRows[0];
-                Pais pais = (Pais)r.Tag;
-                Pais paisAuxiliar = (Pais)pais.Clone();//me hago una copia de pais
+                PaisListDto pais = (PaisListDto)r.Tag;
+                PaisListDto paisAuxiliar = (PaisListDto)pais.Clone();//me hago una copia de pais
+                PaisEditDto paisEditDto = new PaisEditDto
+                {
+                    PaisId = pais.PaisId,
+                    NombrePais = pais.NombrePais
+                };
+
+
                 PaisAEForm frm = new PaisAEForm();
                 frm.Text = "Editar Pais";
-                frm.SetPais(pais);
+                frm.SetPais(paisEditDto);
                 DialogResult dr = frm.ShowDialog(this);
                 if (dr == DialogResult.OK)
                 {
                     try
                     {
-                        pais = frm.GetPais();
-                        if (!_servicio.Existe(pais))
+                        paisEditDto = frm.GetPais();
+                        if (!_servicio.Existe(paisEditDto))
                         {
-                            _servicio.Guardar(pais);//tenia editar
+                            _servicio.Guardar(paisEditDto);
+
+                            pais.NombrePais = paisEditDto.NombrePais;
                             SetearFila(r, pais);
                             MessageBox.Show("Registro editado", "Mensaje", MessageBoxButtons.OK,
                                 MessageBoxIcon.Information);
@@ -164,7 +180,7 @@ namespace IntensificacionBiblioteca.Windows
             if (PaisMetroGrid.SelectedRows.Count > 0)
             {
                 DataGridViewRow r = PaisMetroGrid.SelectedRows[0];
-                Pais pais = (Pais)r.Tag;
+                PaisListDto pais = (PaisListDto)r.Tag;
                 DialogResult dr = MessageBox.Show($"¿Desea dar de baja al Pais {pais.NombrePais}?",
                     "Confirmar Baja",
                     MessageBoxButtons.YesNo,
@@ -189,12 +205,7 @@ namespace IntensificacionBiblioteca.Windows
                     }
                     
                 }
-                //else
-                //{
-                //    MessageBox.Show("Registro relacionado...\nBaja denegada",
-                //        "Error", MessageBoxButtons.OK,
-                //        MessageBoxIcon.Warning);
-                //}
+                
             }
 
         }

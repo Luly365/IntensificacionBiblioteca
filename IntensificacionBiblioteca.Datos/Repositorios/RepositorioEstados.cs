@@ -1,4 +1,5 @@
 ﻿using IntensificacionBiblioteca.Datos.Repositorios.Facades;
+using IntensificacionBiblioteca.Entidades.DTOs.Estado;
 using IntensificacionBiblioteca.Entidades.Entidades;
 using System;
 using System.Collections.Generic;
@@ -67,14 +68,43 @@ namespace IntensificacionBiblioteca.Datos.Repositorios
             }
         }
 
-        public Estado GetEstadoPorId(int id)
+        public EstadoEditDto GetEstadoPorId(int id)
         {
-            throw new NotImplementedException();
+            EstadoEditDto estado = null;
+            try
+            {
+                string cadenaComando =
+                    "SELECT EstadoId, Descripcion FROM Estados WHERE EstadoId=@id";
+                SqlCommand comando = new SqlCommand(cadenaComando, _conexion);
+                comando.Parameters.AddWithValue("@id", id);
+                SqlDataReader reader = comando.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    reader.Read();
+                    estado = ConstruirEstadoEditDto(reader);
+                }
+                reader.Close();
+                return estado;
+            }
+            catch (Exception)
+            {
+
+                throw new Exception("Error al intentar leer los estados");
+            }
         }
 
-        public List<Estado> GetEstados()
+        private EstadoEditDto ConstruirEstadoEditDto(SqlDataReader reader)
         {
-            List<Estado> lista = new List<Estado>();
+            return new EstadoEditDto
+            {
+                EstadoId= reader.GetInt32(0),
+                Descripcion = reader.GetString(1)
+            };
+        }
+
+        public List<EstadoListDto> GetEstados()
+        {
+            List<EstadoListDto> lista = new List<EstadoListDto>();
             try
             {
                 string cadenaComando = "SELECT EstadoId, Descripcion FROM Estados";
@@ -82,7 +112,7 @@ namespace IntensificacionBiblioteca.Datos.Repositorios
                 SqlDataReader reader = comando.ExecuteReader();
                 while (reader.Read())
                 {
-                    Estado estado = ConstruirEstado(reader);
+                    EstadoListDto estado = ConstruirEstadoListDto(reader);
                     lista.Add(estado);
                 }
                 reader.Close();
@@ -94,9 +124,9 @@ namespace IntensificacionBiblioteca.Datos.Repositorios
             }
         }
 
-        private Estado ConstruirEstado(SqlDataReader reader)
+        private EstadoListDto ConstruirEstadoListDto(SqlDataReader reader)
         {
-            return new Estado
+            return new EstadoListDto
             {
                 EstadoId = reader.GetInt32(0),
                 Descripcion = reader.GetString(1)

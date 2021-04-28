@@ -1,5 +1,6 @@
 ﻿using IntensificacionBiblioteca.Datos.Repositorios.Facades;
 using IntensificacionBiblioteca.Entidades.DTOs.Editorial;
+using IntensificacionBiblioteca.Entidades.DTOs.Pais;
 using IntensificacionBiblioteca.Entidades.Entidades;
 using System;
 using System.Collections.Generic;
@@ -77,9 +78,9 @@ namespace IntensificacionBiblioteca.Datos.Repositorios
             }
         }
 
-        public Editorial GetEditorialPorId(int id)
+        public EditorialEditDto GetEditorialPorId(int id)
         {
-            Editorial editorial = null;
+            EditorialEditDto editorial = null;
             try
             {
                 string cadenaComando =
@@ -90,7 +91,7 @@ namespace IntensificacionBiblioteca.Datos.Repositorios
                 if (reader.HasRows)
                 {
                     reader.Read();
-                    editorial = ConstruirEditorialEditar(reader);
+                    editorial = ConstruirEditorial(reader);
                 }
                 reader.Close();
                 return editorial;
@@ -101,28 +102,49 @@ namespace IntensificacionBiblioteca.Datos.Repositorios
             }
         }
 
-        private Editorial ConstruirEditorialEditar(SqlDataReader reader)
+        private EditorialEditDto ConstruirEditorial(SqlDataReader reader)
         {
-            Editorial editorial = new Editorial();
+            var editorial = new EditorialEditDto();
             editorial.EditorialId = reader.GetInt32(0);
             editorial.NombreEditorial = reader.GetString(1);
-            editorial.Pais = _repositorioPaises.GetPaisPorId(reader.GetInt32(2));
+            
+            var paisEditDto = _repositorioPaises.GetPaisPorId(reader.GetInt32(2));
+            editorial.Pais = new PaisListDto
+            {
+                PaisId = paisEditDto.PaisId,
+                NombrePais = paisEditDto.NombrePais
+            };
             return editorial;
         }
 
-        public List<EditorialListDto> GetLista()
+        public List<EditorialListDto> GetLista(PaisListDto paisDto)
         {
             List<EditorialListDto> lista = new List<EditorialListDto>();
 
             try
             {
-                string cadenaComando = "SELECT EditorialId, NombreEditorial, NombrePais " +
+                string cadenaComando;
+                SqlCommand comando;
+                SqlDataReader reader;
+                if (paisDto==null)
+                {
+                     cadenaComando = "SELECT EditorialId, NombreEditorial, NombrePais " +
                     "FROM Editoriales inner join Paises on Editoriales.PaisId=Paises.PaisId";
-                SqlCommand comando = new SqlCommand(cadenaComando, _sqlConnection);
-                SqlDataReader reader = comando.ExecuteReader();
+                     comando = new SqlCommand(cadenaComando, _sqlConnection);
+                     reader = comando.ExecuteReader();
+                }
+                else
+                {
+                    cadenaComando = "SELECT EditorialId, NombreEditorial, NombrePais " +
+                    "FROM Editoriales inner join Paises on Editoriales.PaisId=Paises.PaisId" +
+                    " WHERE Editoriales.PaisId=@paisId";
+                    comando = new SqlCommand(cadenaComando, _sqlConnection);
+                    comando.Parameters.AddWithValue("@paisId", paisDto.PaisId);
+                    reader = comando.ExecuteReader();
+                }
                 while (reader.Read())
                 {
-                    EditorialListDto editorialDto = ConstruirEditorial(reader);
+                    var editorialDto = ConstruirEditorialDto(reader);//ConstruirEditorialDto
                     lista.Add(editorialDto);
                 }
                 reader.Close();
@@ -179,13 +201,13 @@ namespace IntensificacionBiblioteca.Datos.Repositorios
             }
         }
 
-        private EditorialListDto ConstruirEditorial(SqlDataReader reader)
+        private EditorialListDto ConstruirEditorialDto(SqlDataReader reader)
         {
-            EditorialListDto editorialListDto = new EditorialListDto();
-            editorialListDto.EditorialId = reader.GetInt32(0);
-            editorialListDto.NombreEditorial = reader.GetString(1);
-            editorialListDto.NombrePais = reader.GetString(2);
-            return editorialListDto;
+            EditorialListDto editorialDto = new EditorialListDto();
+            editorialDto.EditorialId = reader.GetInt32(0);
+            editorialDto.NombreEditorial = reader.GetString(1);
+            editorialDto.NombrePais = reader.GetString(2);//editorialDto.Pais.NombrePais = reader.GetString(2);
+            return editorialDto;
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using IntensificacionBiblioteca.Datos;
 using IntensificacionBiblioteca.Datos.Repositorios;
 using IntensificacionBiblioteca.Datos.Repositorios.Facades;
+using IntensificacionBiblioteca.Entidades.DTOs.Genero;
 using IntensificacionBiblioteca.Entidades.Entidades;
 using IntensificacionBiblioteca.Servicios.Servicios.Facades;
 using System;
@@ -15,12 +16,10 @@ namespace IntensificacionBiblioteca.Servicios.Servicios
     {
         private IRepositorioGeneros _repositorio;
         private ConexionBd _conexionBd;
-
         public ServiciosGenero()
         {
 
         }
-
 
         public void Borrar(int id)
         {
@@ -30,38 +29,52 @@ namespace IntensificacionBiblioteca.Servicios.Servicios
                 _repositorio = new RepositorioGeneros(_conexionBd.AbrirConexion());
                 _repositorio.Borrar(id);
                 _conexionBd.CerrarConexion();
-
             }
             catch (Exception e)
             {
-
                 throw new Exception(e.Message);
             }
         }
 
-        public bool Existe(Genero genero)
+        public bool Existe(GeneroEditDto generoDto)
         {
             try
             {
                 _conexionBd = new ConexionBd();
                 _repositorio = new RepositorioGeneros(_conexionBd.AbrirConexion());
+                var genero = new Genero
+                {
+                    GeneroId = generoDto.GeneroId,
+                    Descripcion = generoDto.Descripcion,
+                };
                 var existe = _repositorio.Existe(genero);
                 _conexionBd.CerrarConexion();
                 return existe;
             }
             catch (Exception e)
             {
-
                 throw new Exception(e.Message);
             }
         }
 
-        public Genero GetGeneroPorId(int id)
+        public GeneroEditDto GetGeneroPorId(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                _conexionBd = new ConexionBd();
+                _repositorio = new RepositorioGeneros(_conexionBd.AbrirConexion());
+                var genero = _repositorio.GetGeneroPorId(id);
+                _conexionBd.CerrarConexion();
+                return genero;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+
         }
 
-        public List<Genero> GetGeneros()
+        public List<GeneroListDto> GetGeneros()
         {
             try
             {
@@ -77,12 +90,17 @@ namespace IntensificacionBiblioteca.Servicios.Servicios
             }
         }
 
-        public void Guardar(Genero genero)
+        public void Guardar(GeneroEditDto generoDto)
         {
             try
             {
                 _conexionBd = new ConexionBd();
                 _repositorio = new RepositorioGeneros(_conexionBd.AbrirConexion());
+                var genero = new Genero
+                {
+                    GeneroId=generoDto.GeneroId,
+                    Descripcion=generoDto.Descripcion
+                };
                 _repositorio.Guardar(genero);
                 _conexionBd.CerrarConexion();
 

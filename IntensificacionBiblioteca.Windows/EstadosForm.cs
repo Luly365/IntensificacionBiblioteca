@@ -1,4 +1,5 @@
-﻿using IntensificacionBiblioteca.Entidades.Entidades;
+﻿using IntensificacionBiblioteca.Entidades.DTOs.Estado;
+using IntensificacionBiblioteca.Entidades.Entidades;
 using IntensificacionBiblioteca.Servicios.Servicios;
 using IntensificacionBiblioteca.Servicios.Servicios.Facades;
 using IntensificacionBiblioteca.Windows.Formularios_AE;
@@ -31,9 +32,7 @@ namespace IntensificacionBiblioteca.Windows
             Close();
         }
         private IServiciosEstado _servicio;
-        private List<Estado> _lista;
-
-        
+        private List<EstadoListDto> _lista;
 
         private void MostrarDatosEnGrilla()
         {
@@ -51,7 +50,7 @@ namespace IntensificacionBiblioteca.Windows
             EstadoMetroGrid.Rows.Add(r);
         }
 
-        private void SetearFila(DataGridViewRow r, Estado estado)
+        private void SetearFila(DataGridViewRow r, EstadoListDto estado)
         {
             r.Cells[cmnEstado.Index].Value = estado.Descripcion;
             r.Tag = estado;
@@ -88,14 +87,22 @@ namespace IntensificacionBiblioteca.Windows
             {
                 try
                 {
-                    Estado estado = frm.GetEstado();
-                    if (!_servicio.Existe(estado))
+                    EstadoEditDto estadoEditDto = frm.GetEstado();
+
+                    if (!_servicio.Existe(estadoEditDto))
                     {
-                        _servicio.Guardar(estado);
+                        _servicio.Guardar(estadoEditDto);
+
                         DataGridViewRow r = ConstruirFila();
-                        SetearFila(r, estado);
+                        EstadoListDto estadoListDto = new EstadoListDto
+                        {
+                            EstadoId= estadoEditDto.EstadoId,
+                            Descripcion=estadoEditDto.Descripcion
+                        };
+
+                        SetearFila(r, estadoListDto);
                         AgregarFila(r);
-                        MessageBox.Show(this, $"Registro {estado.Descripcion} Agregado",
+                        MessageBox.Show(this, $"Registro {estadoListDto.Descripcion} Agregado",
                             "Mensaje",
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Information);
@@ -121,21 +128,31 @@ namespace IntensificacionBiblioteca.Windows
             if (EstadoMetroGrid.SelectedRows.Count > 0)
             {
                 DataGridViewRow r = EstadoMetroGrid.SelectedRows[0];
-                Estado estado = (Estado)r.Tag;
-               
-                Estado estadoAux = (Estado)estado.Clone();
+                EstadoListDto estado = (EstadoListDto)r.Tag;
+                EstadoListDto estadoAux = (EstadoListDto)estado.Clone();
+                EstadoEditDto estadoEditDto = new EstadoEditDto
+                {
+                    EstadoId = estado.EstadoId,
+                    Descripcion = estado.Descripcion
+                };
+
+
                 EstadoAEForm frm = new EstadoAEForm();
                 frm.Text = "Editar Estado";
-                frm.SetEstado(estado);
+                frm.SetEstado(estadoEditDto);
                 DialogResult dr = frm.ShowDialog(this);
                 if (dr == DialogResult.OK)
                 {
                     try
                     {
-                        estado = frm.GetEstado();
-                        if (!_servicio.Existe(estado))
+                        estadoEditDto = frm.GetEstado();
+
+                        if (!_servicio.Existe(estadoEditDto))
                         {
-                            _servicio.Guardar(estado);
+                            _servicio.Guardar(estadoEditDto);
+
+                            estado.Descripcion = estadoEditDto.Descripcion;
+
                             SetearFila(r, estado);
                             MessageBox.Show($"Registro Editado","Mesaje", 
                                 MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -165,7 +182,7 @@ namespace IntensificacionBiblioteca.Windows
             if (EstadoMetroGrid.SelectedRows.Count > 0)
             {
                 DataGridViewRow r = EstadoMetroGrid.SelectedRows[0];
-                Estado estado = (Estado)r.Tag;
+                EstadoListDto estado = (EstadoListDto)r.Tag;
                 DialogResult dr = MessageBox.Show($"¿Desea dar de baja el estado {estado.Descripcion}?",
                     "Confirmar Baja",
                     MessageBoxButtons.YesNo,

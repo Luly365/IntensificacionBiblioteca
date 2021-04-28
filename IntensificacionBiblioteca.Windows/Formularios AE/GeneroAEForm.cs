@@ -1,4 +1,5 @@
-﻿using IntensificacionBiblioteca.Entidades.Entidades;
+﻿using IntensificacionBiblioteca.Entidades.DTOs.Genero;
+using IntensificacionBiblioteca.Entidades.Entidades;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,7 +23,7 @@ namespace IntensificacionBiblioteca.Windows.Formularios_AE
         {
             DialogResult = DialogResult.Cancel;
         }
-        private Genero genero;
+        private GeneroEditDto genero;
 
         protected override void OnLoad(EventArgs e)
         {
@@ -33,7 +34,7 @@ namespace IntensificacionBiblioteca.Windows.Formularios_AE
             }
         }
 
-        public Genero GetGenero()
+        public GeneroEditDto GetGenero()
         {
             return genero;
         }
@@ -44,7 +45,7 @@ namespace IntensificacionBiblioteca.Windows.Formularios_AE
             {
                 if (genero == null)
                 {
-                    genero = new Genero();
+                    genero = new GeneroEditDto();
                 }
 
                 genero.Descripcion = GeneroMetroTextBox.Text.Trim();//trip
@@ -64,9 +65,14 @@ namespace IntensificacionBiblioteca.Windows.Formularios_AE
             return valido;
         }
 
-        internal void SetGenero(Genero genero)
+        public void SetGenero(GeneroEditDto genero)
         {
             this.genero = genero;
+        }
+
+        private void GeneroAEForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

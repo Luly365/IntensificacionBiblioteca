@@ -1,4 +1,5 @@
-﻿using IntensificacionBiblioteca.Entidades.Entidades;
+﻿using IntensificacionBiblioteca.Entidades.DTOs.Genero;
+using IntensificacionBiblioteca.Entidades.Entidades;
 using IntensificacionBiblioteca.Servicios.Servicios;
 using IntensificacionBiblioteca.Servicios.Servicios.Facades;
 using IntensificacionBiblioteca.Windows.Formularios_AE;
@@ -31,7 +32,8 @@ namespace IntensificacionBiblioteca.Windows
             Close();
         }
         private IServiciosGenero _servicio;
-        private List<Genero> _lista;
+
+        private List<GeneroListDto> _lista;
 
         private void GenerosForm_Load(object sender, EventArgs e)
         {
@@ -65,7 +67,7 @@ namespace IntensificacionBiblioteca.Windows
             GeneroMetroGrid.Rows.Add(r);
         }
 
-        private void SetearFila(DataGridViewRow r, Genero genero)
+        private void SetearFila(DataGridViewRow r, GeneroListDto genero)
         {
             r.Cells[cmnGenero.Index].Value = genero.Descripcion;
             r.Tag = genero;
@@ -87,12 +89,19 @@ namespace IntensificacionBiblioteca.Windows
             {
                 try
                 {
-                    Genero genero = frm.GetGenero();
-                    if (!_servicio.Existe(genero))
+                    GeneroEditDto generoEditDto = frm.GetGenero();
+                    if (!_servicio.Existe(generoEditDto))
                     {
-                        _servicio.Guardar(genero);//tenia agregar
+                        _servicio.Guardar(generoEditDto);
                         DataGridViewRow r = ConstruirFila();
-                        SetearFila(r, genero);
+                        GeneroListDto generoListDto = new GeneroListDto
+                        {
+                            GeneroId = generoEditDto.GeneroId,
+                            Descripcion = generoEditDto.Descripcion
+                        };
+
+
+                        SetearFila(r, generoListDto);
                         AgregarFila(r);
                         MessageBox.Show("Registro Agregado", "Mensaje",
                             MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -117,22 +126,30 @@ namespace IntensificacionBiblioteca.Windows
             if (GeneroMetroGrid.SelectedRows.Count > 0)
             {
                 DataGridViewRow r = GeneroMetroGrid.SelectedRows[0];
-                Genero genero = (Genero)r.Tag;
+                GeneroListDto genero = (GeneroListDto)r.Tag;
                 //ICLONEABLE
-                Genero generoAuxiliar = (Genero)genero.Clone();
+                GeneroListDto generoAuxiliar = (GeneroListDto)genero.Clone();
+                GeneroEditDto generoEditDto = new GeneroEditDto
+                {
+                    GeneroId = genero.GeneroId,
+                    Descripcion = genero.Descripcion
+                };
+
                 GeneroAEForm frm = new GeneroAEForm();
                 frm.Text = "Editar Genero";
-                frm.SetGenero(genero);
+                frm.SetGenero(generoEditDto);
                 DialogResult dr = frm.ShowDialog(this);
                 if (dr == DialogResult.OK)
                 {
                     try
                     {
-                        genero = frm.GetGenero();
+                        generoEditDto = frm.GetGenero();
 
-                        if (!_servicio.Existe(genero))
+                        if (!_servicio.Existe(generoEditDto))
                         {
-                            _servicio.Guardar(genero);//es Guardar
+                            _servicio.Guardar(generoEditDto);//es Guardar
+                            genero.Descripcion = generoEditDto.Descripcion;
+
                             SetearFila(r, genero);
                             MessageBox.Show("Registro editado", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
@@ -156,7 +173,7 @@ namespace IntensificacionBiblioteca.Windows
             if (GeneroMetroGrid.SelectedRows.Count > 0)
             {
                 DataGridViewRow r = GeneroMetroGrid.SelectedRows[0];
-                Genero genero = (Genero)r.Tag;
+                GeneroListDto genero = (GeneroListDto)r.Tag;
                 DialogResult dr = MessageBox.Show($"¿Desea dar de baja al Genero {genero.Descripcion}?",
                     "Confirmar Baja",
                     MessageBoxButtons.YesNo,

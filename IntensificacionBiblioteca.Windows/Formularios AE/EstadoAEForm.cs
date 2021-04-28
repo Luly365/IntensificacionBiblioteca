@@ -1,4 +1,5 @@
-﻿using IntensificacionBiblioteca.Entidades.Entidades;
+﻿using IntensificacionBiblioteca.Entidades.DTOs.Estado;
+using IntensificacionBiblioteca.Entidades.Entidades;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -32,8 +33,8 @@ namespace IntensificacionBiblioteca.Windows.Formularios_AE
         {
             DialogResult = DialogResult.Cancel;
         }
-        Estado estado;
-        public Estado GetEstado()
+        private EstadoEditDto estado;
+        public EstadoEditDto GetEstado()
         {
             return estado;
         }
@@ -46,7 +47,7 @@ namespace IntensificacionBiblioteca.Windows.Formularios_AE
             {
                 if (estado == null)
                 {
-                    estado = new Estado();
+                    estado = new EstadoEditDto();
                 }
 
                 estado.Descripcion = EstadoMetroTextBox.Text.Trim();//trip
@@ -57,7 +58,8 @@ namespace IntensificacionBiblioteca.Windows.Formularios_AE
         private bool ValidarDatos()
         {
             bool valido = true;
-            if (string.IsNullOrEmpty(EstadoMetroTextBox.Text.Trim()))
+            errorProvider1.Clear();
+            if (string.IsNullOrEmpty(EstadoMetroTextBox.Text.Trim()) || string.IsNullOrWhiteSpace(EstadoMetroTextBox.Text))
             {
                 valido = false;
                 errorProvider1.SetError(EstadoMetroTextBox, "Debe ingresar un Estado");
@@ -66,9 +68,14 @@ namespace IntensificacionBiblioteca.Windows.Formularios_AE
             return valido;
         }
 
-        internal void SetEstado(Estado estado)
+        internal void SetEstado(EstadoEditDto estado)
         {
             this.estado = estado;
+        }
+
+        private void EstadoAEForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

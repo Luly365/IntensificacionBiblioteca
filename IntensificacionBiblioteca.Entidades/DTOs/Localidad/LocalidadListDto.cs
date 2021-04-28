@@ -8,7 +8,7 @@ namespace IntensificacionBiblioteca.Entidades.DTOs.Localidad
 {
     public class LocalidadListDto:ICloneable
     {
-        public int LocalidadId { get; set; }// a este campo lo tengo que sacar?
+        public int LocalidadId { get; set; }
         public string NombreLocalidad { get; set; }
         public string NombreProvincia { get; set; }
 

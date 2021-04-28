@@ -73,6 +73,16 @@ namespace IntensificacionBiblioteca.Windows.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Buscar_48px {
+            get {
+                object obj = ResourceManager.GetObject("Buscar_48px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap cancel_48px {
             get {
                 object obj = ResourceManager.GetObject("cancel_48px", resourceCulture);

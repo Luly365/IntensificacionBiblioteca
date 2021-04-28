@@ -1,6 +1,7 @@
 ﻿using IntensificacionBiblioteca.Datos;
 using IntensificacionBiblioteca.Datos.Repositorios;
 using IntensificacionBiblioteca.Datos.Repositorios.Facades;
+using IntensificacionBiblioteca.Entidades.DTOs.Pais;
 using IntensificacionBiblioteca.Entidades.Entidades;
 using IntensificacionBiblioteca.Servicios.Servicios.Facades;
 using System;
@@ -38,12 +39,17 @@ namespace IntensificacionBiblioteca.Servicios.Servicios
             }
         }
 
-        public bool Existe(Pais pais)
+        public bool Existe(PaisEditDto paisDto)
         {
             try
             {
                 _conexionBd = new ConexionBd();
                 _repositorio = new RepositorioPaises(_conexionBd.AbrirConexion());
+                var pais = new Pais
+                {
+                    PaisId = paisDto.PaisId,
+                    NombrePais = paisDto.NombrePais
+                };
                 var existe = _repositorio.Existe(pais);
                 _conexionBd.CerrarConexion();
                 return existe;
@@ -55,7 +61,7 @@ namespace IntensificacionBiblioteca.Servicios.Servicios
             }
         }
 
-        public List<Pais> GetPaises()
+        public List<PaisListDto> GetPaises()
         {
             try
             {
@@ -72,17 +78,33 @@ namespace IntensificacionBiblioteca.Servicios.Servicios
             
         }
 
-        public Pais GetPaisPorId(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Guardar(Pais pais)
+        public PaisEditDto GetPaisPorId(int id)
         {
             try
             {
                 _conexionBd = new ConexionBd();
                 _repositorio = new RepositorioPaises(_conexionBd.AbrirConexion());
+                var pais = _repositorio.GetPaisPorId(id);
+                _conexionBd.CerrarConexion();
+                return pais;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+
+        public void Guardar(PaisEditDto paisDto)
+        {
+            try
+            {
+                _conexionBd = new ConexionBd();
+                _repositorio = new RepositorioPaises(_conexionBd.AbrirConexion());
+                var pais = new Pais
+                {
+                    PaisId = paisDto.PaisId,
+                    NombrePais = paisDto.NombrePais
+                };
                 _repositorio.Guardar(pais);
                 _conexionBd.CerrarConexion();
 

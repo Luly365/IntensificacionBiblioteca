@@ -1,6 +1,8 @@
-﻿using IntensificacionBiblioteca.Entidades.Entidades;
+﻿using IntensificacionBiblioteca.Entidades.DTOs.Localidad;
+using IntensificacionBiblioteca.Entidades.Entidades;
 using IntensificacionBiblioteca.Servicios.Servicios;
 using IntensificacionBiblioteca.Servicios.Servicios.Facades;
+using IntensificacionBiblioteca.Windows.Helpers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -27,37 +29,21 @@ namespace IntensificacionBiblioteca.Windows.Formularios_AE
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-            CargarDatosComboProvincias();
+            Helper.CargarDatosComboProvincias(ref ProvinciasMetroComboBox);
 
             if (localidad!= null)
             {
                 LocalidadMetroTextBox.Text = localidad.NombreLocalidad;
-                ProvinciasMetroComboBox.SelectedValue = localidad.provincia.ProvinciaId;
+                ProvinciasMetroComboBox.SelectedValue = localidad.ProvinciaId;
             }
         }
 
-        private void CargarDatosComboProvincias()
-        {//cargo las provincias en el ComboBox
-            IServiciosProvincia _servicioProvincia = new ServiciosProvincias();
-            var lista = _servicioProvincia.GetProvincias();
-            var defaultProvincia = new Provincia
-            {
-                ProvinciaId = 0,
-                NombreProvincia = "Seleccione Provincia"
-            };
-            lista.Insert(0, defaultProvincia);
-            ProvinciasMetroComboBox.DataSource = lista;
-            ProvinciasMetroComboBox.ValueMember = "ProvinciaId";
-            ProvinciasMetroComboBox.DisplayMember = "NombreProvincia";
-            ProvinciasMetroComboBox.SelectedIndex = 0;
-        }
-
-        private Localidad localidad;
-        public Localidad GetLocalidad()
+        private LocalidadEditDto localidad;
+        public LocalidadEditDto GetLocalidad()
         {
             return localidad;
         }
-        public void SetLocalidad(Localidad localidad)
+        public void SetLocalidad(LocalidadEditDto localidad)
         {
             this.localidad = localidad;
         }
@@ -73,11 +59,11 @@ namespace IntensificacionBiblioteca.Windows.Formularios_AE
             {
                 if (localidad == null)
                 {
-                    localidad = new Localidad();
+                    localidad = new LocalidadEditDto();
                 }
 
                 localidad.NombreLocalidad = LocalidadMetroTextBox.Text;
-                localidad.provincia = (Provincia)ProvinciasMetroComboBox.SelectedItem;
+                localidad.ProvinciaId = ((Provincia)ProvinciasMetroComboBox.SelectedItem).ProvinciaId;
                 DialogResult = DialogResult.OK;
             }
         }
@@ -99,6 +85,11 @@ namespace IntensificacionBiblioteca.Windows.Formularios_AE
             }
 
             return valido;
+        }
+
+        private void ProvinciasMetroComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

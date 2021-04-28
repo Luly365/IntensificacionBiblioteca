@@ -35,6 +35,7 @@
             this.EditorialesMetroGrid = new MetroFramework.Controls.MetroGrid();
             this.cmnEditorial = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cmnPais = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BuscarMetroButton = new MetroFramework.Controls.MetroButton();
             this.SalirMetroButton = new MetroFramework.Controls.MetroButton();
             this.ActualizarMetroButton = new MetroFramework.Controls.MetroButton();
             this.BorrarMetroButton = new MetroFramework.Controls.MetroButton();
@@ -110,10 +111,20 @@
             this.cmnPais.Name = "cmnPais";
             this.cmnPais.ReadOnly = true;
             // 
+            // BuscarMetroButton
+            // 
+            this.BuscarMetroButton.BackgroundImage = global::IntensificacionBiblioteca.Windows.Properties.Resources.Buscar_48px;
+            this.BuscarMetroButton.Location = new System.Drawing.Point(398, 10);
+            this.BuscarMetroButton.Name = "BuscarMetroButton";
+            this.BuscarMetroButton.Size = new System.Drawing.Size(52, 47);
+            this.BuscarMetroButton.TabIndex = 9;
+            this.BuscarMetroButton.UseSelectable = true;
+            this.BuscarMetroButton.Click += new System.EventHandler(this.BuscarMetroButton_Click);
+            // 
             // SalirMetroButton
             // 
             this.SalirMetroButton.BackgroundImage = global::IntensificacionBiblioteca.Windows.Properties.Resources.exit_48px1;
-            this.SalirMetroButton.Location = new System.Drawing.Point(398, 10);
+            this.SalirMetroButton.Location = new System.Drawing.Point(456, 10);
             this.SalirMetroButton.Name = "SalirMetroButton";
             this.SalirMetroButton.Size = new System.Drawing.Size(52, 47);
             this.SalirMetroButton.TabIndex = 6;
@@ -128,6 +139,7 @@
             this.ActualizarMetroButton.Size = new System.Drawing.Size(52, 47);
             this.ActualizarMetroButton.TabIndex = 5;
             this.ActualizarMetroButton.UseSelectable = true;
+            this.ActualizarMetroButton.Click += new System.EventHandler(this.ActualizarMetroButton_Click);
             // 
             // BorrarMetroButton
             // 
@@ -165,6 +177,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(541, 450);
             this.ControlBox = false;
+            this.Controls.Add(this.BuscarMetroButton);
             this.Controls.Add(this.SalirMetroButton);
             this.Controls.Add(this.ActualizarMetroButton);
             this.Controls.Add(this.BorrarMetroButton);
@@ -189,5 +202,6 @@
         private MetroFramework.Controls.MetroButton SalirMetroButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn cmnEditorial;
         private System.Windows.Forms.DataGridViewTextBoxColumn cmnPais;
+        private MetroFramework.Controls.MetroButton BuscarMetroButton;
     }
 }

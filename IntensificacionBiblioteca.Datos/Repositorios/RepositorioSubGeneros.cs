@@ -1,4 +1,5 @@
 ﻿using IntensificacionBiblioteca.Datos.Repositorios.Facades;
+using IntensificacionBiblioteca.Entidades.DTOs.Genero;
 using IntensificacionBiblioteca.Entidades.DTOs.SubGenero;
 using IntensificacionBiblioteca.Entidades.Entidades;
 using System;
@@ -76,17 +77,33 @@ namespace IntensificacionBiblioteca.Datos.Repositorios
             }
         }
 
-        public List<SubGeneroListDto> GetLista()
+        public List<SubGeneroListDto> GetLista(GeneroListDto generoDto)
         {
             
             List<SubGeneroListDto> lista = new List<SubGeneroListDto>();
             try
             {
-                string cadenaComando =
-                    "SELECT SubGeneroId, SG.Descripcion, G.Descripcion " +
-                    "FROM SubGeneros SG INNER JOIN Generos G on SG.GeneroId=G.GeneroId";
-                SqlCommand comando = new SqlCommand(cadenaComando, _sqlConnection);
-                SqlDataReader reader = comando.ExecuteReader();
+                string cadenaComando;
+                SqlCommand comando;
+                SqlDataReader reader;
+                if (generoDto==null)
+                {
+                    cadenaComando =
+                      "SELECT SubGeneroId, SG.Descripcion, G.Descripcion " +
+                      "FROM SubGeneros SG INNER JOIN Generos G on SG.GeneroId=G.GeneroId";
+                     comando = new SqlCommand(cadenaComando, _sqlConnection);
+                     reader = comando.ExecuteReader();
+                }
+                else
+                {
+                    cadenaComando =
+                      "SELECT SubGeneroId, SG.Descripcion, G.Descripcion " +
+                      "FROM SubGeneros SG INNER JOIN Generos G on SG.GeneroId=G.GeneroId WHERE SG.GeneroId=@generoId";
+                    comando = new SqlCommand(cadenaComando, _sqlConnection);
+                    comando.Parameters.AddWithValue("@generoId", generoDto.GeneroId);
+                    reader = comando.ExecuteReader();
+                }
+               
                 while (reader.Read())
                 {
                     var subGeneroDto = ConstruirSubGeneroDto(reader);
@@ -110,9 +127,9 @@ namespace IntensificacionBiblioteca.Datos.Repositorios
             return subGeneroDto;
         }
 
-        public SubGenero GetSubGeneroPorId(int id)
+        public SubGeneroEditDto GetSubGeneroPorId(int id)
         {
-            SubGenero subGenero = null;
+            SubGeneroEditDto subGenero = null;
             try
             {
                 string cadenaComando =
@@ -134,12 +151,22 @@ namespace IntensificacionBiblioteca.Datos.Repositorios
             }
         }
 
-        private SubGenero ConstruirSubGenero(SqlDataReader reader)
+        private SubGeneroEditDto ConstruirSubGenero(SqlDataReader reader)
         {
-            SubGenero subGenero = new SubGenero();
+            var subGenero = new SubGeneroEditDto();
             subGenero.SubGeneroId = reader.GetInt32(0);
             subGenero.NombreSubGenero = reader.GetString(1);
-            subGenero.genero = _repositorioGenero.GetGeneroPorId(reader.GetInt32(2));
+            var generoEditDto = _repositorioGenero.GetGeneroPorId(reader.GetInt32(2));
+            subGenero.Genero = new GeneroListDto
+            {
+                GeneroId = generoEditDto.GeneroId,
+                Descripcion = generoEditDto.Descripcion
+            };
+
+
+
+
+
             return subGenero;
         }
 
@@ -188,5 +215,29 @@ namespace IntensificacionBiblioteca.Datos.Repositorios
 
             }
         }
+
+        //public List<SubGeneroListDto> GetLista(GeneroListDto generoDt)
+        //{
+        //    List<SubGeneroListDto> lista = new List<SubGeneroListDto>();
+        //    try
+        //    {
+        //        string cadenaComando =
+        //            "SELECT SubGeneroId, SG.Descripcion, G.Descripcion " +
+        //            "FROM SubGeneros SG INNER JOIN Generos G on SG.GeneroId=G.GeneroId";
+        //        SqlCommand comando = new SqlCommand(cadenaComando, _sqlConnection);
+        //        SqlDataReader reader = comando.ExecuteReader();
+        //        while (reader.Read())
+        //        {
+        //            var subGeneroDto = ConstruirSubGeneroDto(reader);
+        //            lista.Add(subGeneroDto);
+        //        }
+        //        reader.Close();
+        //        return lista;
+        //    }
+        //    catch (Exception)
+        //    {
+        //        throw new Exception("Error al intentar leer los SubGeneros");
+        //    }
+        //}
     }
 }

@@ -1,4 +1,5 @@
 ﻿using IntensificacionBiblioteca.Entidades.DTOs.Editorial;
+using IntensificacionBiblioteca.Entidades.DTOs.Pais;
 using IntensificacionBiblioteca.Entidades.Entidades;
 using System;
 using System.Collections.Generic;
@@ -10,11 +11,11 @@ namespace IntensificacionBiblioteca.Servicios.Servicios.Facades
 {
     public interface IServicioEditoriales
     {
-        List<EditorialListDto> GetLista();
-        void Guardar(Editorial editorial);
-        bool Existe(Editorial editorial);
+        List<EditorialListDto> GetLista(PaisListDto paisDto);
+        void Guardar(EditorialEditDto editorialEditDto);
+        bool Existe(EditorialEditDto editorial);
         void Borrar(int editorialId);
-        Editorial GetEditorialPorId(int id);
+        EditorialEditDto GetEditorialPorId(int id);
 
 
         

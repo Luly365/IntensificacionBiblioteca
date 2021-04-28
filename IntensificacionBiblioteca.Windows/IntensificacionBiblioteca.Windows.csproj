@@ -55,11 +55,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AutoresLibrosForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AutoresLibrosForm.Designer.cs">
+      <DependentUpon>AutoresLibrosForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios AE\AutorAEForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios AE\AutorAEForm.Designer.cs">
       <DependentUpon>AutorAEForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios AE\LibroAEForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios AE\LibroAEForm.Designer.cs">
+      <DependentUpon>LibroAEForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios AE\PrestamoAEForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios AE\PrestamoAEForm.Designer.cs">
+      <DependentUpon>PrestamoAEForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios AE\SocioAEForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios AE\SocioAEForm.Designer.cs">
+      <DependentUpon>SocioAEForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios AE\SubGeneroAEForm.cs">
       <SubType>Form</SubType>
@@ -109,6 +133,24 @@
     <Compile Include="Formularios AE\PaisAEForm.Designer.cs">
       <DependentUpon>PaisAEForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios Buscar\BuscarLibroForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios Buscar\BuscarLibroForm.Designer.cs">
+      <DependentUpon>BuscarLibroForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios Buscar\BuscarEditorialForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios Buscar\BuscarEditorialForm.Designer.cs">
+      <DependentUpon>BuscarEditorialForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios Buscar\BuscarLocalidadesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios Buscar\BuscarLocalidadesForm.Designer.cs">
+      <DependentUpon>BuscarLocalidadesForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMenuPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -138,6 +180,19 @@
     </Compile>
     <Compile Include="EditorialesForm.Designer.cs">
       <DependentUpon>EditorialesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\Helper.cs" />
+    <Compile Include="LibrosPrestadosForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LibrosPrestadosForm.Designer.cs">
+      <DependentUpon>LibrosPrestadosForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PrestamoSociosForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PrestamoSociosForm.Designer.cs">
+      <DependentUpon>PrestamoSociosForm.cs</DependentUpon>
     </Compile>
     <Compile Include="SubGeneroForm.cs">
       <SubType>Form</SubType>
@@ -183,8 +238,20 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AutoresLibrosForm.resx">
+      <DependentUpon>AutoresLibrosForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios AE\AutorAEForm.resx">
       <DependentUpon>AutorAEForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios AE\LibroAEForm.resx">
+      <DependentUpon>LibroAEForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios AE\PrestamoAEForm.resx">
+      <DependentUpon>PrestamoAEForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios AE\SocioAEForm.resx">
+      <DependentUpon>SocioAEForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios AE\SubGeneroAEForm.resx">
       <DependentUpon>SubGeneroAEForm.cs</DependentUpon>
@@ -210,6 +277,15 @@
     <EmbeddedResource Include="Formularios AE\PaisAEForm.resx">
       <DependentUpon>PaisAEForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios Buscar\BuscarLibroForm.resx">
+      <DependentUpon>BuscarLibroForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios Buscar\BuscarEditorialForm.resx">
+      <DependentUpon>BuscarEditorialForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios Buscar\BuscarLocalidadesForm.resx">
+      <DependentUpon>BuscarLocalidadesForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMenuPrincipal.resx">
       <DependentUpon>frmMenuPrincipal.cs</DependentUpon>
     </EmbeddedResource>
@@ -224,6 +300,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EditorialesForm.resx">
       <DependentUpon>EditorialesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LibrosPrestadosForm.resx">
+      <DependentUpon>LibrosPrestadosForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PrestamoSociosForm.resx">
+      <DependentUpon>PrestamoSociosForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SubGeneroForm.resx">
       <DependentUpon>SubGeneroForm.cs</DependentUpon>
@@ -309,6 +391,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\ok_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Buscar_48px.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

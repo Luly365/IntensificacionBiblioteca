@@ -10,7 +10,8 @@ namespace IntensificacionBiblioteca.Entidades.DTOs.Editorial
     {
         public int EditorialId { get; set; }
         public string NombreEditorial { get; set; }
-        public string  NombrePais { get; set; }
+        public string  NombrePais { get; set; }//cambie aca por string paisListDto
+    
 
         public object Clone()
         {

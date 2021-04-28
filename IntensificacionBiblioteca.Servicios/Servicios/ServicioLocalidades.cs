@@ -16,7 +16,7 @@ namespace IntensificacionBiblioteca.Servicios.Servicios
     {
         private ConexionBd _conexionBd;
         private IRepositorioLocalidades _repositorio;
-        private IRepositorioProvincias _repositorioprovincia;
+        private IRepositorioProvincias _repositorioProvincia;
 
         public ServicioLocalidades()
         {
@@ -40,12 +40,22 @@ namespace IntensificacionBiblioteca.Servicios.Servicios
             }
         }
 
-        public bool Existe(Localidad localidad)
-        {
+        public bool Existe(LocalidadEditDto localidadDto)
+        {// yo recibo una 'localidadDto" aqui pero la tengo que
+         //transformar en 1 "localidad"
             try
             {
                 _conexionBd = new ConexionBd();
                 _repositorio = new RepositorioLocalidades(_conexionBd.AbrirConexion());
+                _repositorioProvincia = new RepositorioProvincias(_conexionBd.AbrirConexion());
+                var localidad = new Localidad
+                {
+                    //le paso los datos de la locDto a loc 
+                    LocalidadId = localidadDto.LocalidadId,
+                    NombreLocalidad=localidadDto.NombreLocalidad,
+                    provincia=_repositorioProvincia.GetProvinciaPorId(localidadDto.ProvinciaId)
+                };
+                //se lo paso al repositorio y me fijo si existe
                 var existe = _repositorio.Existe(localidad);
                 _conexionBd.CerrarConexion();
                 return existe;
@@ -56,13 +66,13 @@ namespace IntensificacionBiblioteca.Servicios.Servicios
             }
         }
 
-        public List<LocalidadListDto> GetLista()
+        public List<LocalidadListDto> GetLista(Provincia provincia)
         {
             try
             {
                 _conexionBd = new ConexionBd();
                 _repositorio = new RepositorioLocalidades(_conexionBd.AbrirConexion());
-                var lista = _repositorio.GetLista();
+                var lista = _repositorio.GetLista(provincia);
                 _conexionBd.CerrarConexion();
                 return lista;
             }
@@ -73,13 +83,18 @@ namespace IntensificacionBiblioteca.Servicios.Servicios
             }
         }
 
-        public Localidad GetLocalidadPorId(int id)
+        //public List<LocalidadListDto> GetLista(Provincia provincia)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        public LocalidadEditDto GetLocalidadPorId(int id)
         {
             try
             {
                 _conexionBd = new ConexionBd();
-                _repositorioprovincia = new RepositorioProvincias(_conexionBd.AbrirConexion());
-                _repositorio = new RepositorioLocalidades(_conexionBd.AbrirConexion(), _repositorioprovincia);
+                _repositorioProvincia = new RepositorioProvincias(_conexionBd.AbrirConexion());
+                _repositorio = new RepositorioLocalidades(_conexionBd.AbrirConexion(), _repositorioProvincia);
                 var ciudad = _repositorio.GetLocalidadPorId(id);
                 _conexionBd.CerrarConexion();
                 return ciudad;
@@ -90,12 +105,19 @@ namespace IntensificacionBiblioteca.Servicios.Servicios
             }
         }
 
-        public void Guardar(Localidad localidad)
+        public void Guardar(LocalidadEditDto localidadDto)
         {
             try
             {
                 _conexionBd = new ConexionBd();
                 _repositorio = new RepositorioLocalidades(_conexionBd.AbrirConexion());
+                _repositorioProvincia = new RepositorioProvincias(_conexionBd.AbrirConexion());
+                var localidad = new Localidad
+                { 
+                    LocalidadId = localidadDto.LocalidadId,
+                    NombreLocalidad = localidadDto.NombreLocalidad,
+                    provincia = _repositorioProvincia.GetProvinciaPorId(localidadDto.ProvinciaId)
+                };
                 _repositorio.Guardar(localidad);
                 _conexionBd.CerrarConexion();
             }

@@ -2,6 +2,7 @@
 using IntensificacionBiblioteca.Datos.Repositorios;
 using IntensificacionBiblioteca.Datos.Repositorios.Facades;
 using IntensificacionBiblioteca.Entidades.DTOs.SubGenero;
+using IntensificacionBiblioteca.Entidades.DTOs.Genero;
 using IntensificacionBiblioteca.Entidades.Entidades;
 using IntensificacionBiblioteca.Servicios.Servicios.Facades;
 using System;
@@ -40,12 +41,27 @@ namespace IntensificacionBiblioteca.Servicios.Servicios
             }
         }
 
-        public bool Existe(SubGenero subGenero)
+        public bool Existe(SubGeneroEditDto subGeneroDto)
         {
             try
             {
                 _conexionBd = new ConexionBd();
                 _repositorio = new RepositorioSubGeneros(_conexionBd.AbrirConexion());
+                _repositorioGeneros = new RepositorioGeneros(_conexionBd.AbrirConexion());
+            
+                var subGenero = new SubGenero
+                {
+                    SubGeneroId = subGeneroDto.SubGeneroId,
+                    NombreSubGenero = subGeneroDto.NombreSubGenero,
+
+                    genero=new Genero
+                    {
+                        GeneroId = subGeneroDto.Genero.GeneroId,
+                        Descripcion= subGeneroDto.Genero.Descripcion
+                    }
+
+                   
+                };
                 var existe = _repositorio.Existe(subGenero);
                 _conexionBd.CerrarConexion();
                 return existe;
@@ -56,13 +72,13 @@ namespace IntensificacionBiblioteca.Servicios.Servicios
             }
         }
 
-        public List<SubGeneroListDto> GetLista()
+        public List<SubGeneroListDto> GetLista(GeneroListDto generoDto)
         {
             try
             {
                 _conexionBd = new ConexionBd();
                 _repositorio = new RepositorioSubGeneros(_conexionBd.AbrirConexion());
-                var lista = _repositorio.GetLista();
+                var lista = _repositorio.GetLista(generoDto);
                 _conexionBd.CerrarConexion();
                 return lista;
 
@@ -73,7 +89,9 @@ namespace IntensificacionBiblioteca.Servicios.Servicios
             }
         }
 
-        public SubGenero GetSubGeneroPorId(int id)
+        
+
+        public SubGeneroEditDto GetSubGeneroPorId(int id)
         {
             try
             {
@@ -90,12 +108,25 @@ namespace IntensificacionBiblioteca.Servicios.Servicios
             }
         }
 
-        public void Guardar(SubGenero subGenero)
+        public void Guardar(SubGeneroEditDto subGeneroDto)
         {
             try
             {
                 _conexionBd = new ConexionBd();
                 _repositorio = new RepositorioSubGeneros(_conexionBd.AbrirConexion());
+                _repositorioGeneros= new RepositorioGeneros(_conexionBd.AbrirConexion());
+
+                SubGenero subGenero = new SubGenero
+                {
+                    SubGeneroId = subGeneroDto.SubGeneroId,
+                    NombreSubGenero = subGeneroDto.NombreSubGenero,
+                    genero = new Genero
+                    {
+                        GeneroId = subGeneroDto.Genero.GeneroId,
+                        Descripcion = subGeneroDto.Genero.Descripcion
+                    }
+                    
+                };
                 _repositorio.Guardar(subGenero);
                 _conexionBd.CerrarConexion();
 

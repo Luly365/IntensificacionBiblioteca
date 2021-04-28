@@ -1,4 +1,5 @@
-﻿using IntensificacionBiblioteca.Entidades.Entidades;
+﻿using IntensificacionBiblioteca.Entidades.DTOs.Pais;
+using IntensificacionBiblioteca.Entidades.Entidades;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,7 +23,7 @@ namespace IntensificacionBiblioteca.Windows.Formularios_AE
         {
             DialogResult = DialogResult.Cancel;
         }
-        //aca ppegue
+        
        
         protected override void OnLoad(EventArgs e)
         {
@@ -32,7 +33,7 @@ namespace IntensificacionBiblioteca.Windows.Formularios_AE
                 PaisMetroTextBox.Text = pais.NombrePais;
             }
         }
-        private Pais pais;
+        private PaisEditDto pais;
 
 
         private void OkMetroButton_Click(object sender, EventArgs e)
@@ -41,7 +42,7 @@ namespace IntensificacionBiblioteca.Windows.Formularios_AE
             {
                 if (pais == null)
                 {
-                    pais = new Pais();
+                    pais = new PaisEditDto();
                 }
 
                 pais.NombrePais = PaisMetroTextBox.Text; //trip
@@ -52,7 +53,7 @@ namespace IntensificacionBiblioteca.Windows.Formularios_AE
         private bool ValidarDatos()
         {
             bool valido = true;
-            if (string.IsNullOrEmpty(PaisMetroTextBox.Text.Trim()) )
+            if (string.IsNullOrEmpty(PaisMetroTextBox.Text.Trim()) || string.IsNullOrWhiteSpace(PaisMetroTextBox.Text))
             {
                 valido = false;
                 errorProvider1.SetError(PaisMetroTextBox, "Debe ingresar un País");
@@ -61,13 +62,13 @@ namespace IntensificacionBiblioteca.Windows.Formularios_AE
             return valido;
         }
 
-        public Pais GetPais()
+        public PaisEditDto GetPais()
         {
             return pais;
         }
 
         
-        public void SetPais(Pais pais)
+        public void SetPais(PaisEditDto pais)
         {
             this.pais = pais;
         }

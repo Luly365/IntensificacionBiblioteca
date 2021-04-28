@@ -41,6 +41,7 @@
             this.MPGenerosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MPSubGenerosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MPAutoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.autoresLibrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MPEstadoDeLosLibrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editorialesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
@@ -62,6 +63,7 @@
             this.PrestamosMetroTile.UseCustomBackColor = true;
             this.PrestamosMetroTile.UseSelectable = true;
             this.PrestamosMetroTile.UseTileImage = true;
+            this.PrestamosMetroTile.Click += new System.EventHandler(this.PrestamosMetroTile_Click);
             // 
             // SociosMetroTile
             // 
@@ -188,10 +190,19 @@
             // 
             // MPAutoresToolStripMenuItem
             // 
+            this.MPAutoresToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.autoresLibrosToolStripMenuItem});
             this.MPAutoresToolStripMenuItem.Name = "MPAutoresToolStripMenuItem";
             this.MPAutoresToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
             this.MPAutoresToolStripMenuItem.Text = "Autores";
             this.MPAutoresToolStripMenuItem.Click += new System.EventHandler(this.MPAutoresToolStripMenuItem_Click);
+            // 
+            // autoresLibrosToolStripMenuItem
+            // 
+            this.autoresLibrosToolStripMenuItem.Name = "autoresLibrosToolStripMenuItem";
+            this.autoresLibrosToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.autoresLibrosToolStripMenuItem.Text = "Autores Libros";
+            this.autoresLibrosToolStripMenuItem.Click += new System.EventHandler(this.autoresLibrosToolStripMenuItem_Click);
             // 
             // MPEstadoDeLosLibrosToolStripMenuItem
             // 
@@ -211,7 +222,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(480, 450);
+            this.ClientSize = new System.Drawing.Size(480, 412);
             this.ControlBox = false;
             this.Controls.Add(this.PrestamosMetroTile);
             this.Controls.Add(this.SociosMetroTile);
@@ -245,6 +256,7 @@
         private System.Windows.Forms.ToolStripMenuItem MPAutoresToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem MPEstadoDeLosLibrosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editorialesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem autoresLibrosToolStripMenuItem;
     }
 }
 
