@@ -169,7 +169,7 @@ namespace IntensificacionBiblioteca.Windows.Helpers
                     Titulo = item.Libro.Titulo,
                     ISBN= item.Libro.ISBN,
                     Observaciones=item.Libro.Observaciones,
-                    Cantidad = item.Cantidad//podria sacarselo 
+                    Cantidad = item.Cantidad
                 };
                 listaDto.Add(itemDto);
             }

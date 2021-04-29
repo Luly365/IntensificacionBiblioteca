@@ -15,5 +15,6 @@ namespace IntensificacionBiblioteca.Datos.Repositorios.Facades
         void Guardar(Libro libro);
         LibroEditDto GetLibroPorId(int libroId);
         void Borrar(int libroId);
+        void ActualizarPrestamos(Libro detalleo, int cantidad);
     }
 }

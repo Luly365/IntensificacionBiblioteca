@@ -49,6 +49,8 @@
             this.DisponibleMetroCheckBox = new MetroFramework.Controls.MetroCheckBox();
             this.ObservacionestextBox = new System.Windows.Forms.TextBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.StockMetroLabel = new MetroFramework.Controls.MetroLabel();
+            this.StockMetroTextBox = new MetroFramework.Controls.MetroTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -134,7 +136,7 @@
             // 
             this.OKMetroButton.BackgroundImage = global::IntensificacionBiblioteca.Windows.Properties.Resources.ok_48px;
             this.OKMetroButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.OKMetroButton.Location = new System.Drawing.Point(163, 409);
+            this.OKMetroButton.Location = new System.Drawing.Point(158, 517);
             this.OKMetroButton.Name = "OKMetroButton";
             this.OKMetroButton.Size = new System.Drawing.Size(75, 52);
             this.OKMetroButton.TabIndex = 11;
@@ -145,7 +147,7 @@
             // 
             this.CancelMetroButton.BackgroundImage = global::IntensificacionBiblioteca.Windows.Properties.Resources.cancel_48px;
             this.CancelMetroButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.CancelMetroButton.Location = new System.Drawing.Point(524, 409);
+            this.CancelMetroButton.Location = new System.Drawing.Point(513, 517);
             this.CancelMetroButton.Name = "CancelMetroButton";
             this.CancelMetroButton.Size = new System.Drawing.Size(75, 52);
             this.CancelMetroButton.TabIndex = 13;
@@ -233,7 +235,7 @@
             // ObservacionesMetroLabel
             // 
             this.ObservacionesMetroLabel.AutoSize = true;
-            this.ObservacionesMetroLabel.Location = new System.Drawing.Point(23, 311);
+            this.ObservacionesMetroLabel.Location = new System.Drawing.Point(23, 396);
             this.ObservacionesMetroLabel.Name = "ObservacionesMetroLabel";
             this.ObservacionesMetroLabel.Size = new System.Drawing.Size(98, 19);
             this.ObservacionesMetroLabel.TabIndex = 20;
@@ -259,7 +261,7 @@
             // DisponibleMetroCheckBox
             // 
             this.DisponibleMetroCheckBox.AutoSize = true;
-            this.DisponibleMetroCheckBox.Location = new System.Drawing.Point(621, 352);
+            this.DisponibleMetroCheckBox.Location = new System.Drawing.Point(430, 338);
             this.DisponibleMetroCheckBox.Name = "DisponibleMetroCheckBox";
             this.DisponibleMetroCheckBox.Size = new System.Drawing.Size(79, 15);
             this.DisponibleMetroCheckBox.TabIndex = 24;
@@ -268,7 +270,7 @@
             // 
             // ObservacionestextBox
             // 
-            this.ObservacionestextBox.Location = new System.Drawing.Point(130, 311);
+            this.ObservacionestextBox.Location = new System.Drawing.Point(127, 396);
             this.ObservacionestextBox.Multiline = true;
             this.ObservacionestextBox.Name = "ObservacionestextBox";
             this.ObservacionestextBox.Size = new System.Drawing.Size(469, 56);
@@ -278,12 +280,53 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // StockMetroLabel
+            // 
+            this.StockMetroLabel.AutoSize = true;
+            this.StockMetroLabel.Location = new System.Drawing.Point(29, 338);
+            this.StockMetroLabel.Name = "StockMetroLabel";
+            this.StockMetroLabel.Size = new System.Drawing.Size(104, 19);
+            this.StockMetroLabel.TabIndex = 26;
+            this.StockMetroLabel.Text = "Cantidad Libros:";
+            // 
+            // StockMetroTextBox
+            // 
+            // 
+            // 
+            // 
+            this.StockMetroTextBox.CustomButton.Image = null;
+            this.StockMetroTextBox.CustomButton.Location = new System.Drawing.Point(146, 1);
+            this.StockMetroTextBox.CustomButton.Name = "";
+            this.StockMetroTextBox.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.StockMetroTextBox.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.StockMetroTextBox.CustomButton.TabIndex = 1;
+            this.StockMetroTextBox.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.StockMetroTextBox.CustomButton.UseSelectable = true;
+            this.StockMetroTextBox.CustomButton.Visible = false;
+            this.StockMetroTextBox.Lines = new string[0];
+            this.StockMetroTextBox.Location = new System.Drawing.Point(140, 333);
+            this.StockMetroTextBox.MaxLength = 32767;
+            this.StockMetroTextBox.Name = "StockMetroTextBox";
+            this.StockMetroTextBox.PasswordChar = '\0';
+            this.StockMetroTextBox.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.StockMetroTextBox.SelectedText = "";
+            this.StockMetroTextBox.SelectionLength = 0;
+            this.StockMetroTextBox.SelectionStart = 0;
+            this.StockMetroTextBox.ShortcutsEnabled = true;
+            this.StockMetroTextBox.Size = new System.Drawing.Size(168, 23);
+            this.StockMetroTextBox.TabIndex = 27;
+            this.StockMetroTextBox.UseSelectable = true;
+            this.StockMetroTextBox.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.StockMetroTextBox.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
             // LibroAEForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(748, 484);
+            this.ClientSize = new System.Drawing.Size(748, 592);
             this.ControlBox = false;
+            this.Controls.Add(this.StockMetroTextBox);
+            this.Controls.Add(this.StockMetroLabel);
             this.Controls.Add(this.ObservacionestextBox);
             this.Controls.Add(this.DisponibleMetroCheckBox);
             this.Controls.Add(this.FechaIncorporacionMetroLabel);
@@ -303,7 +346,6 @@
             this.Controls.Add(this.TituloMetroTextBox);
             this.Controls.Add(this.ISBNMetroLabel);
             this.Controls.Add(this.TituloMetroLabel);
-            this.MaximumSize = new System.Drawing.Size(748, 484);
             this.MinimumSize = new System.Drawing.Size(748, 484);
             this.Name = "LibroAEForm";
             this.Text = "Agregar Libro";
@@ -334,5 +376,7 @@
         private MetroFramework.Controls.MetroCheckBox DisponibleMetroCheckBox;
         private System.Windows.Forms.TextBox ObservacionestextBox;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private MetroFramework.Controls.MetroTextBox StockMetroTextBox;
+        private MetroFramework.Controls.MetroLabel StockMetroLabel;
     }
 }

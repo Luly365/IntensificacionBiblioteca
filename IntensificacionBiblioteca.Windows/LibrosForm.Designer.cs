@@ -32,15 +32,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.LibroMetroGrid = new MetroFramework.Controls.MetroGrid();
-            this.cmnTitulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cmnISBN = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cmnEditorial = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cmnGenero = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cmnSubGenero = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cmnFechaIncorporacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cmnEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cmnObservaciones = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cmnDisponible = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.archivosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.PaisesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -55,6 +46,16 @@
             this.EditarMetroButton = new MetroFramework.Controls.MetroButton();
             this.NuevoMetroButton = new MetroFramework.Controls.MetroButton();
             this.BuscarMetroButton = new MetroFramework.Controls.MetroButton();
+            this.cmnTitulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmnISBN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmnEditorial = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmnGenero = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmnSubGenero = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmnFechaIncorporacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmnEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmnObservaciones = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmnDisponible = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.cmnStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.LibroMetroGrid)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -86,7 +87,8 @@
             this.cmnFechaIncorporacion,
             this.cmnEstado,
             this.cmnObservaciones,
-            this.cmnDisponible});
+            this.cmnDisponible,
+            this.cmnStock});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -114,65 +116,9 @@
             this.LibroMetroGrid.RowHeadersVisible = false;
             this.LibroMetroGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.LibroMetroGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.LibroMetroGrid.Size = new System.Drawing.Size(918, 346);
+            this.LibroMetroGrid.Size = new System.Drawing.Size(1064, 346);
             this.LibroMetroGrid.TabIndex = 0;
-            // 
-            // cmnTitulo
-            // 
-            this.cmnTitulo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.cmnTitulo.HeaderText = "Titulo";
-            this.cmnTitulo.Name = "cmnTitulo";
-            this.cmnTitulo.ReadOnly = true;
-            // 
-            // cmnISBN
-            // 
-            this.cmnISBN.HeaderText = "ISBN";
-            this.cmnISBN.Name = "cmnISBN";
-            this.cmnISBN.ReadOnly = true;
-            // 
-            // cmnEditorial
-            // 
-            this.cmnEditorial.HeaderText = "Editorial";
-            this.cmnEditorial.Name = "cmnEditorial";
-            this.cmnEditorial.ReadOnly = true;
-            // 
-            // cmnGenero
-            // 
-            this.cmnGenero.HeaderText = "Genero";
-            this.cmnGenero.Name = "cmnGenero";
-            this.cmnGenero.ReadOnly = true;
-            // 
-            // cmnSubGenero
-            // 
-            this.cmnSubGenero.HeaderText = "SubGenero";
-            this.cmnSubGenero.Name = "cmnSubGenero";
-            this.cmnSubGenero.ReadOnly = true;
-            // 
-            // cmnFechaIncorporacion
-            // 
-            this.cmnFechaIncorporacion.HeaderText = "Fecha Incorporacion";
-            this.cmnFechaIncorporacion.Name = "cmnFechaIncorporacion";
-            this.cmnFechaIncorporacion.ReadOnly = true;
-            // 
-            // cmnEstado
-            // 
-            this.cmnEstado.HeaderText = "Estado";
-            this.cmnEstado.Name = "cmnEstado";
-            this.cmnEstado.ReadOnly = true;
-            // 
-            // cmnObservaciones
-            // 
-            this.cmnObservaciones.HeaderText = "Observaciones";
-            this.cmnObservaciones.Name = "cmnObservaciones";
-            this.cmnObservaciones.ReadOnly = true;
-            // 
-            // cmnDisponible
-            // 
-            this.cmnDisponible.HeaderText = "Disponible";
-            this.cmnDisponible.Name = "cmnDisponible";
-            this.cmnDisponible.ReadOnly = true;
-            this.cmnDisponible.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.cmnDisponible.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.LibroMetroGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.LibroMetroGrid_CellContentClick);
             // 
             // menuStrip1
             // 
@@ -180,7 +126,7 @@
             this.archivosToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(20, 60);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(918, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1064, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -299,11 +245,74 @@
             this.BuscarMetroButton.UseSelectable = true;
             this.BuscarMetroButton.Click += new System.EventHandler(this.BuscarMetroButton_Click);
             // 
+            // cmnTitulo
+            // 
+            this.cmnTitulo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cmnTitulo.HeaderText = "Titulo";
+            this.cmnTitulo.Name = "cmnTitulo";
+            this.cmnTitulo.ReadOnly = true;
+            // 
+            // cmnISBN
+            // 
+            this.cmnISBN.HeaderText = "ISBN";
+            this.cmnISBN.Name = "cmnISBN";
+            this.cmnISBN.ReadOnly = true;
+            // 
+            // cmnEditorial
+            // 
+            this.cmnEditorial.HeaderText = "Editorial";
+            this.cmnEditorial.Name = "cmnEditorial";
+            this.cmnEditorial.ReadOnly = true;
+            // 
+            // cmnGenero
+            // 
+            this.cmnGenero.HeaderText = "Genero";
+            this.cmnGenero.Name = "cmnGenero";
+            this.cmnGenero.ReadOnly = true;
+            // 
+            // cmnSubGenero
+            // 
+            this.cmnSubGenero.HeaderText = "SubGenero";
+            this.cmnSubGenero.Name = "cmnSubGenero";
+            this.cmnSubGenero.ReadOnly = true;
+            // 
+            // cmnFechaIncorporacion
+            // 
+            this.cmnFechaIncorporacion.HeaderText = "Fecha Incorporacion";
+            this.cmnFechaIncorporacion.Name = "cmnFechaIncorporacion";
+            this.cmnFechaIncorporacion.ReadOnly = true;
+            // 
+            // cmnEstado
+            // 
+            this.cmnEstado.HeaderText = "Estado";
+            this.cmnEstado.Name = "cmnEstado";
+            this.cmnEstado.ReadOnly = true;
+            // 
+            // cmnObservaciones
+            // 
+            this.cmnObservaciones.HeaderText = "Observaciones";
+            this.cmnObservaciones.Name = "cmnObservaciones";
+            this.cmnObservaciones.ReadOnly = true;
+            // 
+            // cmnDisponible
+            // 
+            this.cmnDisponible.HeaderText = "Disponible";
+            this.cmnDisponible.Name = "cmnDisponible";
+            this.cmnDisponible.ReadOnly = true;
+            this.cmnDisponible.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.cmnDisponible.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // cmnStock
+            // 
+            this.cmnStock.HeaderText = "Stock";
+            this.cmnStock.Name = "cmnStock";
+            this.cmnStock.ReadOnly = true;
+            // 
             // LibrosForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(958, 450);
+            this.ClientSize = new System.Drawing.Size(1104, 450);
             this.ControlBox = false;
             this.Controls.Add(this.BuscarMetroButton);
             this.Controls.Add(this.SalirMetroButton);
@@ -350,5 +359,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cmnEstado;
         private System.Windows.Forms.DataGridViewTextBoxColumn cmnObservaciones;
         private System.Windows.Forms.DataGridViewCheckBoxColumn cmnDisponible;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cmnStock;
     }
 }

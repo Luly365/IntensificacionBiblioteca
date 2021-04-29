@@ -18,5 +18,6 @@ namespace IntensificacionBiblioteca.Entidades.Entidades
         public Estado Estado { get; set; }
         public string Observaciones { get; set; }
         public bool Disponible { get; set; }
+        public int Stock { get; set; }
     }
 }

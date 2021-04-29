@@ -105,20 +105,22 @@ namespace IntensificacionBiblioteca.Windows
                 {
                     var prestamoDto = frm.GetPrestamo();
                     _servicio.Guardar(prestamoDto);
-                    var prestamoListDto = new PrestamoListDto
-                    {
-                        PrestamoId = prestamoDto.PrestamoId,
-                        NombreSocio=prestamoDto.NombreSocio.Nombre,
-                        ApellidoSocio=prestamoDto.ApellidoSocio.Apellido,
-                        FechaPrestamo=prestamoDto.FechaPrestamo,
-                        ItemsPrestamo=Helper.ConstruirListaItemsListDto(prestamoDto.DetallePrestamo)
+                    var prestamoListDto = new PrestamoListDto();
+
+
+                    prestamoListDto.PrestamoId = prestamoDto.PrestamoId;
+                    prestamoListDto.NombreSocio = prestamoDto.NombreSocio.Nombre;
+                    //
+                    prestamoListDto.NombreSocio = prestamoDto.NombreSocio.Apellido;
+                    prestamoListDto.FechaPrestamo = prestamoDto.FechaPrestamo;
+                    prestamoListDto.ItemsPrestamo = Helper.ConstruirListaItemsListDto(prestamoDto.DetallePrestamo);
                        
 
-                    };
+                   
                     var r = ConstruirFila();
                     SetearFila(r, prestamoListDto);
                     AgregarFila(r);
-                    MessageBox.Show("Prestamo ", "Mensaje",
+                    MessageBox.Show("Prestamo Agregado", "Mensaje",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception exception)

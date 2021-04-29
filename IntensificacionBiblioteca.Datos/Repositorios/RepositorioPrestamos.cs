@@ -79,9 +79,27 @@ namespace IntensificacionBiblioteca.Datos.Repositorios
             throw new NotImplementedException();
         }
 
-        public void Guardar(Prestamo prestamoDto)
+        public void Guardar(Prestamo prestamo)
         {
-            throw new NotImplementedException();
+            try
+            {
+                string cadenaComando = "INSERT INTO Prestamos (SocioId, FechaPrestamo) " +
+                                       "VALUES (@socioId, @fecha)";
+                var comando = new SqlCommand(cadenaComando, _sqlConnection, tran);
+                comando.Parameters.AddWithValue("@socioId", prestamo.Socio.SocioId);
+                comando.Parameters.AddWithValue("@fecha", prestamo.FechaPrestamo);
+
+                comando.ExecuteNonQuery();
+                cadenaComando = "SELECT @@IDENTITY";
+                comando = new SqlCommand(cadenaComando, _sqlConnection, tran);
+                int id = (int)(decimal)comando.ExecuteScalar();
+                prestamo.PrestamoId = id;
+            }
+            catch (Exception e)
+            {
+
+                throw new Exception(e.Message);
+            }
         }
     }
 }

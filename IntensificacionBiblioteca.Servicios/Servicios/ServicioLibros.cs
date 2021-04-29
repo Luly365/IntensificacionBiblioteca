@@ -92,7 +92,8 @@ namespace IntensificacionBiblioteca.Servicios.Servicios
                         Descripcion = libroEditDto.Estado.Descripcion
                     },
                     Observaciones = libroEditDto.Observaciones,
-                    Disponible = libroEditDto.Disponible
+                    Disponible = libroEditDto.Disponible,
+                    Stock= libroEditDto.Stock
                 };
 
                 var existe = _repositorio.Existe(libro);
@@ -191,7 +192,8 @@ namespace IntensificacionBiblioteca.Servicios.Servicios
                         Descripcion = libroEditDto.Estado.Descripcion
                     },
                     Observaciones = libroEditDto.Observaciones,
-                    Disponible = libroEditDto.Disponible
+                    Disponible = libroEditDto.Disponible,
+                    Stock= libroEditDto.Stock
                 };
 
                 _repositorio.Guardar(libro);

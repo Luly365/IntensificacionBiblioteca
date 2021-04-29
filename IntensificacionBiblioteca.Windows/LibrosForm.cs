@@ -100,6 +100,7 @@ namespace IntensificacionBiblioteca.Windows
             r.Cells[cmnEstado.Index].Value = libroListDto.DescripcionEstado;
             r.Cells[cmnObservaciones.Index].Value = libroListDto.Observaciones;
             r.Cells[cmnDisponible.Index].Value = libroListDto.Disponible;
+            r.Cells[cmnStock.Index].Value = libroListDto.Stock;
 
             r.Tag = libroListDto;
         }
@@ -157,7 +158,8 @@ namespace IntensificacionBiblioteca.Windows
                     FechaIncorporacion=libroEditDto.FechaIncorporacion,
                     DescripcionEstado=libroEditDto.Estado.Descripcion,
                     Observaciones=libroEditDto.Observaciones,
-                    Disponible=libroEditDto.Disponible
+                    Disponible=libroEditDto.Disponible,
+                    Stock=libroEditDto.Stock
                 };
 
                 SetearFila(r, libroListDto);
@@ -213,6 +215,7 @@ namespace IntensificacionBiblioteca.Windows
                     libroListDto.DescripcionEstado = libroEditDto.Estado.Descripcion;
                     libroListDto.Observaciones = libroEditDto.Observaciones;
                     libroListDto.Disponible = libroEditDto.Disponible;
+                    libroListDto.Stock = libroEditDto.Stock;
                     SetearFila(r, libroListDto);
                     MessageBox.Show("Registro Editado", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -263,6 +266,11 @@ namespace IntensificacionBiblioteca.Windows
                 MessageBox.Show(exception.Message, "Error", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
+        }
+
+        private void LibroMetroGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

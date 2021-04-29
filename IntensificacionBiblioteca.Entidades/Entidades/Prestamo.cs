@@ -12,6 +12,6 @@ namespace IntensificacionBiblioteca.Entidades.Entidades
         public Socio Socio { get; set; }
         public DateTime FechaPrestamo { get; set; }
 
-        //public List<DetalleVenta> detalleVentas { get; set; } = new List<DetalleVenta>();
+        public List<DetallePrestamo> detallePrestamo { get; set; } = new List<DetallePrestamo>();
     }
 }

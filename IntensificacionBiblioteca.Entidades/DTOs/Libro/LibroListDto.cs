@@ -18,6 +18,8 @@ namespace IntensificacionBiblioteca.Entidades.DTOs.Libro
         public string DescripcionEstado { get; set; }
         public string Observaciones { get; set; }
         public bool Disponible { get; set; }
+
+        public int Stock { get; set; }
         public object Clone()
         {
             return this.MemberwiseClone();

@@ -23,5 +23,6 @@ namespace IntensificacionBiblioteca.Entidades.DTOs.Libro
         public EstadoListDto Estado { get; set; }//7
         public string Observaciones { get; set; }//8
         public bool Disponible { get; set; }//9
+        public int Stock { get; set; }//10
     }
 }

@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.DatosPersonalesGroupBox = new System.Windows.Forms.GroupBox();
             this.ApellidoMetroTextBox = new MetroFramework.Controls.MetroTextBox();
             this.ApellidoMetroLabel = new MetroFramework.Controls.MetroLabel();
@@ -56,6 +56,8 @@
             this.cmnTitulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cmnISBN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.FechaFetroLabel = new MetroFramework.Controls.MetroLabel();
+            this.FechaPrestamoMetroDateTime = new MetroFramework.Controls.MetroDateTime();
             this.DatosPersonalesGroupBox.SuspendLayout();
             this.DatosContactoGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CargarLibrosPrestadosMetroGrid)).BeginInit();
@@ -316,14 +318,14 @@
             this.DatosContactoGroupBox.Controls.Add(this.TelFijoMetroLabel);
             this.DatosContactoGroupBox.Location = new System.Drawing.Point(23, 256);
             this.DatosContactoGroupBox.Name = "DatosContactoGroupBox";
-            this.DatosContactoGroupBox.Size = new System.Drawing.Size(684, 124);
+            this.DatosContactoGroupBox.Size = new System.Drawing.Size(684, 143);
             this.DatosContactoGroupBox.TabIndex = 9;
             this.DatosContactoGroupBox.TabStop = false;
             this.DatosContactoGroupBox.Text = "Libro Prestado";
             // 
             // cancalarMetroButton
             // 
-            this.cancalarMetroButton.Location = new System.Drawing.Point(581, 67);
+            this.cancalarMetroButton.Location = new System.Drawing.Point(581, 86);
             this.cancalarMetroButton.Name = "cancalarMetroButton";
             this.cancalarMetroButton.Size = new System.Drawing.Size(75, 23);
             this.cancalarMetroButton.TabIndex = 11;
@@ -333,7 +335,7 @@
             // 
             // AceptarMetroButton
             // 
-            this.AceptarMetroButton.Location = new System.Drawing.Point(137, 67);
+            this.AceptarMetroButton.Location = new System.Drawing.Point(137, 86);
             this.AceptarMetroButton.Name = "AceptarMetroButton";
             this.AceptarMetroButton.Size = new System.Drawing.Size(75, 23);
             this.AceptarMetroButton.TabIndex = 10;
@@ -365,7 +367,7 @@
             // 
             this.CancelMetroButton.BackgroundImage = global::IntensificacionBiblioteca.Windows.Properties.Resources.cancel_48px;
             this.CancelMetroButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.CancelMetroButton.Location = new System.Drawing.Point(509, 583);
+            this.CancelMetroButton.Location = new System.Drawing.Point(509, 665);
             this.CancelMetroButton.Name = "CancelMetroButton";
             this.CancelMetroButton.Size = new System.Drawing.Size(75, 52);
             this.CancelMetroButton.TabIndex = 13;
@@ -377,11 +379,12 @@
             // 
             this.OKMetroButton.BackgroundImage = global::IntensificacionBiblioteca.Windows.Properties.Resources.ok_48px;
             this.OKMetroButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.OKMetroButton.Location = new System.Drawing.Point(176, 583);
+            this.OKMetroButton.Location = new System.Drawing.Point(179, 665);
             this.OKMetroButton.Name = "OKMetroButton";
             this.OKMetroButton.Size = new System.Drawing.Size(75, 52);
             this.OKMetroButton.TabIndex = 11;
             this.OKMetroButton.UseSelectable = true;
+            this.OKMetroButton.Click += new System.EventHandler(this.OKMetroButton_Click);
             // 
             // CargarLibrosPrestadosMetroGrid
             // 
@@ -392,41 +395,41 @@
             this.CargarLibrosPrestadosMetroGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.CargarLibrosPrestadosMetroGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.CargarLibrosPrestadosMetroGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.CargarLibrosPrestadosMetroGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.CargarLibrosPrestadosMetroGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.CargarLibrosPrestadosMetroGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.CargarLibrosPrestadosMetroGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.cmnTitulo,
             this.cmnISBN});
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.CargarLibrosPrestadosMetroGrid.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.CargarLibrosPrestadosMetroGrid.DefaultCellStyle = dataGridViewCellStyle2;
             this.CargarLibrosPrestadosMetroGrid.EnableHeadersVisualStyles = false;
             this.CargarLibrosPrestadosMetroGrid.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.CargarLibrosPrestadosMetroGrid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.CargarLibrosPrestadosMetroGrid.Location = new System.Drawing.Point(23, 396);
+            this.CargarLibrosPrestadosMetroGrid.Location = new System.Drawing.Point(23, 475);
             this.CargarLibrosPrestadosMetroGrid.Name = "CargarLibrosPrestadosMetroGrid";
             this.CargarLibrosPrestadosMetroGrid.ReadOnly = true;
             this.CargarLibrosPrestadosMetroGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.CargarLibrosPrestadosMetroGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.CargarLibrosPrestadosMetroGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.CargarLibrosPrestadosMetroGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.CargarLibrosPrestadosMetroGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.CargarLibrosPrestadosMetroGrid.Size = new System.Drawing.Size(683, 170);
@@ -449,12 +452,31 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // FechaFetroLabel
+            // 
+            this.FechaFetroLabel.AutoSize = true;
+            this.FechaFetroLabel.Location = new System.Drawing.Point(103, 430);
+            this.FechaFetroLabel.Name = "FechaFetroLabel";
+            this.FechaFetroLabel.Size = new System.Drawing.Size(46, 19);
+            this.FechaFetroLabel.TabIndex = 15;
+            this.FechaFetroLabel.Text = "Fecha:";
+            // 
+            // FechaPrestamoMetroDateTime
+            // 
+            this.FechaPrestamoMetroDateTime.Location = new System.Drawing.Point(160, 428);
+            this.FechaPrestamoMetroDateTime.MinimumSize = new System.Drawing.Size(0, 29);
+            this.FechaPrestamoMetroDateTime.Name = "FechaPrestamoMetroDateTime";
+            this.FechaPrestamoMetroDateTime.Size = new System.Drawing.Size(200, 29);
+            this.FechaPrestamoMetroDateTime.TabIndex = 16;
+            // 
             // PrestamoAEForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(729, 658);
+            this.ClientSize = new System.Drawing.Size(729, 740);
             this.ControlBox = false;
+            this.Controls.Add(this.FechaPrestamoMetroDateTime);
+            this.Controls.Add(this.FechaFetroLabel);
             this.Controls.Add(this.CargarLibrosPrestadosMetroGrid);
             this.Controls.Add(this.CancelMetroButton);
             this.Controls.Add(this.OKMetroButton);
@@ -470,6 +492,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.CargarLibrosPrestadosMetroGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -499,5 +522,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cmnTitulo;
         private System.Windows.Forms.DataGridViewTextBoxColumn cmnISBN;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private MetroFramework.Controls.MetroLabel FechaFetroLabel;
+        private MetroFramework.Controls.MetroDateTime FechaPrestamoMetroDateTime;
     }
 }

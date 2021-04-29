@@ -56,6 +56,8 @@ namespace IntensificacionBiblioteca.Windows.Formularios_AE
                 ObservacionestextBox.Text = libroEditDto.Observaciones;
                 //check box
                 DisponibleMetroCheckBox.Checked = libroEditDto.Disponible;
+                //muestra el stock 
+                StockMetroTextBox.Text = libroEditDto.Stock.ToString();
             }
         }
 
@@ -97,6 +99,7 @@ namespace IntensificacionBiblioteca.Windows.Formularios_AE
                 libroEditDto.FechaIncorporacion = FechaIncorporacionMetroDateTime.Value;
                 libroEditDto.Observaciones = ObservacionestextBox.Text;
                 libroEditDto.Disponible = DisponibleMetroCheckBox.Checked;
+                libroEditDto.Stock = int.Parse(StockMetroTextBox.Text);
 
 
                 DialogResult = DialogResult.OK;
@@ -150,6 +153,17 @@ namespace IntensificacionBiblioteca.Windows.Formularios_AE
                 valido = false;
                 errorProvider1.SetError(FechaIncorporacionMetroDateTime, "Fecha mal ingresada");
             }
+            if (!double.TryParse(StockMetroTextBox.Text, out double stock))
+            {
+                valido = false;
+                errorProvider1.SetError(StockMetroTextBox, "Stock mal ingresado");
+            }
+            else if (stock < 0 || stock > int.MaxValue)
+            {
+                valido = false;
+                errorProvider1.SetError(StockMetroTextBox, "Stock fuera del rango permitido");
+            }
+
             return valido;
         }
 

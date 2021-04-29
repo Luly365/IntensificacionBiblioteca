@@ -59,15 +59,30 @@ namespace IntensificacionBiblioteca.Datos.Repositorios
             detalleDto.DetallePrestamoId = reader.GetInt32(0);
             detalleDto.Titulo = reader.GetString(1);
             detalleDto.ISBN = reader.GetString(2);
-            detalleDto.Observaciones = reader.GetString(3);
+            //detalleDto.Observaciones = reader.GetString(3);// puede aceptar valores nulo 
             return detalleDto;
         }
 
         public void Guardar(DetallePrestamo detalle)
         {
-            throw new NotImplementedException();
+            try
+            {
+                string cadenaComando = "INSERT INTO DetallesPrestamos (LibroId, Cantidad, PrestamoId) "+
+                "VALUES(@libro, @cantidad, @prestamoid)";
+                var comando = new SqlCommand(cadenaComando, _sqlConnection, _tran);
+                comando.Parameters.AddWithValue("@libro", detalle.Libro.LibroId);
+                comando.Parameters.AddWithValue("@cantidad", detalle.cantidad);
+                comando.Parameters.AddWithValue("@prestamoid", detalle.Prestamo.PrestamoId);
+
+                comando.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+
+                throw new Exception("Error al intentar guardar un detalle de prestamos");
+            }
         }
 
-    
+
     }
-}
+    }

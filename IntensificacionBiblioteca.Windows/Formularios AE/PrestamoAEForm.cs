@@ -66,7 +66,7 @@ namespace IntensificacionBiblioteca.Windows.Formularios_AE
         private DetallePrestamoEditDto detallePrestamo;
         private SocioListDto socioListDto;
         private LibroListDto libroDto;
-        //private PrestamoEditDto prestamoEditDto;
+       
 
 
         private void AceptarMetroButton_Click(object sender, EventArgs e)
@@ -104,7 +104,7 @@ namespace IntensificacionBiblioteca.Windows.Formularios_AE
         private void SetearFila(DataGridViewRow r, DetallePrestamoEditDto items)
         {
 
-            r.Cells[cmnTitulo.Index].Value = items.Libro.Titulo;//error
+            r.Cells[cmnTitulo.Index].Value = items.Libro.Titulo;
             r.Cells[cmnISBN.Index].Value = items.Libro.ISBN;
             r.Tag = items;
         }
@@ -127,6 +127,11 @@ namespace IntensificacionBiblioteca.Windows.Formularios_AE
                 errorProvider1.SetError(LibroIdMetroComboBox, "Debe seleccionar un libro");
             }
             
+            if (SocioIdMetroComboBox.SelectedIndex == 0)
+            {
+                valido = false;
+                errorProvider1.SetError(SocioIdMetroComboBox, "Debe seleccionar un Socio");
+            }
 
             // validar la cantidad de libros permitidas cuando le agregue el control 
 
@@ -138,8 +143,6 @@ namespace IntensificacionBiblioteca.Windows.Formularios_AE
             if (LibroIdMetroComboBox.SelectedIndex > 0)
             {
                 libroDto = (LibroListDto)LibroIdMetroComboBox.SelectedItem;
-               
-
             }
         }
 
@@ -151,6 +154,48 @@ namespace IntensificacionBiblioteca.Windows.Formularios_AE
         private void InicializarControlesPrestamo()
         {
             LibroIdMetroComboBox.SelectedIndex = 0;
+        }
+
+
+
+        private bool ValidarDatos()
+        {
+            bool valido = true;
+            errorProvider1.Clear();
+            if (SocioIdMetroComboBox.SelectedIndex == 0)
+            {
+                valido = false;
+                errorProvider1.SetError(SocioIdMetroComboBox, "Debe seleccionar un Socio");
+                
+            }
+            if (LibroIdMetroComboBox.SelectedIndex == 0)
+            {
+                valido = false;
+                errorProvider1.SetError(LibroIdMetroComboBox, "Debe seleccionar un libro");
+            }
+
+            return valido;
+        }
+
+        private void OKMetroButton_Click(object sender, EventArgs e)
+        {
+            if (ValidarDatos())
+            {
+                prestamoDto = new PrestamoEditDto();
+                prestamoDto.NombreSocio = socioListDto;
+                prestamoDto.FechaPrestamo = FechaPrestamoMetroDateTime.Value;
+                foreach (var item in carrito.GetItems())
+                {
+                    var itemEditDto = new DetallePrestamoEditDto()
+                    {
+                        Libro = item.Libro
+                        //agregar otros atributos
+                    };
+                    prestamoDto.DetallePrestamo.Add(itemEditDto);
+                }
+            }
+
+            DialogResult = DialogResult.OK;
         }
     }
 }

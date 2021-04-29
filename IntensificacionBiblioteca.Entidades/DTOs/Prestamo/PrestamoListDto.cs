@@ -14,6 +14,6 @@ namespace IntensificacionBiblioteca.Entidades.DTOs.Prestamo
         public string  ApellidoSocio { get; set; }
         public DateTime FechaPrestamo { get; set; }
         public List<DetallePrestamoListDto> ItemsPrestamo { get; set; } = new List<DetallePrestamoListDto>();
-        //public int TotalLibrosPrestado => ItemsPrestamo.Sum( la Cantidad);
+        
     }
 }

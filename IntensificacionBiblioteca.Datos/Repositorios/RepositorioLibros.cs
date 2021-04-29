@@ -17,9 +17,10 @@ namespace IntensificacionBiblioteca.Datos.Repositorios
     public class RepositorioLibros : IRepositorioLibros
     {
         private readonly SqlConnection _sqlConnection;
+        private SqlTransaction _tran;
         private readonly IRepositorioPaises _repositorioPaises;
         private readonly IRepositorioEditoriales _repositorioEditoriales;
-        
+
         private readonly IRepositorioGeneros _repositorioGenero;
         private readonly IRepositorioSubGenero _repositorioSubGenero;
         private readonly IRepositorioEstados _repositorioEstados;
@@ -32,7 +33,7 @@ namespace IntensificacionBiblioteca.Datos.Repositorios
             _sqlConnection = sqlConnection;
             _repositorioPaises = repositorioPaises;
             _repositorioEditoriales = repositorioEditoriales;
-            
+
             _repositorioGenero = repositorioGenero;
             _repositorioSubGenero = repositorioSubGenero;
             _repositorioEstados = repositorioEstados;
@@ -42,6 +43,12 @@ namespace IntensificacionBiblioteca.Datos.Repositorios
         {
             _sqlConnection = sqlConnection;
         }
+
+        public RepositorioLibros(SqlConnection sqlConnection, SqlTransaction tran) : this(sqlConnection)
+        {
+            this._tran = tran;
+        }
+
         public bool Existe(Libro libro)
         {
             try
@@ -79,7 +86,7 @@ namespace IntensificacionBiblioteca.Datos.Repositorios
             {
                 string cadenaComando =
                     "SELECT LibroId, Titulo, ISBN, e.NombreEditorial, g.Descripcion, sg.Descripcion," +
-                    " FechaIncorporacion, es.Descripcion, Observaciones, Disponible FROM " +
+                    " FechaIncorporacion, es.Descripcion, Observaciones, Disponible, Stock FROM " +
                     "Generos g JOIN SubGeneros sg on g.GeneroId = sg.GeneroId JOIN " +
                     "Libros l on sg.SubGeneroId = l.SubGeneroId JOIN Editoriales e on " +
                     "l.EditorialId = e.EditorialId JOIN Estados es on es.EstadoId = l.EstadoId";
@@ -107,7 +114,7 @@ namespace IntensificacionBiblioteca.Datos.Repositorios
                 try
                 {
                     string cadenaComando = "INSERT INTO Libros VALUES(@titulo, @Isbn, @editorialId, @generoId," +
-                        " @subGeneroId, @fecha, @estadoId, @observ, @disponible)";
+                        " @subGeneroId, @fecha, @estadoId, @observ, @disponible, @stock)";
                     SqlCommand comando = new SqlCommand(cadenaComando, _sqlConnection);
                     comando.Parameters.AddWithValue("@titulo", libro.Titulo);
                     comando.Parameters.AddWithValue("@Isbn", libro.ISBN);
@@ -127,6 +134,8 @@ namespace IntensificacionBiblioteca.Datos.Repositorios
                     }
 
                     comando.Parameters.AddWithValue("@disponible", libro.Disponible);
+
+                    comando.Parameters.AddWithValue("@stock", libro.Stock);
 
 
 
@@ -149,7 +158,7 @@ namespace IntensificacionBiblioteca.Datos.Repositorios
                 {
                     string cadenaComando = "UPDATE Libros SET Titulo=@titulo, ISBN=@Isbn, EditorialId=@editorialId," +
                                            " GeneroId=@generoId, SubGeneroId=@subGeneroId, fechaIncorporacion=@fecha," +
-                                           "EstadoId=@estadoId, Observaciones=@observ, Disponible=@disponible WHERE LibroId=@id";
+                                           "EstadoId=@estadoId, Observaciones=@observ, Disponible=@disponible, Stock=@stock WHERE LibroId=@id";
                     SqlCommand comando = new SqlCommand(cadenaComando, _sqlConnection);
 
                     comando.Parameters.AddWithValue("@titulo", libro.Titulo);
@@ -169,8 +178,10 @@ namespace IntensificacionBiblioteca.Datos.Repositorios
                         comando.Parameters.AddWithValue("@observ", DBNull.Value);
                     }
                     comando.Parameters.AddWithValue("@disponible", libro.Disponible);
+                    comando.Parameters.AddWithValue("@stock", libro.Stock);
 
                     comando.Parameters.AddWithValue("@id", libro.LibroId);
+
                     comando.ExecuteNonQuery();
 
                 }
@@ -196,6 +207,7 @@ namespace IntensificacionBiblioteca.Datos.Repositorios
             libro.DescripcionEstado = reader.GetString(7);
             libro.Observaciones = reader[8] != DBNull.Value ? reader.GetString(8) : null;
             libro.Disponible = reader.GetBoolean(9);
+            libro.Stock = reader.GetInt32(10);
             return libro;
 
         }
@@ -206,7 +218,7 @@ namespace IntensificacionBiblioteca.Datos.Repositorios
             try
             {
                 string cadenaComando = "SELECT LibroId, Titulo, ISBN, EditorialId, GeneroId, " +
-                    "SubGeneroId, FechaIncorporacion, EstadoId, Observaciones, Disponible " +
+                    "SubGeneroId, FechaIncorporacion, EstadoId, Observaciones, Disponible, Stock " +
                     "FROM Libros WHERE LibroId=@id";
                 SqlCommand comando = new SqlCommand(cadenaComando, _sqlConnection);
                 comando.Parameters.AddWithValue("@id", libroId);
@@ -264,6 +276,8 @@ namespace IntensificacionBiblioteca.Datos.Repositorios
 
             libro.Disponible = reader.GetBoolean(9);// boleanoooo check 
 
+            libro.Stock = reader.GetInt32(10);
+
             return libro;
         }
 
@@ -285,6 +299,26 @@ namespace IntensificacionBiblioteca.Datos.Repositorios
                 }
                 throw new Exception(e.Message);
             }
+        }
+
+        public void ActualizarPrestamos(Libro libro, int cantidad)
+        {
+            
+            try
+            {
+                string cadenaComando = "UPDATE Libros SET Stock=Stock+@cant WHERE LibroId=@id";
+                var comando = new SqlCommand(cadenaComando, _sqlConnection, _tran);
+                comando.Parameters.AddWithValue("@cant", cantidad);
+                comando.Parameters.AddWithValue("@id", libro.LibroId);
+                comando.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+
+                throw new Exception("Error al actualizar el stock de un Libro");
+            }
+
+
         }
     }
 }
